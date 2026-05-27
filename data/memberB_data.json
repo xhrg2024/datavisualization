@@ -1,0 +1,14 @@
+[
+  {"year":1901,"age":44,"category":"physics","name":"Röntgen"},
+  {"year":1911,"age":41,"category":"chemistry","name":"Curie"},
+  {"year":1926,"age":50,"category":"medicine","name":"Fleming"},
+  {"year":1935,"age":36,"category":"physics","name":"Dirac"},
+  {"year":1945,"age":47,"category":"chemistry","name":"Hill"},
+  {"year":1954,"age":52,"category":"physics","name":"Born"},
+  {"year":1962,"age":39,"category":"medicine","name":"Watson"},
+  {"year":1973,"age":43,"category":"peace","name":"Kissinger"},
+  {"year":1983,"age":58,"category":"literature","name":"Walcott"},
+  {"year":1995,"age":49,"category":"physics","name":"Perutz"},
+  {"year":2008,"age":61,"category":"chemistry","name":"Shimomura"},
+  {"year":2024,"age":56,"category":"physics","name":"Hasselmann"}
+]

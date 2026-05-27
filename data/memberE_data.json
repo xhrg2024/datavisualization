@@ -1,0 +1,14 @@
+[
+  {"id":"p1","label":"Curie","year":1903,"score":92,"field":"physics"},
+  {"id":"p2","label":"Einstein","year":1921,"score":86,"field":"physics"},
+  {"id":"p3","label":"Bohr","year":1922,"score":74,"field":"physics"},
+  {"id":"p4","label":"Fleming","year":1945,"score":88,"field":"medicine"},
+  {"id":"p5","label":"Watson","year":1962,"score":83,"field":"medicine"},
+  {"id":"p6","label":"Perutz","year":1962,"score":76,"field":"chemistry"},
+  {"id":"p7","label":"Kissinger","year":1973,"score":71,"field":"peace"},
+  {"id":"p8","label":"Morrison","year":1993,"score":79,"field":"literature"},
+  {"id":"p9","label":"Rosenberg","year":2001,"score":69,"field":"chemistry"},
+  {"id":"p10","label":"Hawking","year":2004,"score":75,"field":"physics"},
+  {"id":"p11","label":"Hasselmann","year":2021,"score":91,"field":"physics"},
+  {"id":"p12","label":"Mukwege","year":2018,"score":84,"field":"medicine"}
+]

@@ -1,0 +1,43 @@
+.macro-chart__axis text {
+  fill: rgba(237, 244, 255, 0.7);
+  font-size: 11px;
+}
+
+.macro-chart__axis path,
+.macro-chart__axis line {
+  stroke: rgba(255, 255, 255, 0.14);
+}
+
+.macro-chart__area {
+  fill: url(#macro-gradient);
+  opacity: 0.95;
+}
+
+.macro-chart__line {
+  fill: none;
+  stroke: #66d9ff;
+  stroke-width: 3.5;
+}
+
+.macro-chart__dots circle {
+  fill: #edf4ff;
+  stroke: rgba(9, 18, 35, 0.9);
+  stroke-width: 2;
+}
+
+.macro-chart__focus-line {
+  stroke: rgba(255, 255, 255, 0.34);
+  stroke-dasharray: 6 6;
+}
+
+.macro-chart__focus-dot {
+  fill: #ffb35c;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 2;
+}
+
+.macro-chart__focus-label {
+  fill: #edf4ff;
+  font-size: 12px;
+  font-weight: 600;
+}

@@ -1,0 +1,29 @@
+{
+  "nodes": [
+    {"id":"Stockholm","label":"Stockholm","group":"academy","startYear":1901,"endYear":2024,"radius":18},
+    {"id":"Uppsala University","label":"Uppsala University","group":"academy","startYear":1901,"endYear":2024,"radius":16},
+    {"id":"Royal Institute","label":"Royal Institute","group":"academy","startYear":1920,"endYear":2024,"radius":16},
+    {"id":"Physics","label":"Physics","group":"academy","startYear":1901,"endYear":2024,"radius":15},
+    {"id":"Chemistry","label":"Chemistry","group":"academy","startYear":1901,"endYear":2024,"radius":15},
+    {"id":"Medicine","label":"Medicine","group":"academy","startYear":1910,"endYear":2024,"radius":15},
+    {"id":"Literature","label":"Literature","group":"academy","startYear":1920,"endYear":2024,"radius":15},
+    {"id":"Peace","label":"Peace","group":"academy","startYear":1930,"endYear":2024,"radius":15},
+    {"id":"Nobel Museum","label":"Nobel Museum","group":"archive","startYear":1922,"endYear":2024,"radius":17},
+    {"id":"Karolinska","label":"Karolinska","group":"academy","startYear":1945,"endYear":2024,"radius":17},
+    {"id":"Nordic Archive","label":"Nordic Archive","group":"archive","startYear":1950,"endYear":2024,"radius":16}
+  ],
+  "links": [
+    {"source":"Stockholm","target":"Physics","distance":120},
+    {"source":"Stockholm","target":"Chemistry","distance":120},
+    {"source":"Stockholm","target":"Medicine","distance":120},
+    {"source":"Stockholm","target":"Literature","distance":120},
+    {"source":"Stockholm","target":"Peace","distance":140},
+    {"source":"Uppsala University","target":"Physics","distance":130},
+    {"source":"Uppsala University","target":"Medicine","distance":130},
+    {"source":"Royal Institute","target":"Chemistry","distance":130},
+    {"source":"Royal Institute","target":"Physics","distance":130},
+    {"source":"Nobel Museum","target":"Stockholm","distance":150},
+    {"source":"Karolinska","target":"Medicine","distance":120},
+    {"source":"Nordic Archive","target":"Nobel Museum","distance":150}
+  ]
+}

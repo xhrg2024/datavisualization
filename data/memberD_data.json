@@ -1,0 +1,12 @@
+[
+  {"source":"Europe","target":"Physics","value":18,"decade":1900,"category":"Europe"},
+  {"source":"Europe","target":"Chemistry","value":16,"decade":1910,"category":"Europe"},
+  {"source":"North America","target":"Medicine","value":19,"decade":1920,"category":"North America"},
+  {"source":"Asia","target":"Physics","value":8,"decade":1940,"category":"Asia"},
+  {"source":"Europe","target":"Literature","value":14,"decade":1950,"category":"Europe"},
+  {"source":"North America","target":"Peace","value":12,"decade":1970,"category":"North America"},
+  {"source":"Asia","target":"Chemistry","value":10,"decade":1990,"category":"Asia"},
+  {"source":"Europe","target":"Medicine","value":11,"decade":2000,"category":"Europe"},
+  {"source":"Latin America","target":"Peace","value":9,"decade":2010,"category":"Latin America"},
+  {"source":"Africa","target":"Literature","value":7,"decade":2020,"category":"Africa"}
+]

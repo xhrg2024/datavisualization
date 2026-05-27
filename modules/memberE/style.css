@@ -1,0 +1,32 @@
+.morphing-chart__axis text {
+  fill: rgba(237, 244, 255, 0.72);
+  font-size: 11px;
+}
+
+.morphing-chart__axis path,
+.morphing-chart__axis line {
+  stroke: rgba(255, 255, 255, 0.14);
+}
+
+.morphing-chart__point {
+  stroke: rgba(10, 17, 33, 0.82);
+  stroke-width: 2;
+}
+
+.morphing-chart__label,
+.morphing-chart__focus-label {
+  fill: #edf4ff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.morphing-chart__focus-line {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-dasharray: 4 6;
+}
+
+.morphing-chart__focus-dot {
+  fill: rgba(102, 209, 193, 0.25);
+  stroke: rgba(102, 209, 193, 0.92);
+  stroke-width: 2;
+}

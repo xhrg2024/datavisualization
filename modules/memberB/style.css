@@ -1,0 +1,60 @@
+.trajectory-chart__grid line {
+  stroke: rgba(255, 255, 255, 0.06);
+}
+
+.trajectory-chart__grid path {
+  display: none;
+}
+
+.trajectory-chart__axis text {
+  fill: rgba(237, 244, 255, 0.72);
+  font-size: 11px;
+}
+
+.trajectory-chart__axis path,
+.trajectory-chart__axis line {
+  stroke: rgba(255, 255, 255, 0.14);
+}
+
+.trajectory-chart__line {
+  fill: none;
+  stroke-width: 3.5;
+}
+
+.trajectory-chart__point--physics {
+  fill: #ffb35c;
+}
+
+.trajectory-chart__point--chemistry {
+  fill: #ffd166;
+}
+
+.trajectory-chart__point--medicine {
+  fill: #61d38c;
+}
+
+.trajectory-chart__point--literature {
+  fill: #66d9ff;
+}
+
+.trajectory-chart__point--peace {
+  fill: #f4a261;
+}
+
+.trajectory-chart__label,
+.trajectory-chart__focus-label {
+  fill: #edf4ff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trajectory-chart__focus-line {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-dasharray: 5 5;
+}
+
+.trajectory-chart__focus-ring {
+  fill: rgba(255, 255, 255, 0.08);
+  stroke: rgba(255, 179, 92, 0.92);
+  stroke-width: 2;
+}

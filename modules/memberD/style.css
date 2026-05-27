@@ -1,0 +1,23 @@
+.alluvial-chart__link {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.alluvial-chart__node-box {
+  fill: rgba(255, 255, 255, 0.08);
+  stroke: rgba(255, 255, 255, 0.18);
+  rx: 12;
+  ry: 12;
+}
+
+.alluvial-chart__node-label {
+  fill: #edf4ff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.alluvial-chart__flow-label {
+  fill: rgba(237, 244, 255, 0.82);
+  font-size: 10px;
+  text-anchor: middle;
+}

@@ -1,0 +1,44 @@
+.network-chart__link {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.16);
+  stroke-width: 1.4;
+}
+
+.network-chart__link.is-active {
+  stroke: rgba(97, 211, 140, 0.55);
+  stroke-width: 2.2;
+}
+
+.network-chart__link.is-muted {
+  opacity: 0.18;
+}
+
+.network-chart__node {
+  fill: rgba(237, 244, 255, 0.92);
+  stroke: rgba(8, 14, 28, 0.88);
+  stroke-width: 2;
+}
+
+.network-chart__node.is-active {
+  fill: #61d38c;
+  stroke: rgba(255, 255, 255, 0.9);
+}
+
+.network-chart__node.is-muted {
+  opacity: 0.24;
+}
+
+.network-chart__label {
+  fill: rgba(237, 244, 255, 0.82);
+  font-size: 11px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.network-chart__label.is-active {
+  fill: #edf4ff;
+}
+
+.network-chart__label.is-muted {
+  opacity: 0.28;
+}
