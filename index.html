@@ -29,20 +29,18 @@
       </div>
     </header>
 
-    <aside class="page-wheel-zone" aria-label="翻页控制区" tabindex="0">
-      <div class="wheel-orbit">
-        <div class="wheel-core">
-          <span class="wheel-core__label">滑动翻页</span>
-          <span class="wheel-core__hint">只在这里滚轮换页</span>
-        </div>
+    <aside class="nav-constellation" aria-label="翻页控制区" tabindex="0">
+      <div class="constellation-track" aria-hidden="true">
+        <span class="constellation-orb"></span>
+        <div class="constellation-dots" data-page-dots></div>
       </div>
-      <div class="page-status">
-        <span class="page-status__title" data-page-label>首页</span>
-        <span class="page-status__count" data-page-count>01 / 07</span>
+      <div class="constellation-label">
+        <span class="constellation-title" data-page-label>首页</span>
+        <span class="constellation-count" data-page-count>01 / 08</span>
       </div>
     </aside>
 
-    <nav class="page-dots" aria-label="页面导航"></nav>
+    <div class="nav-peek" data-nav-peek aria-hidden="true"></div>
 
     <main class="page-stage" id="page-stage">
       <section class="page page-hero is-active" data-page="home" data-title="首页">
@@ -72,7 +70,8 @@
 
           <div class="page-visual hero-visual">
             <div class="hero-carousel" data-carousel>
-              <article class="carousel-card is-active" style="--card-image: url('images/hero-1.svg'); --card-fallback: linear-gradient(135deg, rgba(255, 209, 102, 0.92), rgba(255, 159, 90, 0.8));">
+              <article class="carousel-card is-active" style="--card-fallback: linear-gradient(135deg, rgba(255, 209, 102, 0.92), rgba(255, 159, 90, 0.8));">
+                <img class="carousel-image" src="images/179463-landscape-gallery.jpg" alt="诺贝尔奖主题轮播图 1" loading="eager">
                 <div class="carousel-card__overlay"></div>
                 <div class="carousel-card__content">
                   <span>01 · 引导页</span>
@@ -80,7 +79,8 @@
                   <p>把荣誉、历史与个人生命轨迹收束到一条视觉长卷里。</p>
                 </div>
               </article>
-              <article class="carousel-card" style="--card-image: url('images/hero-2.svg'); --card-fallback: linear-gradient(135deg, rgba(123, 220, 181, 0.92), rgba(66, 165, 245, 0.76));">
+              <article class="carousel-card" style="--card-fallback: linear-gradient(135deg, rgba(123, 220, 181, 0.92), rgba(66, 165, 245, 0.76));">
+                <img class="carousel-image" src="images/179489-landscape-gallery.webp" alt="诺贝尔奖主题轮播图 2" loading="lazy">
                 <div class="carousel-card__overlay"></div>
                 <div class="carousel-card__content">
                   <span>02 · 人物群像</span>
@@ -88,7 +88,8 @@
                   <p>让照片先发声，再进入数据叙事。</p>
                 </div>
               </article>
-              <article class="carousel-card" style="--card-image: url('images/hero-3.svg'); --card-fallback: linear-gradient(135deg, rgba(242, 138, 178, 0.9), rgba(148, 129, 255, 0.76));">
+              <article class="carousel-card" style="--card-fallback: linear-gradient(135deg, rgba(242, 138, 178, 0.9), rgba(148, 129, 255, 0.76));">
+                <img class="carousel-image" src="images/179492-landscape-gallery.jpg" alt="诺贝尔奖主题轮播图 3" loading="lazy">
                 <div class="carousel-card__overlay"></div>
                 <div class="carousel-card__content">
                   <span>03 · 时代切片</span>
@@ -142,115 +143,7 @@
         </div>
       </section>
 
-      <section id="section-macro" class="page page-module" data-page="macro" data-title="引子 · 谁在赢得诺贝尔奖？" data-module="macro" data-data-file="./data/memberA_data.json">
-        <div class="page-grid module-grid">
-          <div class="page-copy">
-            <p class="eyebrow eyebrow--sky">成员 A · 宏观时空破题</p>
-            <h2>引子 · 谁在赢得诺贝尔奖？</h2>
-            <p class="lede">
-              这一章负责回答“谁在赢得诺贝尔奖”的常识性问题，并为后续图形提供宏观时空背景。主页只提供叙事外壳，具体图形逻辑由成员模块自行实现。
-            </p>
-            <div class="story-brief">
-              <span>地缘政治流动性</span>
-              <span>历史变迁与空间迁移</span>
-              <span>奖项大势与时代波动</span>
-            </div>
-          </div>
-          <div class="page-visual chart-visual">
-            <div class="chart-frame">
-              <div class="chart-container" aria-label="Macro chart container"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="section-trajectory" class="page page-module" data-page="trajectory" data-title="蓄力 · 卓越是如何炼成的？" data-module="trajectory" data-data-file="./data/memberB_data.json">
-        <div class="page-grid module-grid">
-          <div class="page-copy">
-            <p class="eyebrow eyebrow--amber">成员 B · 生命周期演进</p>
-            <h2>蓄力 · 卓越是如何炼成的？</h2>
-            <p class="lede">
-              这一章聚焦产出节奏与生理、学术年龄的关系。你可以在这里放任何轨迹图、热力图或对齐曲线，主页不会干预图形细节。
-            </p>
-            <div class="story-brief">
-              <span>论文发表节奏</span>
-              <span>引用增长与产出峰值</span>
-              <span>获奖前后的轨迹对齐</span>
-            </div>
-          </div>
-          <div class="page-visual chart-visual">
-            <div class="chart-frame">
-              <div class="chart-container" aria-label="Trajectory chart container"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="section-network" class="page page-module" data-page="network" data-title="同行 · 巨人的肩膀与同行者" data-module="network" data-data-file="./data/memberC_data.json">
-        <div class="page-grid module-grid">
-          <div class="page-copy">
-            <p class="eyebrow eyebrow--leaf">成员 C · 社会网络生态</p>
-            <h2>同行 · 巨人的肩膀与同行者</h2>
-            <p class="lede">
-              这一章讲合著者、机构与学派，不讲单点英雄。主页给你一个足够安静的画布，模块内部可以自由做网络、弦图或社团布局。
-            </p>
-            <div class="story-brief">
-              <span>合作者网络</span>
-              <span>机构生态</span>
-              <span>跨代互引与致敬</span>
-            </div>
-          </div>
-          <div class="page-visual chart-visual">
-            <div class="chart-frame">
-              <div class="chart-container" aria-label="Network chart container"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="section-alluvial" class="page page-module" data-page="alluvial" data-title="破壁 · 他们在研究什么？" data-module="alluvial" data-data-file="./data/memberD_data.json">
-        <div class="page-grid module-grid">
-          <div class="page-copy">
-            <p class="eyebrow eyebrow--rose">成员 D · 主题演化</p>
-            <h2>破壁 · 他们在研究什么？</h2>
-            <p class="lede">
-              这一章负责展示研究主题如何漂移、融合与分化。这里的主页只定义章节氛围，具体的桑基、冲积或雷达图都由成员自己发挥。
-            </p>
-            <div class="story-brief">
-              <span>传统学科与微观主题</span>
-              <span>热点流向与兴衰演变</span>
-              <span>跨学科破壁程度</span>
-            </div>
-          </div>
-          <div class="page-visual chart-visual">
-            <div class="chart-frame">
-              <div class="chart-container" aria-label="Alluvial chart container"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="section-morphing" class="page page-module" data-page="morphing" data-title="余音 · 改变世界的代表作" data-module="morphing" data-data-file="./data/memberE_data.json">
-        <div class="page-grid module-grid">
-          <div class="page-copy">
-            <p class="eyebrow eyebrow--teal">成员 E · 长尾影响力</p>
-            <h2>余音 · 改变世界的代表作</h2>
-            <p class="lede">
-              这一章收束到作品的长尾影响与学术遗产，适合做更有视觉张力的探索型图表。主页负责舞台，图表内部可以做自己的过滤与缩放。
-            </p>
-            <div class="story-brief">
-              <span>代表作与长尾产出</span>
-              <span>FWCI 与百分位</span>
-              <span>探索式多维散点</span>
-            </div>
-          </div>
-          <div class="page-visual chart-visual">
-            <div class="chart-frame">
-              <div class="chart-container" aria-label="Morphing chart container"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="module-slot" data-module-slot></div>
 
       <section class="page page-closing" data-page="closing" data-title="收束 · 前往斯德哥尔摩">
         <div class="page-grid closing-grid">

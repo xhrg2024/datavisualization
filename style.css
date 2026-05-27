@@ -17,7 +17,7 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --page-gap: clamp(1rem, 2vw, 1.5rem);
   --page-pad: clamp(1rem, 2.4vw, 2rem);
-  --nav-width: clamp(82px, 7vw, 110px);
+  --nav-width: clamp(68px, 5vw, 86px);
 }
 
 * {
@@ -102,9 +102,8 @@ body::after {
 .brand-kicker,
 .topbar-meta,
 .eyebrow,
-.wheel-core__hint,
-.page-status__count,
-.page-status__title,
+.constellation-count,
+.constellation-title,
 .manifest-label,
 .carousel-card__content span,
 .story-brief span,
@@ -149,12 +148,13 @@ body::after {
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(0, 3.5rem, 0) scale(0.985);
+  transform: translate3d(0, 3rem, 0) scale(0.975);
   transition:
-    opacity 0.8s var(--ease-out),
-    transform 0.8s var(--ease-out),
-    filter 0.8s var(--ease-out);
-  filter: blur(8px);
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(4px);
+  will-change: transform, opacity, filter;
   padding: calc(4.9rem + var(--page-gap)) var(--page-pad) var(--page-pad);
 }
 
@@ -167,12 +167,53 @@ body::after {
 
 .page.is-prev {
   opacity: 0;
-  transform: translate3d(0, -3rem, 0) scale(0.98);
+  transform: translate3d(0, -3rem, 0) scale(0.975);
+  filter: blur(4px);
 }
 
 .page.is-next {
   opacity: 0;
-  transform: translate3d(0, 3rem, 0) scale(0.98);
+  transform: translate3d(0, 3rem, 0) scale(0.975);
+  filter: blur(4px);
+}
+
+/* 页面内容交错淡入动画 */
+.page .page-copy,
+.page .page-visual {
+  opacity: 0;
+  transform: translate3d(0, 1.6rem, 0);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0s;
+}
+
+.page .page-visual {
+  transition-delay: 0s;
+}
+
+.page.is-active .page-copy {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0.08s;
+}
+
+.page.is-active .page-visual {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0.18s;
+}
+
+/* 导航指示器过渡动画 */
+.constellation-title,
+.constellation-count {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.constellation-title.is-switching,
+.constellation-count.is-switching {
+  opacity: 0;
+  transform: translate3d(0, -4px, 0);
 }
 
 .page-grid {
@@ -283,9 +324,12 @@ body::after {
 
 .action-button:hover,
 .carousel-arrow:hover,
-.page-dot:hover,
-.wheel-core:hover {
+.page-dot:hover {
   transform: translateY(-2px);
+}
+
+.nav-constellation:hover .constellation-track {
+  box-shadow: 0 18px 36px rgba(26, 41, 34, 0.2);
 }
 
 .hero-notes,
@@ -353,14 +397,21 @@ body::after {
   opacity: 0;
   transform: scale(1.04);
   transition: opacity 0.6s var(--ease-out), transform 0.8s var(--ease-out);
-  background:
-    var(--card-fallback, linear-gradient(135deg, rgba(255, 209, 102, 0.9), rgba(241, 241, 241, 0.7))),
-    var(--card-image) center/cover no-repeat;
+  background: var(--card-fallback, linear-gradient(135deg, rgba(255, 209, 102, 0.9), rgba(241, 241, 241, 0.7)));
 }
 
 .carousel-card.is-active {
   opacity: 1;
   transform: scale(1);
+}
+
+.carousel-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .carousel-card__overlay {
@@ -369,6 +420,7 @@ body::after {
   background:
     linear-gradient(180deg, rgba(6, 11, 9, 0.1), rgba(6, 11, 9, 0.72)),
     radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.24), transparent 24%);
+  z-index: 1;
 }
 
 .carousel-card__content {
@@ -376,6 +428,7 @@ body::after {
   inset: auto 0 0;
   padding: 1.3rem;
   color: #fff;
+  z-index: 2;
 }
 
 .carousel-card__content span {
@@ -472,130 +525,152 @@ body::after {
 
 .closing-points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-.page-wheel-zone {
+.nav-constellation {
   position: fixed;
-  right: clamp(0.8rem, 1.8vw, 1.4rem);
+  right: clamp(0.65rem, 1.4vw, 1rem);
   top: 50%;
   z-index: 18;
   transform: translateY(-50%);
   width: var(--nav-width);
   display: grid;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-items: center;
   user-select: none;
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
 }
 
-.wheel-orbit {
+.nav-constellation.is-idle {
+  opacity: 0;
+  transform: translate3d(16px, -50%, 0);
+  pointer-events: none;
+}
+
+.nav-peek {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  z-index: 17;
+  width: 16px;
+  height: 96px;
+  border-radius: 999px 0 0 999px;
+  transform: translate3d(10px, -50%, 0);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.92), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 231, 211, 0.92));
+  box-shadow: 0 12px 28px rgba(26, 41, 34, 0.16);
+  border: 1px solid rgba(19, 33, 29, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+
+.nav-peek::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 4px;
+  height: 26px;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: rgba(19, 33, 29, 0.18);
+}
+
+.nav-constellation.is-idle + .nav-peek {
+  opacity: 1;
+  transform: translate3d(0, -50%, 0);
+  pointer-events: auto;
+}
+
+.constellation-track {
   width: 100%;
-  aspect-ratio: 1 / 2.7;
-  padding: 0.75rem;
+  height: 220px;
   border-radius: 999px;
   background:
-    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.9), transparent 24%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(245, 238, 228, 0.92));
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.92), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(244, 237, 226, 0.92));
   box-shadow: var(--shadow);
   border: 1px solid rgba(19, 33, 29, 0.08);
   display: grid;
   place-items: center;
   position: relative;
+  padding: 0.65rem 0.4rem;
 }
 
-.wheel-orbit::before,
-.wheel-orbit::after {
+.constellation-track::before {
   content: "";
   position: absolute;
-  inset: 0.7rem;
-  border-radius: inherit;
-  border: 1px dashed rgba(19, 33, 29, 0.12);
+  inset: 0.7rem 50% 0.7rem 50%;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(19, 33, 29, 0.08), rgba(19, 33, 29, 0.2), rgba(19, 33, 29, 0.08));
 }
 
-.wheel-orbit::after {
-  inset: 1.2rem;
-  background: linear-gradient(180deg, transparent, rgba(145, 214, 145, 0.12), transparent);
+.constellation-orb {
+  position: absolute;
+  top: 0.7rem;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 30% 30%, #fff8e2, #e0b85f 60%, #b8872b 100%);
+  box-shadow: 0 0 14px rgba(224, 184, 95, 0.68);
+  transition: top 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.wheel-core {
+.constellation-dots {
   position: relative;
   z-index: 1;
-  width: 74%;
-  height: 32%;
-  border-radius: 999px;
   display: grid;
-  place-items: center;
-  text-align: center;
-  color: #173128;
-  background: linear-gradient(135deg, rgba(145, 214, 145, 0.34), rgba(255, 209, 102, 0.34));
-  border: 1px solid rgba(19, 33, 29, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  gap: 0.6rem;
 }
 
-.wheel-core__label {
-  font-size: 0.95rem;
-  font-weight: 800;
-}
-
-.wheel-core__hint {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 0.68rem;
-  color: rgba(23, 49, 40, 0.76);
-  text-transform: uppercase;
-}
-
-.page-status {
+.constellation-label {
   width: 100%;
-  padding: 0.9rem 0.8rem;
+  padding: 0.65rem 0.5rem;
   text-align: center;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.76);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(19, 33, 29, 0.08);
   box-shadow: var(--shadow-soft);
 }
 
-.page-status__title {
+.constellation-title {
   display: block;
   font-weight: 800;
   color: var(--ink);
+  font-size: 0.76rem;
 }
 
-.page-status__count {
+.constellation-count {
   display: block;
-  margin-top: 0.22rem;
-  font-size: 0.72rem;
+  margin-top: 0.2rem;
+  font-size: 0.68rem;
   color: var(--muted);
 }
 
-.page-dots {
-  position: fixed;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 18;
-  display: grid;
-  gap: 0.55rem;
-}
-
 .page-dot {
-  width: 0.82rem;
-  height: 0.82rem;
+  width: 0.46rem;
+  height: 0.46rem;
   border-radius: 50%;
   border: 0;
   cursor: pointer;
-  background: rgba(19, 33, 29, 0.16);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
-  transition: transform 0.24s var(--ease-out), background 0.24s var(--ease-out), width 0.24s var(--ease-out), border-radius 0.24s var(--ease-out);
+  background: rgba(19, 33, 29, 0.24);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  transition: transform 0.24s var(--ease-out), background 0.24s var(--ease-out);
 }
 
 .page-dot.is-active {
-  width: 2.4rem;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #13211d, #4a7a64);
+  transform: scale(1.35);
+  background: radial-gradient(circle at 30% 30%, #fff8e2, #d9a945 70%, #b8872b 100%);
+  box-shadow: 0 0 10px rgba(184, 135, 43, 0.6);
 }
 
 .page-dot:focus-visible,
 .action-button:focus-visible,
 .carousel-arrow:focus-visible,
-.wheel-core:focus-visible {
+.nav-constellation:focus-visible {
   outline: 3px solid rgba(74, 122, 100, 0.28);
   outline-offset: 3px;
 }
@@ -610,11 +685,35 @@ body::after {
 .page-module .page-visual { padding: 0.9rem; }
 
 @media (max-width: 1120px) {
-  .page-dots { display: none; }
-  .page-wheel-zone { width: 74px; }
+  .nav-constellation { width: 58px; }
+  .constellation-label { display: none; }
 }
 
 @media (max-width: 960px) {
+  html,
+  body {
+    overflow: auto;
+  }
+
+  .app-shell {
+    height: auto;
+    overflow: visible;
+  }
+
+  .page-stage {
+    height: auto;
+  }
+
+  .page {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    filter: none;
+    padding-top: var(--page-pad);
+  }
+
   .page-grid,
   .hero-grid,
   .overview-grid,
@@ -632,20 +731,16 @@ body::after {
     min-height: 520px;
   }
 
-  .page-wheel-zone {
-    width: min(100%, 100%);
+  .nav-constellation {
     position: fixed;
-    bottom: 0.9rem;
+    bottom: 0.85rem;
     top: auto;
-    right: 0;
+    right: 0.8rem;
     transform: none;
-    padding: 0 1rem;
-    grid-template-columns: 1fr;
-    justify-items: stretch;
   }
 
-  .wheel-orbit {
-    aspect-ratio: 4 / 1;
+  .constellation-track {
+    height: 180px;
   }
 }
 

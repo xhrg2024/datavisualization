@@ -2,15 +2,15 @@
 
 一个适合 GitHub 团队协作、并可直接部署到 GitHub Pages 的纯前端期末项目骨架。
 
-技术栈只使用 HTML5、CSS3、ES6 JavaScript 和 D3.js v7。当前主页已经重构为全屏逐页式叙事：只有在专门的翻页区域滚轮或在键盘上翻页时才会切换页面，首页先用轮播建立氛围，再进入项目总览和 5 个成员故事章节。
+技术栈只使用 HTML5、CSS3、ES6 JavaScript 和 D3.js v7。当前主页已经重构为全屏逐页式叙事：只有在右侧星轨式翻页区域滚轮或在键盘上翻页时才会切换页面，首页先用轮播建立氛围，再进入项目总览和 5 个成员故事章节。成员页面结构全部在 `modules/` 内维护。
 
 ## 项目结构
 
 ```text
 project-root/
-├── index.html
-├── style.css
-├── main.js
+├── index.html             # 仅负责首页、项目总览、收束页与翻页壳
+├── style.css              # 全局样式与翻页控件
+├── main.js                # 负责加载各模块的独立页面
 ├── data/
 │   ├── memberA_data.json
 │   ├── memberB_data.json
@@ -20,18 +20,23 @@ project-root/
 └── modules/
     ├── memberA/
     │   ├── chart.js
+    │   ├── page.html
     │   └── style.css
     ├── memberB/
     │   ├── chart.js
+    │   ├── page.html
     │   └── style.css
     ├── memberC/
     │   ├── chart.js
+    │   ├── page.html
     │   └── style.css
     ├── memberD/
     │   ├── chart.js
+    │   ├── page.html
     │   └── style.css
     └── memberE/
         ├── chart.js
+        ├── page.html
         └── style.css
 ```
 
@@ -42,7 +47,7 @@ project-root/
 - 成员 A-E：各自独立的全屏故事页
 - 收束页：项目总结与答辩出口
 
-主页右侧的“滑动翻页”区域是唯一默认接收滚轮事件的区域，页面本体不会再出现那种一点一点往下滑的感觉。
+主页右侧的“星轨翻页”区域是唯一默认接收滚轮事件的区域，页面本体不会出现一点一点往下滑的感觉。
 
 ## 运行方式
 
@@ -68,7 +73,7 @@ python -m http.server 8000
 
 ## 首页轮播资源
 
-首页默认使用 `images/hero-1.svg`、`images/hero-2.svg`、`images/hero-3.svg` 作为占位轮播图。你后续可以直接把这几个文件替换成同名照片，或者把页面里的路径改成你自己的图片名。
+首页当前使用 `images/179463-landscape-gallery.jpg`、`images/179489-landscape-gallery.webp`、`images/179492-landscape-gallery.jpg` 作为轮播示例图。你可以直接替换这三张图片，或在 [index.html](index.html) 中改成你自己的图片路径。
 
 ## 部署到 GitHub Pages
 
@@ -82,11 +87,11 @@ python -m http.server 8000
 
 ## 协作规范
 
-1. `main.js` 只负责全局编排、滚动联动和模块初始化。
-2. 每位成员只修改自己的 `modules/memberX/` 目录和对应的数据文件。
-3. 公共布局只放在 `index.html` 和 `style.css`。
-4. 图表之间通过 `d3.dispatch` 的全局事件总线联动，避免直接互相依赖。
-5. 如果需要新增图表，先在 `modules/` 下复制一个标准模板，再在 `main.js` 注册。
+1. `index.html` 只保留首页、项目总览和收束页，成员故事页结构由各自 `page.html` 决定。
+2. 每位成员只修改自己的 `modules/memberX/` 目录（包括 `page.html`、`chart.js`、`style.css`）。
+3. 成员页面的根节点必须保留 `.page` 与 `data-module`，并提供 `.chart-container` 或 `[data-chart-target]` 作为图表挂载点。
+4. `main.js` 只负责加载模块页面与翻页控制，不干预成员页面内部布局。
+5. 如果需要新增成员模块，复制 `modules/` 内的 `page.html` 模板并在 `main.js` 的 `moduleSpecs` 中注册。
 
 ## 当前示例图表
 
