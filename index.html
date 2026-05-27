@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>通往斯德哥尔摩之路 | 诺贝尔奖得主的学术生命图谱与时空轨迹</title>
-  <meta name="description" content="一个适合 GitHub 团队协作与 GitHub Pages 部署的 D3.js 期末项目骨架。">
+  <title>通往斯德哥尔摩之路 | 诺贝尔奖得主的学术图谱与人生轨迹</title>
+  <meta name="description" content="诺贝尔奖主题数据可视化期末项目的全屏逐页主页骨架，支持 GitHub Pages 直接部署。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23ffe49d'/%3E%3Cstop offset='100%25' stop-color='%23355e4b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3Cpath d='M18 38c6-10 22-10 28 0' fill='none' stroke='%23fffaf0' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='25' r='8' fill='%23fffaf0' fill-opacity='.9'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="modules/memberA/style.css">
   <link rel="stylesheet" href="modules/memberB/style.css">
@@ -15,86 +16,266 @@
   <script type="module" src="main.js"></script>
 </head>
 <body>
-  <main class="storyboard">
-    <section id="section-macro" class="story-section" data-scene="macro">
-      <div class="story-text">
-        <p class="eyebrow">Member A · Macro Timeline</p>
-        <h2>全球奖项脉动：从 1901 到今天的宏观回声</h2>
-        <p>
-          这一幕负责建立全局时间框架，把诺贝尔奖的长期增长、奖项密度与学术热度放到同一条时间轴上。
-          它是整个叙事的“总览面板”，让观众先看到历史浪潮，再进入具体人物与机构轨迹。
-        </p>
-        <ul class="story-facts">
-          <li>主题关键词：历史趋势、奖项总量、年代节奏</li>
-          <li>交互重点：年份联动、全局时间定位</li>
-        </ul>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <span class="brand-kicker">2026 春 · 数据可视化期末项目</span>
+        <h1>通往斯德哥尔摩之路</h1>
       </div>
-      <div class="chart-container" aria-label="Macro chart container"></div>
-    </section>
+      <div class="topbar-meta">
+        <span>全屏逐页切换</span>
+        <span>独立模块并行开发</span>
+        <span>GitHub Pages 直接部署</span>
+      </div>
+    </header>
 
-    <section id="section-trajectory" class="story-section" data-scene="trajectory">
-      <div class="story-text">
-        <p class="eyebrow">Member B · Trajectory</p>
-        <h2>学术生命轨迹：年龄、年份与获奖路径的对照</h2>
-        <p>
-          这一幕聚焦个体层面的轨迹，展示获奖者在不同学科中的获奖时间、年龄结构和学术成熟期。
-          它适合讲“人在何时抵达高峰”，并与全局年份同步联动。
-        </p>
-        <ul class="story-facts">
-          <li>主题关键词：人生曲线、获奖年龄、学科比较</li>
-          <li>交互重点：类别高亮、关键年份定位</li>
-        </ul>
+    <aside class="page-wheel-zone" aria-label="翻页控制区" tabindex="0">
+      <div class="wheel-orbit">
+        <div class="wheel-core">
+          <span class="wheel-core__label">滑动翻页</span>
+          <span class="wheel-core__hint">只在这里滚轮换页</span>
+        </div>
       </div>
-      <div class="chart-container" aria-label="Trajectory chart container"></div>
-    </section>
+      <div class="page-status">
+        <span class="page-status__title" data-page-label>首页</span>
+        <span class="page-status__count" data-page-count>01 / 07</span>
+      </div>
+    </aside>
 
-    <section id="section-network" class="story-section" data-scene="network">
-      <div class="story-text">
-        <p class="eyebrow">Member C · Network</p>
-        <h2>学术共同体：城市、机构与知识关系网</h2>
-        <p>
-          这一幕负责描绘诺奖世界中的机构网络，连接城市、大学、研究所与学科节点。
-          通过网络结构，观众可以看见学术影响力并不是孤立出现，而是由关系累积而来。
-        </p>
-        <ul class="story-facts">
-          <li>主题关键词：机构关联、知识传播、合作结构</li>
-          <li>交互重点：节点关系、结构密度、类别联动</li>
-        </ul>
-      </div>
-      <div class="chart-container" aria-label="Network chart container"></div>
-    </section>
+    <nav class="page-dots" aria-label="页面导航"></nav>
 
-    <section id="section-alluvial" class="story-section" data-scene="alluvial">
-      <div class="story-text">
-        <p class="eyebrow">Member D · Alluvial</p>
-        <h2>学术迁徙：从地区到学科的流动与分叉</h2>
-        <p>
-          这一幕强调知识和人才如何跨越地域、语言与学科边界。通过流动带状图，可以把不同起点与终点之间的连接清楚展示出来。
-          它适合讲“从哪里来，到哪里去”。
-        </p>
-        <ul class="story-facts">
-          <li>主题关键词：流动、路径、跨区域迁移</li>
-          <li>交互重点：流向过滤、年代筛选、路径宽度</li>
-        </ul>
-      </div>
-      <div class="chart-container" aria-label="Alluvial chart container"></div>
-    </section>
+    <main class="page-stage" id="page-stage">
+      <section class="page page-hero is-active" data-page="home" data-title="首页">
+        <div class="page-grid hero-grid">
+          <div class="page-copy hero-copy">
+            <p class="eyebrow eyebrow--sun">诺贝尔奖 · 学术生命图谱</p>
+            <h2>让奖项、人生与时代一起翻页</h2>
+            <p class="lede">
+              这个主页被重构为全屏逐页故事书。你可以只在右侧的翻页区域滚轮，页面就会整页切换，像展厅里的策展导览一样前进。
+              首页先用照片轮播建立气氛，再进入项目总览与五个独立故事章节。
+            </p>
+            <div class="hero-actions">
+              <button class="action-button action-button--primary" data-go-next>开始浏览</button>
+              <button class="action-button action-button--ghost" data-go-page="1">查看项目总览</button>
+            </div>
+            <div class="hero-notes">
+              <div>
+                <strong>翻页方式</strong>
+                <span>只在右侧滑动区滚轮即可整页切换</span>
+              </div>
+              <div>
+                <strong>视觉策略</strong>
+                <span>暖金、象牙白、深墨绿与珊瑚橙</span>
+              </div>
+            </div>
+          </div>
 
-    <section id="section-morphing" class="story-section" data-scene="morphing">
-      <div class="story-text">
-        <p class="eyebrow">Member E · Morphing</p>
-        <h2>形态变换：从时间散点到学科簇的动态图谱</h2>
-        <p>
-          这一幕负责做出更强的视觉叙事，在时间维度与类别维度之间平滑切换，展示图形如何“变形”。
-          它用于收尾，帮助团队展示一个更具表现力的综合可视化实验。
-        </p>
-        <ul class="story-facts">
-          <li>主题关键词：变形、簇集、平滑过渡</li>
-          <li>交互重点：布局切换、类别聚合、动态动画</li>
-        </ul>
-      </div>
-      <div class="chart-container" aria-label="Morphing chart container"></div>
-    </section>
-  </main>
+          <div class="page-visual hero-visual">
+            <div class="hero-carousel" data-carousel>
+              <article class="carousel-card is-active" style="--card-image: url('images/hero-1.svg'); --card-fallback: linear-gradient(135deg, rgba(255, 209, 102, 0.92), rgba(255, 159, 90, 0.8));">
+                <div class="carousel-card__overlay"></div>
+                <div class="carousel-card__content">
+                  <span>01 · 引导页</span>
+                  <h3>斯德哥尔摩的光</h3>
+                  <p>把荣誉、历史与个人生命轨迹收束到一条视觉长卷里。</p>
+                </div>
+              </article>
+              <article class="carousel-card" style="--card-image: url('images/hero-2.svg'); --card-fallback: linear-gradient(135deg, rgba(123, 220, 181, 0.92), rgba(66, 165, 245, 0.76));">
+                <div class="carousel-card__overlay"></div>
+                <div class="carousel-card__content">
+                  <span>02 · 人物群像</span>
+                  <h3>得主们的面孔</h3>
+                  <p>让照片先发声，再进入数据叙事。</p>
+                </div>
+              </article>
+              <article class="carousel-card" style="--card-image: url('images/hero-3.svg'); --card-fallback: linear-gradient(135deg, rgba(242, 138, 178, 0.9), rgba(148, 129, 255, 0.76));">
+                <div class="carousel-card__overlay"></div>
+                <div class="carousel-card__content">
+                  <span>03 · 时代切片</span>
+                  <h3>奖项与世界局势</h3>
+                  <p>用视觉节奏提示后续内容的全局分工。</p>
+                </div>
+              </article>
+            </div>
+            <div class="carousel-controls">
+              <button class="carousel-arrow" data-carousel-prev aria-label="上一张">←</button>
+              <button class="carousel-arrow" data-carousel-next aria-label="下一张">→</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page page-overview" data-page="overview" data-title="项目总览">
+        <div class="page-grid overview-grid">
+          <div class="page-copy">
+            <p class="eyebrow eyebrow--mint">项目总览</p>
+            <h2>一个为团队协作而生的故事框架</h2>
+            <p class="lede">
+              这一页不展示复杂图形，只交代整套项目的叙事骨架、协作方式和视觉节奏。每一位成员都拥有独立模块，主页只负责把故事顺滑地带过去。
+            </p>
+            <div class="overview-cards">
+              <article>
+                <strong>页 1</strong>
+                <span>首页轮播与情绪建立</span>
+              </article>
+              <article>
+                <strong>页 2</strong>
+                <span>项目总览与协作规则</span>
+              </article>
+              <article>
+                <strong>页 3-7</strong>
+                <span>成员 A-E 的五个独立故事章节</span>
+              </article>
+            </div>
+          </div>
+          <div class="page-visual overview-visual">
+            <div class="manifest-card">
+              <span class="manifest-label">Narrative Flow</span>
+              <ol class="manifest-steps">
+                <li>以首页轮播开场，建立“斯德哥尔摩之路”的情绪感。</li>
+                <li>进入项目总览，快速识别协作分工与章节定位。</li>
+                <li>再用整页切换进入五个成员模块，互不干扰、各自编写。</li>
+                <li>最后以收束页结束，形成完整的故事闭环。</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-macro" class="page page-module" data-page="macro" data-title="引子 · 谁在赢得诺贝尔奖？" data-module="macro" data-data-file="./data/memberA_data.json">
+        <div class="page-grid module-grid">
+          <div class="page-copy">
+            <p class="eyebrow eyebrow--sky">成员 A · 宏观时空破题</p>
+            <h2>引子 · 谁在赢得诺贝尔奖？</h2>
+            <p class="lede">
+              这一章负责回答“谁在赢得诺贝尔奖”的常识性问题，并为后续图形提供宏观时空背景。主页只提供叙事外壳，具体图形逻辑由成员模块自行实现。
+            </p>
+            <div class="story-brief">
+              <span>地缘政治流动性</span>
+              <span>历史变迁与空间迁移</span>
+              <span>奖项大势与时代波动</span>
+            </div>
+          </div>
+          <div class="page-visual chart-visual">
+            <div class="chart-frame">
+              <div class="chart-container" aria-label="Macro chart container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-trajectory" class="page page-module" data-page="trajectory" data-title="蓄力 · 卓越是如何炼成的？" data-module="trajectory" data-data-file="./data/memberB_data.json">
+        <div class="page-grid module-grid">
+          <div class="page-copy">
+            <p class="eyebrow eyebrow--amber">成员 B · 生命周期演进</p>
+            <h2>蓄力 · 卓越是如何炼成的？</h2>
+            <p class="lede">
+              这一章聚焦产出节奏与生理、学术年龄的关系。你可以在这里放任何轨迹图、热力图或对齐曲线，主页不会干预图形细节。
+            </p>
+            <div class="story-brief">
+              <span>论文发表节奏</span>
+              <span>引用增长与产出峰值</span>
+              <span>获奖前后的轨迹对齐</span>
+            </div>
+          </div>
+          <div class="page-visual chart-visual">
+            <div class="chart-frame">
+              <div class="chart-container" aria-label="Trajectory chart container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-network" class="page page-module" data-page="network" data-title="同行 · 巨人的肩膀与同行者" data-module="network" data-data-file="./data/memberC_data.json">
+        <div class="page-grid module-grid">
+          <div class="page-copy">
+            <p class="eyebrow eyebrow--leaf">成员 C · 社会网络生态</p>
+            <h2>同行 · 巨人的肩膀与同行者</h2>
+            <p class="lede">
+              这一章讲合著者、机构与学派，不讲单点英雄。主页给你一个足够安静的画布，模块内部可以自由做网络、弦图或社团布局。
+            </p>
+            <div class="story-brief">
+              <span>合作者网络</span>
+              <span>机构生态</span>
+              <span>跨代互引与致敬</span>
+            </div>
+          </div>
+          <div class="page-visual chart-visual">
+            <div class="chart-frame">
+              <div class="chart-container" aria-label="Network chart container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-alluvial" class="page page-module" data-page="alluvial" data-title="破壁 · 他们在研究什么？" data-module="alluvial" data-data-file="./data/memberD_data.json">
+        <div class="page-grid module-grid">
+          <div class="page-copy">
+            <p class="eyebrow eyebrow--rose">成员 D · 主题演化</p>
+            <h2>破壁 · 他们在研究什么？</h2>
+            <p class="lede">
+              这一章负责展示研究主题如何漂移、融合与分化。这里的主页只定义章节氛围，具体的桑基、冲积或雷达图都由成员自己发挥。
+            </p>
+            <div class="story-brief">
+              <span>传统学科与微观主题</span>
+              <span>热点流向与兴衰演变</span>
+              <span>跨学科破壁程度</span>
+            </div>
+          </div>
+          <div class="page-visual chart-visual">
+            <div class="chart-frame">
+              <div class="chart-container" aria-label="Alluvial chart container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-morphing" class="page page-module" data-page="morphing" data-title="余音 · 改变世界的代表作" data-module="morphing" data-data-file="./data/memberE_data.json">
+        <div class="page-grid module-grid">
+          <div class="page-copy">
+            <p class="eyebrow eyebrow--teal">成员 E · 长尾影响力</p>
+            <h2>余音 · 改变世界的代表作</h2>
+            <p class="lede">
+              这一章收束到作品的长尾影响与学术遗产，适合做更有视觉张力的探索型图表。主页负责舞台，图表内部可以做自己的过滤与缩放。
+            </p>
+            <div class="story-brief">
+              <span>代表作与长尾产出</span>
+              <span>FWCI 与百分位</span>
+              <span>探索式多维散点</span>
+            </div>
+          </div>
+          <div class="page-visual chart-visual">
+            <div class="chart-frame">
+              <div class="chart-container" aria-label="Morphing chart container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page page-closing" data-page="closing" data-title="收束 · 前往斯德哥尔摩">
+        <div class="page-grid closing-grid">
+          <div class="page-copy">
+            <p class="eyebrow eyebrow--sun">收束页</p>
+            <h2>前往斯德哥尔摩，故事并没有结束</h2>
+            <p class="lede">
+              这一页可以放项目总结、答辩信息或者致谢。整个主页现在是一个独立的逐页容器，图表模块与页面外壳已经分离，后续每个成员都能在自己的章节里自由编写。
+            </p>
+            <div class="closing-points">
+              <span>全页翻转</span>
+              <span>模块独立</span>
+              <span>首页轮播</span>
+              <span>GitHub Pages 直部署</span>
+            </div>
+          </div>
+          <div class="page-visual closing-visual">
+            <div class="closing-card">
+              <strong>谢谢浏览</strong>
+              <p>你现在看到的是一个更适合展示、答辩和协作的主页框架。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>

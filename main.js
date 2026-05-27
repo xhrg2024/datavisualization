@@ -10,87 +10,236 @@ if (!d3) {
   throw new Error('D3.js must be loaded before main.js.');
 }
 
-const globalBus = d3.dispatch('yearChange', 'categoryChange');
+const chartRegistry = {
+  macro: MacroChart,
+  trajectory: TrajectoryChart,
+  network: NetworkChart,
+  alluvial: AlluvialChart,
+  morphing: MorphingChart
+};
 
-const sceneConfig = [
-  { selector: '#section-macro', year: 1901, category: 'all' },
-  { selector: '#section-trajectory', year: 1948, category: 'physics' },
-  { selector: '#section-network', year: 1968, category: 'academy' },
-  { selector: '#section-alluvial', year: 1998, category: 'Europe' },
-  { selector: '#section-morphing', year: 2024, category: 'physics' }
-];
+const dataRegistry = {
+  macro: './data/memberA_data.json',
+  trajectory: './data/memberB_data.json',
+  network: './data/memberC_data.json',
+  alluvial: './data/memberD_data.json',
+  morphing: './data/memberE_data.json'
+};
 
-function getSceneIndex(section) {
-  return sceneConfig.findIndex((scene) => scene.selector === `#${section.id}`);
+const pageSequence = Array.from(document.querySelectorAll('.page'));
+const modulePages = pageSequence.filter((page) => page.dataset.module);
+const carouselCards = Array.from(document.querySelectorAll('[data-carousel] .carousel-card'));
+const pageDotsContainer = document.querySelector('.page-dots');
+const pageLabel = document.querySelector('[data-page-label]');
+const pageCount = document.querySelector('[data-page-count]');
+const wheelZone = document.querySelector('.page-wheel-zone');
+const carouselPrev = document.querySelector('[data-carousel-prev]');
+const carouselNext = document.querySelector('[data-carousel-next]');
+const goNextButton = document.querySelector('[data-go-next]');
+const goOverviewButton = document.querySelector('[data-go-page]');
+
+const state = {
+  currentPage: 0,
+  carouselIndex: 0,
+  charts: new Map(),
+  wheelLock: false
+};
+
+function updatePageMeta(index) {
+  const page = pageSequence[index];
+  const currentTitle = page?.dataset.title ?? '首页';
+
+  if (pageLabel) {
+    pageLabel.textContent = currentTitle;
+  }
+
+  if (pageCount) {
+    pageCount.textContent = `${String(index + 1).padStart(2, '0')} / ${String(pageSequence.length).padStart(2, '0')}`;
+  }
+
+  document.title = `通往斯德哥尔摩之路 | ${currentTitle}`;
 }
 
-function activateScene(index) {
-  const scene = sceneConfig[index];
-  if (!scene) {
+function syncPageClasses(index) {
+  pageSequence.forEach((page, pageIndex) => {
+    page.classList.remove('is-active', 'is-prev', 'is-next');
+    if (pageIndex === index) {
+      page.classList.add('is-active');
+    } else if (pageIndex < index) {
+      page.classList.add('is-prev');
+    } else {
+      page.classList.add('is-next');
+    }
+  });
+
+  document.querySelectorAll('.page-dot').forEach((dot, dotIndex) => {
+    dot.classList.toggle('is-active', dotIndex === index);
+  });
+
+  updatePageMeta(index);
+}
+
+function goToPage(index) {
+  const targetIndex = Math.max(0, Math.min(index, pageSequence.length - 1));
+  state.currentPage = targetIndex;
+  syncPageClasses(targetIndex);
+
+  const page = pageSequence[targetIndex];
+  if (page?.dataset.module) {
+    const chart = state.charts.get(page.dataset.module);
+    chart?.resize?.();
+  }
+}
+
+function movePage(step) {
+  goToPage(state.currentPage + step);
+}
+
+function buildPageDots() {
+  if (!pageDotsContainer) {
     return;
   }
 
-  globalBus.call('yearChange', null, { year: scene.year, selector: scene.selector });
-  globalBus.call('categoryChange', null, { category: scene.category, selector: scene.selector });
-
-  document.querySelectorAll('.story-section').forEach((section, currentIndex) => {
-    section.classList.toggle('is-active', currentIndex === index);
+  pageDotsContainer.innerHTML = '';
+  pageSequence.forEach((page, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'page-dot';
+    dot.setAttribute('aria-label', page.dataset.title ?? `第 ${index + 1} 页`);
+    dot.addEventListener('click', () => goToPage(index));
+    pageDotsContainer.appendChild(dot);
   });
 }
 
-function createCharts() {
-  const charts = [
-    new MacroChart('#section-macro .chart-container', globalBus),
-    new TrajectoryChart('#section-trajectory .chart-container', globalBus),
-    new NetworkChart('#section-network .chart-container', globalBus),
-    new AlluvialChart('#section-alluvial .chart-container', globalBus),
-    new MorphingChart('#section-morphing .chart-container', globalBus)
-  ];
+function setCarouselIndex(index) {
+  if (!carouselCards.length) {
+    return;
+  }
 
-  return Promise.all([
-    charts[0].loadData('./data/memberA_data.json'),
-    charts[1].loadData('./data/memberB_data.json'),
-    charts[2].loadData('./data/memberC_data.json'),
-    charts[3].loadData('./data/memberD_data.json'),
-    charts[4].loadData('./data/memberE_data.json')
-  ]).then(() => charts);
+  state.carouselIndex = (index + carouselCards.length) % carouselCards.length;
+  carouselCards.forEach((card, cardIndex) => {
+    card.classList.toggle('is-active', cardIndex === state.carouselIndex);
+  });
 }
 
-function installSceneObserver() {
-  const sections = Array.from(document.querySelectorAll('.story-section'));
-  let activeIndex = 0;
+function buildCarousel() {
+  if (!carouselCards.length) {
+    return;
+  }
 
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+  let timer = window.setInterval(() => setCarouselIndex(state.carouselIndex + 1), 5200);
+  const resetTimer = () => {
+    window.clearInterval(timer);
+    timer = window.setInterval(() => setCarouselIndex(state.carouselIndex + 1), 5200);
+  };
 
-    if (!visible) {
-      return;
-    }
-
-    const nextIndex = getSceneIndex(visible.target);
-    if (nextIndex !== -1 && nextIndex !== activeIndex) {
-      activeIndex = nextIndex;
-      activateScene(activeIndex);
-    }
-  }, {
-    threshold: [0.32, 0.45, 0.6, 0.78]
+  carouselPrev?.addEventListener('click', () => {
+    setCarouselIndex(state.carouselIndex - 1);
+    resetTimer();
   });
 
-  sections.forEach((section) => observer.observe(section));
-  activateScene(activeIndex);
+  carouselNext?.addEventListener('click', () => {
+    setCarouselIndex(state.carouselIndex + 1);
+    resetTimer();
+  });
+}
+
+async function loadCharts() {
+  const bootstraps = modulePages.map(async (page) => {
+    const moduleName = page.dataset.module;
+    const container = page.querySelector('.chart-container');
+    const ChartClass = chartRegistry[moduleName];
+    const dataPath = dataRegistry[moduleName];
+
+    if (!ChartClass || !container || !dataPath) {
+      return null;
+    }
+
+    const chart = new ChartClass(container, d3.dispatch('yearChange', 'categoryChange'));
+    state.charts.set(moduleName, chart);
+    await chart.loadData(dataPath);
+    return chart;
+  });
+
+  return Promise.all(bootstraps);
+}
+
+function handleWheelDelta(deltaY) {
+  if (state.wheelLock) {
+    return;
+  }
+
+  if (Math.abs(deltaY) < 18) {
+    return;
+  }
+
+  state.wheelLock = true;
+  movePage(deltaY > 0 ? 1 : -1);
+
+  window.setTimeout(() => {
+    state.wheelLock = false;
+  }, 820);
+}
+
+function installWheelZone() {
+  if (!wheelZone) {
+    return;
+  }
+
+  wheelZone.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    handleWheelDelta(event.deltaY);
+  }, { passive: false });
+
+  let touchStartY = 0;
+
+  wheelZone.addEventListener('touchstart', (event) => {
+    touchStartY = event.touches[0]?.clientY ?? 0;
+  }, { passive: true });
+
+  wheelZone.addEventListener('touchend', (event) => {
+    const touchEndY = event.changedTouches[0]?.clientY ?? 0;
+    const delta = touchStartY - touchEndY;
+    if (Math.abs(delta) > 40) {
+      handleWheelDelta(delta);
+    }
+  }, { passive: true });
+}
+
+function installKeyboard() {
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === ' ') {
+      event.preventDefault();
+      movePage(1);
+    }
+
+    if (event.key === 'ArrowUp' || event.key === 'PageUp') {
+      event.preventDefault();
+      movePage(-1);
+    }
+  });
+}
+
+function installButtons() {
+  goNextButton?.addEventListener('click', () => movePage(1));
+  goOverviewButton?.addEventListener('click', () => goToPage(1));
+}
+
+function installResizeHandling() {
+  window.addEventListener('resize', () => {
+    state.charts.forEach((chart) => chart.resize?.());
+  });
 }
 
 async function bootstrap() {
-  const charts = await createCharts();
-  installSceneObserver();
-
-  window.addEventListener('resize', () => {
-    charts.forEach((chart) => chart.resize());
-  });
-
-  charts.forEach((chart) => chart.resize());
+  buildPageDots();
+  buildCarousel();
+  installWheelZone();
+  installKeyboard();
+  installButtons();
+  installResizeHandling();
+  await loadCharts();
+  goToPage(0);
 }
 
 window.addEventListener('DOMContentLoaded', () => {

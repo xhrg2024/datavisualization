@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Nobel carousel placeholder 3">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6d4da"/>
+      <stop offset="48%" stop-color="#f28ab2"/>
+      <stop offset="100%" stop-color="#9e8cff"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff7d6"/>
+      <stop offset="100%" stop-color="#d8b45a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"/>
+  <circle cx="300" cy="260" r="220" fill="#ffffff" fill-opacity="0.14"/>
+  <circle cx="920" cy="200" r="180" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="960" cy="700" r="250" fill="#13211d" fill-opacity="0.13"/>
+  <path d="M160 760 C300 640, 490 610, 640 680 S930 830, 1085 700" fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="12" stroke-linecap="round"/>
+  <g transform="translate(735 370)">
+    <circle r="146" fill="#ffffff" fill-opacity="0.12"/>
+    <circle r="106" fill="url(#metal)" fill-opacity="0.9"/>
+    <circle r="70" fill="#ffffff" fill-opacity="0.24"/>
+    <circle r="28" fill="#fff9e2"/>
+  </g>
+  <text x="90" y="120" fill="#13211d" fill-opacity="0.72" font-family="Georgia, serif" font-size="54" font-weight="700">From Story to Data</text>
+  <text x="90" y="175" fill="#13211d" fill-opacity="0.7" font-family="Aptos, sans-serif" font-size="22" letter-spacing="3">PLACEHOLDER 03</text>
+</svg>
