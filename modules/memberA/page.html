@@ -1,22 +1,29 @@
-<section id="section-macro" class="page page-module module-a" data-page="macro" data-title="引子 · 谁在赢得诺贝尔奖？" data-module="macro" data-data-file="./data/memberA_data.json">
-  <div class="page-grid module-grid">
-    <div class="page-copy">
-      <p class="eyebrow eyebrow--sky">成员 A · 宏观时空破题</p>
-      <h2>引子 · 谁在赢得诺贝尔奖？</h2>
-      <p class="lede">
-        以宏观时空维度切入诺贝尔奖的全球特征，结合地缘政治流动性数据集，展示获奖者在历史变迁中的空间迁移与科学中心流转。
-        这是全项目的叙事起点，用来建立读者对“诺贝尔奖”的宏观认知。
-      </p>
-      <div class="story-brief">
-        <span>地缘政治流动性</span>
-        <span>历史变迁与空间迁移</span>
-        <span>奖项大势与时代波动</span>
-        <span>国家与学术中心流转</span>
+<section id="section-macro" class="page page-module module-a" data-page="macro" data-title="地缘政治中的诺奖流动" data-module="macro" data-data-file="./data/memberA/memberA_data.json" data-overview-file="./data/memberA/nobel_prizes_1901-2025_cleaned.csv">
+  <div class="member-a-dashboard">
+    <header class="member-a-hero">
+      <div>
+        <p class="eyebrow eyebrow--sky">宏观时空破题</p>
+        <h2>地缘政治如何改变诺贝尔奖的空间轨迹？</h2>
       </div>
+    </header>
+
+    <div class="member-a-tabs" role="tablist" aria-label="成员 A 可视化任务">
+      <button class="member-a-tab is-active" type="button" data-view="overview">总览 · 获奖者结构</button>
+      <button class="member-a-tab" type="button" data-view="migration">跨国迁移</button>
+      <button class="member-a-tab" type="button" data-view="centers">学术中心</button>
+      <button class="member-a-tab" type="button" data-view="identity">国名异质性</button>
+      <button class="member-a-tab" type="button" data-view="periods">奖项演进</button>
     </div>
-    <div class="page-visual chart-visual">
-      <div class="chart-frame">
-        <div class="chart-container" data-chart-target aria-label="Macro chart container"></div>
+
+    <div class="member-a-content">
+      <aside class="member-a-panel">
+        <div class="member-a-kpis" data-kpis></div>
+        <div class="member-a-notes" data-notes></div>
+      </aside>
+      <div class="page-visual chart-visual member-a-visual">
+        <div class="chart-frame">
+          <div class="chart-container member-a-chart" data-chart-target aria-label="成员 A D3 图表"></div>
+        </div>
       </div>
     </div>
   </div>
