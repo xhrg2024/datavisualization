@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>通往斯德哥尔摩之路 — 同行 · 巨人的肩膀与同行者（可视化原型）</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>通往斯德哥尔摩之路 — 同行 · 巨人的肩膀与同行者</h1>
+    <p class="lead">三个原型：团队规模演化、得主合作关系弧线图、得主互引弧线图（D3 原型）</p>
+  </header>
+
+  <main>
+    <section id="fig1" class="figure">
+      <h2>图 1：诺奖论文团队规模随获奖年代的演化</h2>
+      <div class="controls">
+        <label>按学科筛选：
+          <select id="fig1-category">
+            <option value="all">全部</option>
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Medicine">Medicine</option>
+          </select>
+        </label>
+      </div>
+      <p class="figure-note">小提琴图展示该年代诺奖论文的作者人数分布密度，红色粗线=中位数，短横线=Q1/Q3，散点为采样论文的实际作者数，红色虚线连接各年代中位数趋势。三角形表示超过Y轴上限的极端高值。</p>
+      <svg id="svg1" width="1000" height="420"></svg>
+    </section>
+
+    <section id="fig2" class="figure">
+      <h2>图 2：仅保留“有合作关系”的诺奖得主（时间弧线图）</h2>
+      <div class="controls">
+        <label>合作篇数不少于：<input id="fig2-minw" type="number" value="1" min="1" max="50" step="1" /></label>
+        <label>最多关系条数：<input id="fig2-topn" type="number" value="18" min="6" max="40" step="1" /></label>
+        <label>详情论文前 N 篇：<input id="fig2-paper-topn" type="number" value="5" min="1" max="20" step="1" /></label>
+        <label><input id="fig2-animate" type="checkbox" checked /> 动态绘制路径</label>
+      </div>
+      <p class="figure-note">图中只展示存在合作关系的诺奖得主。路径粗细表示合作强度；点击路径可在右侧查看该关系对应的论文样例详情。</p>
+      <svg id="svg2" width="1000" height="600"></svg>
+      <div id="fig2-detail" class="fig2-detail fig2-info">
+        <h3>论文详情</h3>
+        <p>点击上方任意关系路径，查看样例论文信息。</p>
+      </div>
+      <div id="fig2-author-detail" class="fig2-author-detail fig2-info">
+        <h3>作者信息</h3>
+        <p>点击上方任意圆点，查看作者详细信息（占位图像）。</p>
+      </div>
+    </section>
+
+    <section id="fig3" class="figure">
+      <h2>图 3：基于发表年的内部引用热力图</h2>
+      <div class="controls">
+        <label>最小引用论文数：<input id="fig3-minw" type="number" value="1" min="1" max="500" step="1" /></label>
+        <label>聚合粒度：
+          <select id="fig3-granularity">
+            <option value="decade">十年</option>
+            <option value="five" selected>五年</option>
+            <option value="year">年份</option>
+          </select>
+        </label>
+      </div>
+      <p class="figure-note">横轴=被引论文发表年，纵轴=引用论文发表年；格子颜色表示“引用论文数”。当前只显示时间上成立的引用，即“引用年 >= 被引年”，所以理论上只会保留下三角和对角线。</p>
+      <svg id="svg3" width="1200" height="420"></svg>
+    </section>
+  </main>
+
+  <footer>
+    <p>数据目录：<code>figure1_team_size_prize_papers.csv</code>, <code>figure2_coauthor_nodes.csv</code>, <code>figure2_coauthor_edges.csv</code>, <code>figure2_laureate_collab_pairs_paperid.csv</code>, <code>figure3_internal_citation_nodes.csv</code>, <code>figure3_internal_citation_edges.csv</code></p>
+    <p>在本地运行请用简单 HTTP 服务器（见 README_run.md）</p>
+  </footer>
+
+  <script src="main.js?v=7"></script>
+</body>
+</html>
