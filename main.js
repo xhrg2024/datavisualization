@@ -125,8 +125,11 @@ function goToPage(index) {
 
   const page = state.pages[targetIndex];
   if (page?.dataset.module) {
-    const chart = state.charts.get(page.dataset.module);
-    chart?.resize?.();
+    const moduleName = page.dataset.module;
+    // 懒加载：首次切到该模块时才拉取数据并绘制，避免首屏/翻页卡顿
+    ensureChartLoaded(moduleName).then(() => {
+      state.charts.get(moduleName)?.resize?.();
+    });
   }
 
   // 过渡完成后解锁
@@ -232,24 +235,67 @@ async function loadModulePages() {
   }
 }
 
-async function loadCharts() {
-  const bootstraps = state.modulePages.map(async (page) => {
+// 仅创建图表实例（轻量、同步），数据按需懒加载
+function createCharts() {
+  state.modulePages.forEach((page) => {
     const moduleName = page.dataset.module;
     const container = page.querySelector('[data-chart-target]') || page.querySelector('.chart-container');
     const ChartClass = chartRegistry[moduleName];
     const dataPath = page.dataset.dataFile;
 
     if (!ChartClass || !container || !dataPath) {
-      return null;
+      return;
     }
 
     const chart = new ChartClass(container, globalBus);
+    chart.__dataPath = dataPath;
+    chart.__loaded = false;
+    chart.__loadingPromise = null;
     state.charts.set(moduleName, chart);
-    await chart.loadData(dataPath);
-    return chart;
   });
+}
 
-  return Promise.all(bootstraps);
+// 按需加载某个模块的数据（幂等：重复调用返回同一个 Promise）
+function ensureChartLoaded(moduleName) {
+  const chart = state.charts.get(moduleName);
+  if (!chart || typeof chart.loadData !== 'function' || !chart.__dataPath) {
+    return Promise.resolve(null);
+  }
+  if (chart.__loaded) {
+    return Promise.resolve(chart);
+  }
+  if (chart.__loadingPromise) {
+    return chart.__loadingPromise;
+  }
+  chart.__loadingPromise = Promise.resolve()
+    .then(() => chart.loadData(chart.__dataPath))
+    .then(() => {
+      chart.__loaded = true;
+      return chart;
+    })
+    .catch((error) => {
+      console.error('Chart data load failed:', moduleName, error);
+      chart.__loadingPromise = null;
+      return null;
+    });
+  return chart.__loadingPromise;
+}
+
+// 首屏渲染完成后，在浏览器空闲时段预热各模块数据，
+// 让真正翻页时数据已就绪，又不阻塞首屏与翻页动画。
+function warmUpCharts() {
+  const queue = state.modulePages.map((page) => page.dataset.module).filter(Boolean);
+  const idle = window.requestIdleCallback || ((cb) => window.setTimeout(() => cb({ timeRemaining: () => 0 }), 200));
+
+  const step = () => {
+    const next = queue.shift();
+    if (!next) {
+      return;
+    }
+    ensureChartLoaded(next).finally(() => idle(step));
+  };
+
+  idle(step);
 }
 
 function handleWheelDelta(deltaY) {
@@ -404,9 +450,18 @@ async function bootstrap() {
   installButtons();
   installResizeHandling();
   installNavIdle();
-  await loadCharts();
+  createCharts();
   syncPageClasses(0);
   updatePageMeta(0);
+  // 若首屏即为某个模块页，确保其数据立即加载
+  const firstPage = state.pages[0];
+  if (firstPage?.dataset.module) {
+    ensureChartLoaded(firstPage.dataset.module).then(() => {
+      state.charts.get(firstPage.dataset.module)?.resize?.();
+    });
+  }
+  // 其余模块在空闲时段后台预热
+  warmUpCharts();
   // 初始化 orb 位置（禁用过渡动画，避免页面加载时 orb 滑动）
   const orb = document.querySelector('.constellation-orb');
   if (orb) {
