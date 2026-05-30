@@ -1,0 +1,875 @@
+category,laureate_id,laureate_name,prize_year,decade,pub_year,title,paper_id,is_prize_winning_paper,author_count
+Physics,10001,"thouless, dj",2016,2010,1973.0,ordering metastability and phase transitions in two dimensional systems,2086860422.0,YES,2
+Physics,10002,"kosterlitz, jm",2016,2010,1973.0,ordering metastability and phase transitions in two dimensional systems,2086860422.0,YES,2
+Physics,10003,"haldane, fdm",2016,2010,1983.0,nonlinear field theory of large spin heisenberg antiferromagnets semiclassically quantized solitons of the one dimensional easy axis neel state,2113166233.0,YES,1
+Physics,10004,"kajita, t",2015,2010,1998.0,evidence for oscillation of atmospheric neutrinos,2134803267.0,YES,100
+Physics,10005,"mcdonald, ab",2015,2010,2002.0,direct evidence for neutrino flavor transformation from neutral current interactions in the sudbury neutrino observatory,1983987483.0,YES,100
+Physics,10005,"mcdonald, ab",2015,2010,2001.0,measurement of the rate of ve d p p e interactions produced by 8b solar neutrinos at the sudbury neutrino observatory,2137229134.0,YES,100
+Physics,10006,"akasaki, isamu",2014,2010,1989.0,p type conduction in mg doped gan treated with low energy electron beam irradiation leebi,2069099261.0,YES,4
+Physics,10007,"amano, hiroshi",2014,2010,1989.0,p type conduction in mg doped gan treated with low energy electron beam irradiation leebi,2069099261.0,YES,4
+Physics,10008,"nakamura, shuji",2014,2010,1994.0,candela class high brightness ingan algan double heterostructure blue light emitting diodes,2054227182.0,YES,3
+Physics,10009,"englert, f",2013,2010,1964.0,broken symmetry and the mass of gauge vector mesons,2045120204.0,YES,2
+Physics,10010,"higgs, pw",2013,2010,1964.0,broken symmetries massless particles and gauge fields,2223433365.0,YES,1
+Physics,10010,"higgs, pw",2013,2010,1964.0,broken symmetries and the masses of gauge bosons,1996413343.0,YES,1
+Physics,10011,"haroche, serge",2012,2010,1996.0,quantum rabi oscillation a direct test of field quantization in a cavity,2025623691.0,YES,7
+Physics,10011,"haroche, serge",2012,2010,1996.0,observing the progressive decoherence of the meter in a quantum measurement,2091261194.0,YES,8
+Physics,10012,"wineland, david",2012,2010,1995.0,demonstration of a fundamental quantum logic gate,1966533239.0,YES,5
+Physics,10012,"wineland, david",2012,2010,1996.0,generation of nonclassical motional states of a trapped atom,2040136860.0,YES,5
+Physics,10012,"wineland, david",2012,2010,1996.0,a schrodinger cat superposition state of an atom,2081210383.0,YES,4
+Physics,10013,"perlmutter, s",2011,2010,1998.0,discovery of a supernova explosion at half the age of the universe,2289091855.0,YES,22
+Physics,10014,"schmidt, bp",2011,2010,1998.0,observational evidence from supernovae for an accelerating universe and a cosmological constant,2073832139.0,YES,20
+Physics,10015,"riess, adam g.",2011,2010,1998.0,observational evidence from supernovae for an accelerating universe and a cosmological constant,2073832139.0,YES,20
+Physics,10016,"novoselov, kostya s.",2010,2010,2004.0,electric field effect in atomically thin carbon films,2058122340.0,YES,8
+Physics,10017,"geim, andre k.",2010,2010,2004.0,electric field effect in atomically thin carbon films,2058122340.0,YES,8
+Physics,10018,"kao, kc",2009,2000,1966.0,dielectric fibre surface waveguides for optical frequencies,2159795626.0,YES,2
+Physics,10019,"boyle, ws",2009,2000,1970.0,charge coupled semiconductor devices,2113742150.0,YES,2
+Physics,10020,"smith, ge",2009,2000,1970.0,charge coupled semiconductor devices,2113742150.0,YES,2
+Physics,10021,"nambu, yoichiro",2008,2000,1960.0,quasi particles and gauge invariance in the theory of superconductivity,1965850850.0,YES,1
+Physics,10021,"nambu, yoichiro",2008,2000,1961.0,dynamical model of elementary particles based on an analogy with superconductivity ii,1998909324.0,YES,2
+Physics,10021,"nambu, yoichiro",2008,2000,1960.0,axial vector current conservation in weak interactions,2085522314.0,YES,1
+Physics,10022,"kobayash, m",2008,2000,1973.0,cp violation in the renormalizable theory of weak interaction,2169090745.0,YES,2
+Physics,10023,"maskawa, t",2008,2000,1973.0,cp violation in the renormalizable theory of weak interaction,2169090745.0,YES,2
+Physics,10024,"fert, a",2007,2000,1988.0,giant magnetoresistance of 001 fe 001 cr magnetic superlattices,1965245884.0,YES,9
+Physics,10025,"grunberg, p",2007,2000,1986.0,layered magnetic structures evidence for antiferromagnetic coupling of fe layers across cr interlayers,2024347200.0,YES,5
+Physics,10026,"mather, jc",2006,2000,1990.0,a preliminary measurement of the cosmic microwave background spectrum by the cosmic background explorer cobe satellite,2079724444.0,YES,21
+Physics,10027,"smoot, gf",2006,2000,1992.0,cobe differential microwave radiometers preliminary systematic error analysis,1986563620.0,YES,28
+Physics,10028,"glauber, rj",2005,2000,1963.0,coherent and incoherent states of the radiation field,2228259595.0,YES,1
+Physics,10028,"glauber, rj",2005,2000,1963.0,the quantum theory of optical coherence,2592799394.0,YES,1
+Physics,10029,"hall, jl",2005,2000,2000.0,carrier envelope phase control of femtosecond mode locked lasers and direct optical frequency synthesis,2116393805.0,YES,7
+Physics,10029,"hall, jl",2005,2000,2000.0,direct link between microwave and optical frequencies with a 300 thz femtosecond laser comb,2003141184.0,YES,10
+Physics,10030,"hansch, tw",2005,2000,2000.0,direct link between microwave and optical frequencies with a 300 thz femtosecond laser comb,2003141184.0,YES,10
+Physics,10030,"hansch, tw",2005,2000,2002.0,quantum phase transition from a superfluid to a mott insulator in a gas of ultracold atoms,2007391198.0,YES,5
+Physics,10030,"hansch, tw",2005,2000,2002.0,collapse and revival of the matter wave field of a bose einstein condensate,2042827511.0,YES,4
+Physics,10031,"wilczek, f",2004,2000,1973.0,ultraviolet behavior of non abelian gauge theories,2045472496.0,YES,2
+Physics,10032,"gross, dj",2004,2000,1973.0,ultraviolet behavior of non abelian gauge theories,2045472496.0,YES,2
+Physics,10033,"politzer, hd",2004,2000,1973.0,reliable perturbative results for strong interactions,2055032269.0,YES,1
+Physics,10034,"abrikosov, aa",2003,2000,1957.0,magnetic properties of superconductors of the second group,1551093215.0,YES,
+Physics,10035,"leggett, aj",2003,2000,1983.0,quantum tunnelling in a dissipative system,2009902266.0,YES,2
+Physics,10035,"leggett, aj",2003,2000,1974.0,the spin dynamics of an anisotropic fermi supefluid 3he,2066009244.0,YES,1
+Physics,10035,"leggett, aj",2003,2000,1970.0,can a solid be superfluid,2072230004.0,YES,1
+Physics,10035,"leggett, aj",2003,2000,1972.0,interpretation of recent results on sup 3 he below 3 mk a new liquid phase,2078803329.0,YES,1
+Physics,10035,"leggett, aj",2003,2000,1965.0,theory of a superfluid fermi liquid i general formalism and static properties,2086145101.0,YES,1
+Physics,10036,"ginzburg, vl",2003,2000,1950.0,On the Theory of superconductivity(In Russian),,YES,
+Physics,10037,"koshiba, m",2002,2000,1998.0,evidence for oscillation of atmospheric neutrinos,2134803267.0,YES,100
+Physics,10037,"koshiba, m",2002,2000,1987.0,observation of a neutrino burst from the supernova sn1987a,2068718327.0,YES,23
+Physics,10038,"giacconi, r",2002,2000,1962.0,evidence for x rays from sources outside the solar system,2029634216.0,YES,4
+Physics,10039,raymond davis jr.,2002,2000,1968.0,search for neutrinos from the sun,2023878063.0,YES,3
+Physics,10040,"cornell, ea",2001,2000,1995.0,observation of bose einstein condensation in a dilute atomic vapor,1991602497.0,YES,5
+Physics,10041,"ketterle, w",2001,2000,1995.0,bose einstein condensation in a gas of sodium atoms,2132639490.0,YES,7
+Physics,10042,"wiemann, ce",2001,2000,1995.0,observation of bose einstein condensation in a dilute atomic vapor,1991602497.0,YES,5
+Physics,10043,kroemer herbert ,2000,2000,1982.0,heterostructure bipolar transistors and integrated circuits,2154249635.0,YES,1
+Physics,10044,"alferov, zi",2000,2000,1995.0,ultranarrow luminescence lines from single quantum dots,2071148840.0,YES,15
+Physics,10044,"alferov, zi",2000,2000,1994.0,low threshold large to injection laser emission from inga as quantum dots,2078503440.0,YES,13
+Physics,10045,"kilby, js",2000,2000,1976.0,invention of the integrated circuit,2015233893.0,YES,1
+Physics,10046,"veltman, m",1999,1990,1972.0,regularization and renormalization of gauge fields,2125707848.0,YES,2
+Physics,10047,"thooft, g",1999,1990,1972.0,regularization and renormalization of gauge fields,2125707848.0,YES,2
+Physics,10048,"stormer, hl",1998,1990,1982.0,two dimensional magnetotransport in the extreme quantum limit,2006294391.0,YES,3
+Physics,10049,"tsui, dc",1998,1990,1982.0,two dimensional magnetotransport in the extreme quantum limit,2006294391.0,YES,3
+Physics,10050,"laughlin, rb",1998,1990,1983.0,anomalous quantum hall effect an incompressible quantum fluid with fractionally charged excitations,1963826472.0,YES,1
+Physics,10051,"phillips, wd",1997,1990,1988.0,observation of atoms laser cooled below the doppler limit,2082337324.0,YES,6
+Physics,10052,"cohentannoudji, c",1997,1990,1988.0,laser cooling below the one photon recoil by velocity selective coherent population trapping,2083763968.0,YES,5
+Physics,10053,"chu, s",1997,1990,1986.0,observation of a single beam gradient force optical trap for dielectric particles,2113372755.0,YES,4
+Physics,10054,"lee, dm",1996,1990,1972.0,evidence for a new phase of solid he 3,1985120730.0,YES,3
+Physics,10054,"lee, dm",1996,1990,1972.0,new magnetic phenomena in liquidhe3below 3 mk,2320840978.0,YES,4
+Physics,10055,"osheroff, dd",1996,1990,1972.0,evidence for a new phase of solid he 3,1985120730.0,YES,3
+Physics,10056,"richards, rc",1996,1990,1972.0,evidence for a new phase of solid he 3,1985120730.0,YES,3
+Physics,10056,"richards, rc",1996,1990,1972.0,new magnetic phenomena in liquidhe3below 3 mk,2320840978.0,YES,4
+Physics,10057,"perl, ml",1995,1990,1974.0,discovery of a narrow resonance in e e annihilation,1985795857.0,YES,35
+Physics,10057,"perl, ml",1995,1990,1974.0,the discovery of a second narrow resonance in e e annihilation,2035537487.0,YES,36
+Physics,10057,"perl, ml",1995,1990,1975.0,evidence for anomalous lepton production in e e annihilation,2159227720.0,YES,36
+Physics,10058,"reines, f",1995,1990,1953.0,detection of the free neutrino,2246644974.0,YES,2
+Physics,10059,"shull, cg",1994,1990,1951.0,neutron diffraction by paramagnetic and antiferromagnetic substances,1970822797.0,YES,3
+Physics,10060,"brockhouse, bn",1994,1990,1959.0,lattice vibrations in silicon and germanium,2014082198.0,YES,1
+Physics,10060,"brockhouse, bn",1994,1990,1958.0,normal modes of germanium by neutron spectrometry,2065464894.0,YES,2
+Physics,10061,"hulse, ra",1993,1990,1975.0,discovery of a pulsar in a binary system,2019709661.0,YES,2
+Physics,10062,"taylor, jh",1993,1990,1975.0,discovery of a pulsar in a binary system,2019709661.0,YES,2
+Physics,10063,"charpak, g",1992,1990,1968.0,the use of multiwire proportional counters to select and localize charged particles,2039785230.0,YES,5
+Physics,10064,"degennes, pg",1991,1990,1974.0,coil stretch transition of dilute flexible polymers under ultrahigh velocity gradients,2148849027.0,YES,1
+Physics,10065,"taylor, re",1990,1990,1969.0,high energy inelastic e p scattering at 6 degrees and 10 degrees,1497196551.0,YES,11
+Physics,10065,"taylor, re",1990,1990,1968.0,electron proton elastic scattering at high momentum transfers,2014867412.0,YES,15
+Physics,10065,"taylor, re",1990,1990,1969.0,observed behavior of highly inelastic electron proton scattering,2026217372.0,YES,9
+Physics,10065,"taylor, re",1990,1990,1969.0,high energy inelastic e p scattering at 6 and 10,2087610997.0,YES,
+Physics,10066,"friedman, ji",1990,1990,1969.0,high energy inelastic e p scattering at 6 degrees and 10 degrees,1497196551.0,YES,11
+Physics,10066,"friedman, ji",1990,1990,1968.0,electron proton elastic scattering at high momentum transfers,2014867412.0,YES,15
+Physics,10066,"friedman, ji",1990,1990,1969.0,observed behavior of highly inelastic electron proton scattering,2026217372.0,YES,9
+Physics,10066,"friedman, ji",1990,1990,1969.0,high energy inelastic e p scattering at 6 and 10,2087610997.0,YES,
+Physics,10067,"kendall, hw",1990,1990,1969.0,high energy inelastic e p scattering at 6 degrees and 10 degrees,1497196551.0,YES,11
+Physics,10067,"kendall, hw",1990,1990,1968.0,electron proton elastic scattering at high momentum transfers,2014867412.0,YES,15
+Physics,10067,"kendall, hw",1990,1990,1969.0,observed behavior of highly inelastic electron proton scattering,2026217372.0,YES,9
+Physics,10067,"kendall, hw",1990,1990,1969.0,measurements of elastic electron deuteron scattering at high momentum transfers,2067610198.0,YES,8
+Physics,10067,"kendall, hw",1990,1990,1969.0,high energy inelastic e p scattering at 6 and 10,2087610997.0,YES,
+Physics,10068,"ramsey, nf",1989,1980,1950.0,magnetic shielding of nuclei in molecules,2012130053.0,YES,1
+Physics,10069,"dehmelt, hg",1989,1980,1957.0,modulation of a light beam by precessing absorbing atoms,1968293554.0,YES,1
+Physics,10069,"dehmelt, hg",1989,1980,1957.0,slow spin relaxation of optically polarized sodium atoms,1969076679.0,YES,1
+Physics,10069,"dehmelt, hg",1989,1980,1958.0,spin resonance of free electrons polarized by exchange collisions,2013364211.0,YES,1
+Physics,10070,"paul, w",1989,1980,1953.0,notizen ein neues massenspektrometer ohne magnetfeld,2087165126.0,YES,2
+Physics,10071,"steinberger, j",1988,1980,1962.0,observation of high energy neutrino reactions and the existence of two kinds of neutrinos,2000744791.0,YES,7
+Physics,10072,"schwartz, m",1988,1980,1962.0,observation of high energy neutrino reactions and the existence of two kinds of neutrinos,2000744791.0,YES,7
+Physics,10073,"lederman, lm",1988,1980,1962.0,observation of high energy neutrino reactions and the existence of two kinds of neutrinos,2000744791.0,YES,7
+Physics,10074,"muller, ka",1987,1980,1986.0,possible high tc superconductivity in the ba la cu o system,1485300768.0,YES,2
+Physics,10075,"bednorz, jg",1987,1980,1986.0,possible high tc superconductivity in the ba la cu o system,1485300768.0,YES,2
+Physics,10076,"binnig, g",1986,1980,1982.0,surface studies by scanning tunneling microscopy,2110167104.0,YES,4
+Physics,10076,"binnig, g",1986,1980,1982.0,scanning tunneling microscopy,2412866415.0,YES,
+Physics,10077,"rohrer, h",1986,1980,1982.0,surface studies by scanning tunneling microscopy,2110167104.0,YES,4
+Physics,10078,"ruska, e",1986,1980,1932.0,beitrag zur geometrischen elektronenoptik ii,2120730528.0,YES,2
+Physics,10079,"vonklitzing, k",1985,1980,1980.0,new method for high accuracy determination of the fine structure constant based on quantized hall resistance,2061000251.0,YES,3
+Physics,10080,"rubbia, c",1984,1980,1983.0,experimental observation of lepton pairs of invariant mass around 95 gev c2 at the cern sps collider,1996888950.0,YES,100
+Physics,10080,"rubbia, c",1984,1980,1983.0,experimental observation of isolated large transverse energy electrons with associated missing energy at sqrt s 540 gev,1674199955.0,YES,100
+Physics,10081,"vandermeer, s",1984,1980,1983.0,experimental observation of isolated large transverse energy electrons with associated missing energy at sqrt s 540 gev,1674199955.0,YES,100
+Physics,10081,"vandermeer, s",1984,1980,1983.0,experimental observation of lepton pairs of invariant mass around 95 gev c2 at the cern sps collider,1996888950.0,YES,100
+Physics,10082,"fowler, wa",1983,1980,1951.0,excited states of the mirror nuclei li7 and be7,2075687768.0,YES,4
+Physics,10083,"chandrasekhar, s",1983,1980,1931.0,the maximum mass of ideal white dwarfs,2606047231.0,YES,1
+Physics,10084,"wilson, kg",1982,1980,1971.0,renormalization group and critical phenomena 1 renormalization group and the kadanoff scaling picture,2246296081.0,YES,1
+Physics,10084,"wilson, kg",1982,1980,1971.0,renormalization group and critical phenomena 2 phase space cell analysis of critical behavior,2079216472.0,YES,1
+Physics,10085,"siegbahn, k",1981,1980,1956.0, ray spectroscopy in the precision range of 1 105,1993527439.0,YES,2
+Physics,10086,"schawlow, al",1981,1980,1958.0,infrared and optical masers,1964347990.0,YES,2
+Physics,10087,"bloember, n",1981,1980,1962.0,light waves at the boundary of nonlinear media,2109537480.0,YES,2
+Physics,10087,"bloember, n",1981,1980,1962.0,interactions between light waves in a nonlinear dielectric,2020687655.0,YES,4
+Physics,10088,"cronin, jw",1980,1980,1964.0,evidence for the 2 pi decay of the k2 0 meson,2078141585.0,YES,4
+Physics,10089,"fitch, v",1980,1980,1964.0,evidence for the 2 pi decay of the k2 0 meson,2078141585.0,YES,4
+Physics,10090,"salam, a",1979,1970,,,2078536640.0,YES,2
+Physics,10091,"weinberg, s",1979,1970,1967.0,a model of leptons,2070151728.0,YES,1
+Physics,10092,"glashow, sl",1979,1970,1961.0,partial symmetries of weak interactions,2232454336.0,YES,1
+Physics,10093,"kapitza, pl",1978,1970,1938.0,viscosity of liquid helium below the  point,2029604900.0,YES,1
+Physics,10094,"wilson, rw",1978,1970,1965.0,a measurement of excess antenna temperature at 4080 mc s,1997756830.0,YES,2
+Physics,10095,"penzias, aa",1978,1970,1965.0,a measurement of excess antenna temperature at 4080 mc s,1997756830.0,YES,2
+Physics,10096,"mott, n",1977,1970,1949.0,the basis of the electron theory of metals with special reference to the transition metals,1972068641.0,YES,1
+Physics,10097,"anderson, pw",1977,1970,1958.0,absence of diffusion in certain random lattices,2264002775.0,YES,1
+Physics,10098,"van vleck, jh",1977,1970,1932.0,theory of the variations in paramagnetic anisotropy among different salts of the iron group,1996895697.0,YES,1
+Physics,10098,"vanvleck, jh",1977,1970,1932.0,theory of the variations in paramagnetic anisotropy among different salts of the iron group,1996895697.0,YES,1
+Physics,10099,"ting, scc",1976,1970,1974.0,experimental observation of a heavy particle j,2041374439.0,YES,14
+Physics,10100,"richter, b",1976,1970,1974.0,discovery of a narrow resonance in e e annihilation,1985795857.0,YES,35
+Physics,10100,"richter, b",1976,1970,1974.0,the discovery of a second narrow resonance in e e annihilation,2035537487.0,YES,36
+Physics,10101,"bohr, a.",1975,1970,1953.0,interpretation of isomeric transitions of electric quadrupole type,2086905158.0,YES,2
+Physics,10101,"bohr, a.",1975,1970,1953.0,rotational states in even even nuclei,2093806366.0,YES,2
+Physics,10102,"mottelson, br",1975,1970,1953.0,interpretation of isomeric transitions of electric quadrupole type,2086905158.0,YES,2
+Physics,10102,"mottelson, br",1975,1970,1953.0,rotational states in even even nuclei,2093806366.0,YES,2
+Physics,10103,"rainwater, j",1975,1970,1950.0,nuclear energy level argument for a spheroidal nuclear model,2081328640.0,YES,1
+Physics,10104,"ryle, m",1974,1970,1946.0,solar radiation on 175 mc s,2072256285.0,YES,2
+Physics,10105,"hewish, a",1974,1970,1968.0,observation of a rapidly pulsating radio source,2018280393.0,YES,5
+Physics,10106,"esaki, l",1973,1970,1958.0,new phenomenon in narrow germanium p n junctions,1968666095.0,YES,1
+Physics,10107,"giaever, i",1973,1970,1961.0,tunneling through thin insulating layers,2001716999.0,YES,2
+Physics,10107,"giaever, i",1973,1970,1960.0,electron tunneling between two superconductors,2002706548.0,YES,1
+Physics,10107,"giaever, i",1973,1970,1961.0,study of superconductors by electron tunneling,2067175510.0,YES,2
+Physics,10107,"giaever, i",1973,1970,1960.0,energy gap in superconductors measured by electron tunneling,2073782888.0,YES,1
+Physics,10108,"josephson, bd",1973,1970,1962.0,possible new effects in superconductive tunnelling,2566706182.0,YES,1
+Physics,10109,"schrieffer, jr",1972,1970,1957.0,theory of superconductivity,2014437371.0,YES,3
+Physics,10110,"cooper, ln",1972,1970,1957.0,theory of superconductivity,2014437371.0,YES,3
+Physics,10111,"bardeen, j",1972,1970,1957.0,theory of superconductivity,2014437371.0,YES,3
+Physics,10112,"gabor, d",1971,1970,1948.0,a new microscopic principle,1991101760.0,YES,1
+Physics,10112,"gabor, d",1971,1970,1949.0,microscopy by reconstructed wave fronts,2067287942.0,YES,1
+Physics,10113,"neel, l",1970,1970,1948.0,proprietes magnetiques des ferrites ferrimagnetisme et antiferromagnetisme,2608873142.0,YES,1
+Physics,10114,"alfven, h",1970,1970,1942.0,existence of electromagnetic hydrodynamic waves,2049973561.0,YES,1
+Physics,10114,"alfven, h",1970,1970,1939.0,on the motion of cosmic rays in interstellar space,1964244046.0,YES,1
+Physics,10115,"gellmann, m",1969,1960,1960.0,the axial vector current in beta decay,2101447717.0,YES,2
+Physics,10115,"gellmann, m",1969,1960,1962.0,symmetries of baryons and mesons,2226963368.0,YES,1
+Physics,10115,"gellmann, m",1969,1960,1958.0,theory of the fermi interaction,1508439018.0,YES,2
+Physics,10116,"alvarez, lw",1968,1960,1961.0,evidence for a t 0 three pion resonance,2034289567.0,YES,4
+Physics,10116,"alvarez, lw",1968,1960,1957.0,catalysis of nuclear reactions by mu mesons,2327634809.0,YES,12
+Physics,10117,"bethe, ha",1967,1960,1939.0,energy production in stars,2051756823.0,YES,1
+Physics,10118,"kastler, a",1966,1960,1950.0,*quelques suggestions concernant la production optique et la detection optique dune inegalite de population des niveaux de quantification spatiale des atomes - application a lexperience de stern et gerlach et a la resonance magnetique,,YES,
+Physics,10119,"feynman, rp",1965,1960,1950.0,mathematical formulation of the quantum theory of electromagnetic interaction,1996620877.0,YES,1
+Physics,10119,"feynman, rp",1965,1960,1948.0,a relativistic cut off for classical electrodynamics,2015474809.0,YES,1
+Physics,10119,"feynman, rp",1965,1960,1948.0,relativistic cut off for quantum electrodynamics,2142710655.0,YES,1
+Physics,10119,"feynman, rp",1965,1960,1949.0,space time approach to quantum electrodynamics,2081796865.0,YES,1
+Physics,10119,"feynman, rp",1965,1960,1949.0,the theory of positrons,1995841230.0,YES,1
+Physics,10120,"schwinger, j",1965,1960,1948.0,quantum electrodynamics i a covariant formulation,1973182975.0,YES,1
+Physics,10120,"schwinger, j",1965,1960,1948.0,on quantum electrodynamics and the magnetic moment of the electron,2225565636.0,YES,1
+Physics,10121,"tomonaga, si",1965,1960,1948.0,on infinite field reactions in quantum field theory,2035127450.0,YES,2
+Physics,10121,"tomonaga, si",1965,1960,1949.0,on a relativistically invariant formulation of the quantum theory of wave fields,2080044952.0,YES,1
+Physics,10122,"prokhorov, am",1964,1960,1954.0,*primenenie molekulyarnykh puchkov dlya radiospektroskopicheskogo izucheniya vrashchatelnykh spektrov molekul,,YES,
+Physics,10123,"townes, ch",1964,1960,1958.0,infrared and optical masers,1964347990.0,YES,2
+Physics,10123,"townes, ch",1964,1960,1955.0,stark effect in rapidly varying fields,2080559570.0,YES,2
+Physics,10124,"basov, ng",1964,1960,1954.0,*primenenie molekulyarnykh puchkov dlya radiospektroskopicheskogo izucheniya vrashchatelnykh spektrov molekul,,YES,
+Physics,10125,"jensen, jhd",1963,1960,1949.0,on the magic numbers in nuclear structure,1983767566.0,YES,3
+Physics,10126,"mayer, mg",1963,1960,1949.0,on closed shells in nuclei ii,1985289694.0,YES,1
+Physics,10127,"wigner, ep",1963,1960,1932.0,on the quantum correction for thermodynamic equilibrium,2031147858.0,YES,1
+Physics,10127,"wigner, ep",1963,1960,1934.0,on the interaction of electrons in metals,2049635189.0,YES,1
+Physics,10128,"landau, l",1962,1960,1941.0,theory of the superfluidity of helium ii,2043824501.0,YES,1
+Physics,10129,"mossbauer, rl",1961,1960,1958.0,kernresonanzfluoreszenz von gammastrahlung in ir191,2016797896.0,YES,1
+Physics,10129,"mossbauer, rl",1961,1960,1958.0,kernresonanzabsorption von gammastrahlung in ir191,1966484500.0,YES,1
+Physics,10130,"hofstadter, r",1961,1960,1949.0,the detection of gamma rays with thallium activated sodium iodide crystals,1991093461.0,YES,1
+Physics,10131,"glaser, da",1960,1960,1952.0,some effects of ionizing radiation on the formation of bubbles in liquids,2053131619.0,YES,1
+Physics,10132,"chamberlain, o",1959,1950,1955.0,observation of antiprotons,2026016239.0,YES,4
+Physics,10133,"segre, e",1959,1950,1955.0,observation of antiprotons,2026016239.0,YES,4
+Physics,10134,"cherenkov, pa",1958,1950,1934.0,Visible emission of clean liquids by action of  radiation,,YES,
+Physics,10135,"tamm, i",1958,1950,1937.0,coherent visible radiation from fast electrons passing through matter,2599073804.0,YES,
+Physics,10136,"frank, i",1958,1950,1937.0,coherent visible radiation of fast electrons passing through matter,1773401776.0,YES,2
+Physics,10137,"lee, td",1957,1950,1956.0,question of parity conservation in weak interactions,2157338954.0,YES,2
+Physics,10138,"yang, cn",1957,1950,1956.0,question of parity conservation in weak interactions,2157338954.0,YES,2
+Physics,10139,"bardeen, j",1956,1950,1947.0,surface states and rectification at a metal semi conductor contact,2029526589.0,YES,1
+Physics,10140,"brattain, wh",1956,1950,1948.0,the transistor a semi conductor triode,2066255432.0,YES,2
+Physics,10141,"shockley, w",1956,1950,1950.0,deformation potentials and mobilities in non polar crystals,2067983335.0,YES,2
+Physics,10141,"shockley, w",1956,1950,1949.0,the theory of p n junctions in semiconductors and p n junction transistors,2062624166.0,YES,1
+Physics,10142,"kusch, p",1955,1950,1948.0,the magnetic moment of the electron,2015930212.0,YES,2
+Physics,10143,"lamb, we",1955,1950,1947.0,fine structure of the hydrogen atom by a microwave method,2248814689.0,YES,2
+Physics,10144,"born, m",1954,1950,1926.0,quantenmechanik der stosvorgange,1989868128.0,YES,1
+Physics,10144,"born, m",1954,1950,1926.0,zur quantenmechanik ii,2059245145.0,YES,3
+Physics,10144,"born, m",1954,1950,1928.0,beweis des adiabatensatzes,2031828766.0,YES,2
+Physics,10144,"born, m",1954,1950,1926.0,zur quantenmechanik der stosvorgange,1989440127.0,YES,1
+Physics,10144,"born, m",1954,1950,1927.0,on the quantum theory of molecules,2486023113.0,YES,
+Physics,10145,"bothe, w",1954,1950,1925.0,uber das wesen des comptoneffekts ein experimenteller beitrag zur theorie der strahlung,1986884324.0,YES,2
+Physics,10146,"zernike, f",1953,1950,1934.0,diffraction theory of the knife edge test and its improved form the phase contrast method,2031478061.0,YES,2
+Physics,10147,"bloch, f",1952,1950,1946.0,the nuclear induction experiment,1988204378.0,YES,3
+Physics,10148,"purcell, em",1952,1950,1946.0,resonance absorption by nuclear magnetic moments in a solid,1983718136.0,YES,3
+Physics,10149,"walton, ets",1951,1950,1932.0,experiments with high velocity positive ions ii the disintegration of elements by high velocity protons,2062734533.0,YES,2
+Physics,10150,"cockcroft, jd",1951,1950,1932.0,experiments with high velocity positive ions ii the disintegration of elements by high velocity protons,2062734533.0,YES,2
+Physics,10151,"powell, cf",1950,1950,1947.0,processes involving charged mesons,2101266762.0,YES,4
+Physics,10151,"powell, cf",1950,1950,1947.0,observations on the tracks of slow mesons in photographic emulsions,2068299905.0,YES,3
+Physics,10152,"yukawa, h",1949,1940,1937.0,on the nuclear transformation with the absorption of the orbital electron,1973587862.0,YES,2
+Physics,10152,"yukawa, h",1949,1940,1939.0,mass and mean life time of the meson,2052690769.0,YES,2
+Physics,10153,"blackett, pms",1948,1940,1932.0,further investigations with a wilson chamber ii the range and velocity of recoil atoms,1968872513.0,YES,2
+Physics,10153,"blackett, pms",1948,1940,1933.0,some photographs of the tracks of penetrating radiation,2161454420.0,YES,2
+Physics,10154,"appleton, ev",1947,1940,1925.0,on some direct evidence for downward atmospheric reflection of electric rays,2157392200.0,YES,2
+Physics,10154,"appleton, ev",1947,1940,1925.0,local reflection of wireless waves from the upper atmosphere,2089912494.0,YES,2
+Physics,10155,"bridgman, pw",1946,1940,1914.0,change of phase under pressure i the phase diagram of eleven substances with especial reference to the melting curve,1997867994.0,YES,1
+Physics,10155,"bridgman, pw",1946,1940,1914.0,two new modifications of phosphorus,2313216101.0,YES,1
+Physics,10155,"bridgman, pw",1946,1940,1914.0,the coagulation of albumen by pressure,1606860533.0,YES,
+Physics,10156,"pauli, w",1945,1940,1925.0,uber den zusammenhang des abschlusses der elektronengruppen im atom mit der komplexstruktur der spektren,2091489183.0,YES,1
+Physics,10157,"rabi, ii",1944,1940,1938.0,a new method of measuring nuclear magnetic moment,2037363234.0,YES,4
+Physics,10158,"stern, o",1943,1940,1922.0,der experimentelle nachweis des magnetischen moments des silberatoms,2069807188.0,YES,2
+Physics,10158,"stern, o",1943,1940,1922.0,the magnetic moment of silver atoms,2596075454.0,YES,2
+Physics,10159,"lawrence, eo",1939,1930,1931.0,the production of high speed light ions without the use of high voltages,2041154484.0,YES,2
+Physics,10159,"lawrence, eo",1939,1930,1931.0,the production of heavy high speed ions without the use of high voltages,2050884299.0,YES,2
+Physics,10160,"fermi, e",1938,1930,1934.0,an attempt of a theory of beta radiation 1,2128675669.0,YES,1
+Physics,10161,"davisson, cj",1937,1930,1927.0,diffraction of electrons by a crystal of nickel,2059898013.0,YES,2
+Physics,10162,"thomson, gp",1937,1930,1927.0,diffraction of cathode rays by a thin film,1999033607.0,YES,2
+Physics,10163,victor f. hess,1936,1930,1912.0,observations in low level radiation during seven free balloon flights.,,YES,
+Physics,10164,"anderson, cd",1936,1930,1933.0,the positive electron,1984005161.0,YES,1
+Physics,10165,"chadwick, j",1935,1930,1932.0,possible existence of a neutron,2167908904.0,YES,1
+Physics,10166,"schrodinger, e",1933,1930,1926.0,an undulatory theory of the mechanics of atoms and molecules,2056474482.0,YES,1
+Physics,10166,"schrodinger, e",1933,1930,1926.0,quantisierung als eigenwertproblem,2159136592.0,YES,1
+Physics,10166,"schrodinger, e",1933,1930,1926.0,der stetige ubergang von der mikro zur makromechanik,1884836326.0,YES,1
+Physics,10166,"schrodinger, e",1933,1930,1926.0,uber das verhaltnis der heisenberg born jordanschen quantenmechanik zu der meinem,2087517811.0,YES,1
+Physics,10167,"dirac, pam",1933,1930,1928.0,the quantum theory of the electron,2127865535.0,YES,1
+Physics,10168,"heisenberg, w",1932,1930,1928.0,zur theorie des ferromagnetismus,2079751966.0,YES,1
+Physics,10169,"raman, cv",1930,1930,1928.0,a new type of secondary radiation,2072443063.0,YES,2
+Physics,10170,"broglie, ld",1929,1920,1924.0,xxxv a tentative theory of light quanta,2107020988.0,YES,1
+Physics,10171,"richardson, ow",1928,1920,1901.0,on the negative radiation from hot platinum,,YES,
+Physics,10172,"compton, ah",1927,1920,1923.0,the spectrum of scattered x rays,1992738745.0,YES,1
+Physics,10172,"compton, ah",1927,1920,1923.0,a quantum theory of the scattering of x rays by light elements,2035879262.0,YES,1
+Physics,10172,"compton, ah",1927,1920,1923.0,cxvii the total reflexion of x rays,2051374510.0,YES,1
+Physics,10173,"wilson, ctr",1927,1920,1911.0,on a method of making visible the paths of ionising particles through a gas,1990379124.0,YES,1
+Physics,10174,"perrin, j",1926,1920,1908.0,sur la theorie du mouvement brownien,131007391.0,YES,
+Physics,10175,gustav hertz,1925,1920,1916.0,the kinetics of electrons and ions in gases,,YES,
+Physics,10175,gustav hertz,1925,1920,1919.0,the confirmation of the bohr atomic theory in the optical spectra by means of experiments of the unelastic impacts of slow electrons with gas molecules,,YES,
+Physics,10176,"franck, j",1925,1920,1916.0,the kinetics of electrons and ions in gases,,YES,
+Physics,10176,"franck, j",1925,1920,1919.0,the confirmation of the bohr atomic theory in the optical spectra by means of experiments of the unelastic impacts of slow electrons with gas molecules,,YES,
+Physics,10177,"siegbahn, m",1924,1920,1916.0,the x-ray spectrum of the elements na to cr,,YES,
+Physics,10177,"siegbahn, m",1924,1920,1916.0,on the high-frequency spectra (k-series) of elements cr to ge.,,YES,
+Physics,10177,"siegbahn, m",1924,1920,1916.0,on a vacuum spectrograph for the registration of high-frequence spectra and a preliminary testing of rare soils with the same.,,YES,
+Physics,10178,"millikan, ra",1923,1920,1910.0,the isolation of an ion a precision measurement of its charge and the correction of stokes s law,1975117866.0,YES,1
+Physics,10178,"millikan, ra",1923,1920,1910.0,a new modification of the cloud method of measuring the elementary electrical charge and the most probable value of that charge,2063658535.0,YES,1
+Physics,10179,"bohr, n",1922,1920,1913.0,lxxiii on the constitution of atoms and molecules,2060222759.0,YES,1
+Physics,10179,"bohr, n",1922,1920,1913.0,i on the constitution of atoms and molecules,1703910647.0,YES,1
+Physics,10179,"bohr, n",1922,1920,1913.0,ii on the theory of the decrease of velocity of moving electrified particles on passing through matter,2263196060.0,YES,1
+Physics,10179,"bohr, n",1922,1920,2009.0,xxxvii on the constitution of atoms and molecules,1805515744.0,YES,1
+Physics,10180,"einstein, a",1921,1920,1905.0,uber einen die erzeugung und verwandlung des lichtes betreffenden heuristischen gesichtspunkt,2005886497.0,YES,1
+Physics,10180,"einstein, a",1921,1920,1905.0,zur elektrodynamik bewegter korper,2048251016.0,YES,1
+Physics,10180,"einstein, a",1921,1920,1905.0,on the movement of small particles suspended in a stationary liquid demanded by the molecular kinetic theory of heart,2730405628.0,YES,
+Physics,10181,charles edouard guillaume,1920,1920,1919.0,The Anomaly of the Nickel-Steels,2056303910.0,YES,1
+Physics,10182,"stark, j",1919,1910,1914.0,beobachtungen uber den effekt des elektrischen feldes auf spektrallinien ii langseffekt,2171194731.0,YES,1
+Physics,10183,"planck, m",1918,1910,1901.0,Ueber das Gesetz der Energieverteilung im Normalspectrum,2047210381.0,YES,1
+Physics,10184,"barkla, cg",1917,1910,1906.0,polarisation in secondary rontgen radiation,2087929793.0,YES,1
+Physics,10185,"bragg, wl",1915,1910,1913.0,the reflection of x rays by crystals,1986715836.0,YES,2
+Physics,10185,"bragg, wl",1915,1910,1913.0,the structure of some crystals as indicated by their diffraction of x rays,2149044878.0,YES,1
+Physics,10186,"bragg, wh",1915,1910,1913.0,the reflection of x rays by crystals,1986715836.0,YES,2
+Physics,10187,"laue, m",1914,1910,1913.0,interferenzerscheinungen bei rontgenstrahlen,2049080732.0,YES,3
+Physics,10188,"onnes, hk",1913,1910,1911.0,"further experiments with liquid helium d - on the change of the electrical resistance of pure metals at very low temperatures, etc v the disappearance of the resistance of mercury",,YES,
+Physics,10189,"wien, w",1911,1910,1983.0,Wien's displacement law,,YES,
+Physics,10190,albert a. michelson,1907,1900,1887.0,On the Relative Motion of the Earth and the Luminiferous Ether,2085155384.0,YES,2
+Physics,10191,joseph john thomson,1906,1900,1897.0,XL. Cathode Rays,2050833490.0,YES,1
+Physics,10192,"lenard, p",1905,1900,1894.0,Ueber Kathodenstrahlen in Gasen von atmosphrischem Druck und im ussersten Vacuum,2150938918.0,YES,1
+Physics,10193,"zeeman, p",1902,1900,1897.0,The Effect of Magnetisation on the Nature of Light Emitted by a Substance,,YES,
+Physics,10193,"zeeman, p",1902,1900,1896.0,The Influence of a Magnetic Field on Radiation Frequency,,YES,
+Chemistry,20001,"stoddart, j",2016,2010,1991,a molecular shuttle,1976038872,YES,3
+Chemistry,20002,"feringa, b",2016,2010,1999,light driven monodirectional molecular rotor,1559264985,YES,5
+Chemistry,20003,"sauvage, j",2016,2010,1983,une nouvelle famille de molecules les metallo catenanes,1975259432,YES,3
+Chemistry,20004,"modrich, p",2015,2010,1989,dna mismatch correction in a defined system,2044198642,YES,3
+Chemistry,20005,"lindahl, t",2015,2010,1974,an n glycosidase from escherichia coli that releases free uracil from dna containing deaminated cytosine residues,2016134181,YES,1
+Chemistry,20006,"sancar, a",2015,2010,1983,a novel repair enzyme uvrabc excision nuclease of escherichia coli cuts a dna strand on both sides of the damaged region,2033860973,YES,2
+Chemistry,20007,"moerner, w",2014,2010,2000,single photons on demand from a single molecule at room temperature,1652946403,YES,2
+Chemistry,20008,"betzig, e",2014,2010,1991,breaking the diffraction barrier optical microscopy on a nanometric scale,1970528721,YES,5
+Chemistry,20008,"betzig, e",2014,2010,1992,near field optics microscopy spectroscopy and surface modification beyond the diffraction limit,2036078488,YES,2
+Chemistry,20008,"betzig, e",2014,2010,1993,single molecules observed by near field scanning optical microscopy,2085189255,YES,2
+Chemistry,20009,"hell, s",2014,2010,1994,breaking the diffraction resolution limit by stimulated emission stimulated emission depletion fluorescence microscopy,2115737236,YES,2
+Chemistry,20010,"levitt, m",2013,2010,1975,computer simulation of protein folding,1965838279,YES,2
+Chemistry,20010,"levitt, m",2013,2010,1976,theoretical studies of enzymic reactions dielectric electrostatic and steric stabilization of the carbonium ion in the reaction of lysozyme,2004303971,YES,2
+Chemistry,20011,"warshel, a",2013,2010,1975,computer simulation of protein folding,1965838279,YES,2
+Chemistry,20011,"warshel, a",2013,2010,1976,theoretical studies of enzymic reactions dielectric electrostatic and steric stabilization of the carbonium ion in the reaction of lysozyme,2004303971,YES,2
+Chemistry,20011,"warshel, a",2013,2010,1972,calculation of ground and excited state potential surfaces of conjugated molecules i formulation and parametrization,1979313952,YES,2
+Chemistry,20012,"karplus, m",2013,2010,1972,calculation of ground and excited state potential surfaces of conjugated molecules i formulation and parametrization,1979313952,YES,2
+Chemistry,20013,"lefkowitz, r",2012,2010,1986,cloning of the gene and cdna for mammalian  adrenergic receptor and homology with rhodopsin,2048669565,YES,16
+Chemistry,20014,"kobilka, b",2012,2010,1986,cloning of the gene and cdna for mammalian  adrenergic receptor and homology with rhodopsin,2048669565,YES,16
+Chemistry,20015,"shechtman, d",2011,2010,1984,metallic phase with long range orientational order and no translational symmetry,2569915238,YES,4
+Chemistry,20016,"heck, r",2010,2010,1968,acylation methylation and carboxyalkylation of olefins by group viii metal derivatives,2033834272,YES,1
+Chemistry,20016,"heck, r",2010,2010,1968,allylation of aromatic compounds with organopalladium salts,2046366153,YES,1
+Chemistry,20016,"heck, r",2010,2010,1968,the palladium catalyzed arylation of enol esters ethers and halides a new synthesis of 2 aryl aldehydes and ketones,2062594450,YES,1
+Chemistry,20016,"heck, r",2010,2010,1968,the arylation of allylic alcohols with organopalladium compounds a new synthesis of 3 aryl aldehydes and ketones,2093996981,YES,1
+Chemistry,20016,"heck, r",2010,2010,1972,palladium catalyzed vinylic hydrogen substitution reactions with aryl benzyl and styryl halides,1966363887,YES,2
+Chemistry,20017,"negishi, e",2010,2010,1976,novel stereoselective alkenyl aryl coupling via nickel catalysed reaction of alkenylanes with aryl halides,2112011781,YES,2
+Chemistry,20017,"negishi, e",2010,2010,1976,a novel stereospecific alkenyl alkenyl cross coupling by a palladium or nickel catalyzed reaction of alkenylalanes with alkenyl halides,2047184383,YES,2
+Chemistry,20018,"suzuki, a",2010,2010,1979,a new stereospecific cross coupling by the palladium catalyzed reaction of 1 alkenylboranes with 1 alkenyl or 1 alkynyl halides,2061343703,YES,3
+Chemistry,20019,"ramakrishnan, v",2009,2000,2000,structure of the 30s ribosomal subunit,2119966574,YES,8
+Chemistry,20019,"ramakrishnan, v",2009,2000,2000,functional insights from the structure of the 30s ribosomal subunit and its interactions with antibiotics,2170243611,YES,6
+Chemistry,20020,"steitz, t",2009,2000,2000,the structural basis of ribosome activity in peptide bond synthesis,2097654784,YES,5
+Chemistry,20020,"steitz, t",2009,2000,2000,the complete atomic structure of the large ribosomal subunit at 2 4 a resolution,1983534198,YES,5
+Chemistry,20020,"steitz, t",2009,2000,2000,the complete atomic structure of the large ribosomal subunit at 2,1563270439,YES,
+Chemistry,20021,"yonath, a",2009,2000,2000,structure of functionally activated small ribosomal subunit at 3 3 a resolution,2092617311,YES,11
+Chemistry,20022,"chalfie, m",2008,2000,1994,green fluorescent protein as a marker for gene expression,2032579724,YES,5
+Chemistry,20023,"tsien, r",2008,2000,1995,improved green fluorescence,1980073547,YES,3
+Chemistry,20023,"tsien, r",2008,2000,1997,fluorescent indicators for ca2 based on green fluorescent proteins and calmodulin,1542263802,YES,7
+Chemistry,20023,"tsien, r",2008,2000,1994,wavelength mutations and posttranslational autoxidation of green fluorescent protein,2036742051,YES,3
+Chemistry,20023,"tsien, r",2008,2000,1995,understanding improving and using green fluorescent proteins,2061104342,YES,6
+Chemistry,20023,"tsien, r",2008,2000,1996,crystal structure of the aequorea victoria green fluorescent protein,2161996750,YES,6
+Chemistry,20024,shimomur.o,2008,2000,1962,extraction purification and properties of aequorin a bioluminescent protein from the luminous hydromedusan aequorea,2084312697,YES,3
+Chemistry,20025,"ertl, g",2007,2000,1974,adsorption of co on pd single crystal surfaces,1999433310,YES,4
+Chemistry,20025,"ertl, g",2007,2000,1974,adsorption of hydrogen on palladium single crystal surfaces,2037712575,YES,3
+Chemistry,20025,"ertl, g",2007,2000,1974,adsorption of hydrogen on nickel single crystal surfaces,2048353665,YES,4
+Chemistry,20025,"ertl, g",2007,2000,1976,adsorption of hydrogen on a pt 111 surface,2071890513,YES,3
+Chemistry,20025,"ertl, g",2007,2000,1977,chemisorption of co on the pt 111 surface,2093254131,YES,3
+Chemistry,20025,"ertl, g",2007,2000,1978,a molecular beam investigation of the catalytic oxidation of co on pd 111,2008893762,YES,2
+Chemistry,20026,"kornberg, r",2006,2000,1974,chromatin structure a repeating unit of histones and dna,2013571070,YES,1
+Chemistry,20027,"chauvin, y",2005,2000,1971,catalyse de transformation des olefines par les complexes du tungstene ii telomerisation des olefines cycliques en presence d olefines acycliques,1621500924,YES,2
+Chemistry,20028,"grubbs, r",2005,2000,1992,ring opening metathesis polymerization romp of norbornene by a group viii carbene complex in protic media,1999748098,YES,4
+Chemistry,20028,"grubbs, r",2005,2000,1993,syntheses and activities of new single component ruthenium based olefin metathesis catalysts,2066949448,YES,3
+Chemistry,20029,"schrock, r",2005,2000,1990,synthesis of molybdenum imido alkylidene complexes and some reactions involving acyclic olefins,2054894128,YES,6
+Chemistry,20029,"schrock, r",2005,2000,1990,living ring opening metathesis polymerization catalyzed by well characterized transition metal alkylidene complexes,2081405235,YES,1
+Chemistry,20030,"ciechanover, a",2004,2000,1980,proposed role of atp in protein breakdown conjugation of protein with multiple chains of the polypeptide of atp dependent proteolysis,1968229731,YES,5
+Chemistry,20030,"ciechanover, a",2004,2000,1980,atp dependent conjugation of reticulocyte proteins with the polypeptide required for protein degradation,2034941135,YES,5
+Chemistry,20031,"hershko, a",2004,2000,1980,proposed role of atp in protein breakdown conjugation of protein with multiple chains of the polypeptide of atp dependent proteolysis,1968229731,YES,5
+Chemistry,20031,"hershko, a",2004,2000,1980,atp dependent conjugation of reticulocyte proteins with the polypeptide required for protein degradation,2034941135,YES,5
+Chemistry,20032,"rose, i",2004,2000,1980,proposed role of atp in protein breakdown conjugation of protein with multiple chains of the polypeptide of atp dependent proteolysis,1968229731,YES,5
+Chemistry,20033,"agre, p",2003,2000,1992,appearance of water channels in xenopus oocytes expressing red cell chip28 water channel,159430704,YES,
+Chemistry,20034,"mackinnon, r",2003,2000,1998,the structure of the potassium channel molecular basis of k conduction and selectivity,2143070723,YES,8
+Chemistry,20035,"wuthrich, k",2002,2000,1985,solution conformation of proteinase inhibitor iia from bull seminal plasma by 1h nuclear magnetic resonance and distance geometry,1986379760,YES,3
+Chemistry,20036,"tanaka, k",2002,2000,1988,Protein and polymer analyses up to m/z 100 000 by laser ionization timeofflight mass spectrometry,2110174460,YES,7
+Chemistry,20037,"fenn, j",2002,2000,1989,electrospray ionization for mass spectrometry of large biomolecules,2073292063,YES,5
+Chemistry,20038,"noyori, r",2001,2000,1968,homogeneous catalysis in the decomposition of diazo compounds by copper chelates asymmetric carbenoid reactions,1593167595,YES,4
+Chemistry,20039,"knowles, w",2001,2000,1968,catalytic asymmetric hydrogenation employing a soluble optically active rhodium complex,1969082645,YES,2
+Chemistry,20040,"sharpless, k",2001,2000,1980,the first practical method for asymmetric epoxidation,1968124833,YES,2
+Chemistry,20041,"heeger, a",2000,2000,1977,synthesis of electrically conducting organic polymers halogen derivatives of polyacetylene ch x,1999332606,YES,5
+Chemistry,20041,"heeger, a",2000,2000,1977,electrical conductivity in doped polyacetylene,1993209440,YES,8
+Chemistry,20042,shirakaw.h,2000,2000,1977,electrical conductivity in doped polyacetylene,1993209440,YES,8
+Chemistry,20042,shirakaw.h,2000,2000,1977,synthesis of electrically conducting organic polymers halogen derivatives of polyacetylene ch x,1999332606,YES,5
+Chemistry,20043,"macdiarmid, a",2000,2000,1977,electrical conductivity in doped polyacetylene,1993209440,YES,8
+Chemistry,20043,"macdiarmid, a",2000,2000,1977,synthesis of electrically conducting organic polymers halogen derivatives of polyacetylene ch x,1999332606,YES,5
+Chemistry,20044,"zewail, a",1999,1990,1988,femtosecond real time observation of wave packet oscillations resonance in dissociation reactions,2003771289,YES,3
+Chemistry,20045,"pople, j",1998,1990,1973,the influence of polarization functions on molecular orbital hydrogenation energies,2094642658,YES,2
+Chemistry,20046,"kohn, w",1998,1990,1964,inhomogeneous electron gas,2030976617,YES,2
+Chemistry,20046,"kohn, w",1998,1990,1965,self consistent equations including exchange and correlation effects,2230728100,YES,2
+Chemistry,20047,"boyer, p",1997,1990,1954,spectrophotometric study of the reaction of protein sulfhydryl groups with organic mercurials,2333363395,YES,1
+Chemistry,20048,"walker, j",1997,1990,1994,structure at 2 8 a resolution of f1 atpase from bovine heart mitochondria,2071950147,YES,4
+Chemistry,20049,"skou, j",1997,1990,1957,the influence of some cations on an adenosine triphosphatase from peripheral nerves,2058236257,YES,1
+Chemistry,20050,"kroto, h",1996,1990,1985,c 60 buckminsterfullerene,11476871,YES,
+Chemistry,20051,"smalley, r",1996,1990,1985,c 60 buckminsterfullerene,11476871,YES,
+Chemistry,20052,"curl, r",1996,1990,1985,c 60 buckminsterfullerene,11476871,YES,
+Chemistry,20053,"molina, m",1995,1990,1974,stratospheric sink for chlorofluoromethanes chlorine atomc atalysed destruction of ozone,2058179313,YES,2
+Chemistry,20054,"crutzen, p",1995,1990,1970,the influence of nitrogen oxides on the atmospheric ozone content,1971991115,YES,1
+Chemistry,20055,"rowland, f",1995,1990,1974,stratospheric sink for chlorofluoromethanes chlorine atomc atalysed destruction of ozone,2058179313,YES,2
+Chemistry,20056,"olah, g",1994,1990,1962,stable carbonium ions ii 1aoxocarbonium1b acylium tetrafluoroborates hexafluorophosphates hexafluoroantimonates and hexafluoroarsenates structure and chemical reactivity of acyl fluoride lewis acid fluoride complexes1c,2328964470,YES,4
+Chemistry,20057,"smith, m",1993,1990,1977,nucleotide sequence of bacteriophage phi x174 dna,1532331378,YES,9
+Chemistry,20057,"smith, m",1993,1990,1982,oligonucleotide directed mutagenesis using m13 derived vectors an efficient and general procedure for the production of point mutations in any fragment of dna,2084884863,YES,2
+Chemistry,20057,"smith, m",1993,1990,1978,the nucleotide sequence of bacteriophage x174,1969094530,YES,10
+Chemistry,20058,"mullis, k",1993,1990,1988,primer directed enzymatic amplification of dna with a thermostable dna polymerase,2032118018,YES,8
+Chemistry,20058,"mullis, k",1993,1990,1985,enzymatic amplification of beta globin genomic sequences and restriction site analysis for diagnosis of sickle cell anemia,2050717506,YES,7
+Chemistry,20059,"marcus, r",1992,1990,1956,on the theory of oxidation reduction reactions involving electron transfer i,2001270915,YES,1
+Chemistry,20060,"ernst, r",1991,1990,1976,two dimensional spectroscopy application to nuclear magnetic resonance,2010528272,YES,3
+Chemistry,20060,"ernst, r",1991,1990,1966,application of fourier transform spectroscopy to magnetic resonance,2070302549,YES,2
+Chemistry,20060,"ernst, r",1991,1990,1979,investigation of exchange processes by two dimensional nmr spectroscopy,2074770586,YES,4
+Chemistry,20061,"corey, e",1990,1990,1959,the stereochemistry of complex inorganic compounds xxii stereospecific effects in complex ions1,2087651449,YES,2
+Chemistry,20062,"cech, t",1989,1980,1982,self splicing rna autoexcision and autocyclization of the ribosomal rna intervening sequence of tetrahymena,1968282235,YES,6
+Chemistry,20063,"altman, s",1989,1980,1983,the rna moiety of ribonuclease p is the catalytic subunit of the enzyme,2021333801,YES,5
+Chemistry,20064,"deisenhofer, j",1988,1980,1984,x ray structure analysis of a membrane protein complex electron density map at 3 a resolution and a model of the chromophores of the photosynthetic reaction center from rhodopseudomonas viridis,1916260872,YES,5
+Chemistry,20064,"deisenhofer, j",1988,1980,1985,structure of the protein subunits in the photosynthetic reaction centre of rhodopseudomonas viridis at 3a resolution,2065510140,YES,5
+Chemistry,20065,"huber, r",1988,1980,1984,x ray structure analysis of a membrane protein complex electron density map at 3 a resolution and a model of the chromophores of the photosynthetic reaction center from rhodopseudomonas viridis,1916260872,YES,5
+Chemistry,20065,"huber, r",1988,1980,1985,structure of the protein subunits in the photosynthetic reaction centre of rhodopseudomonas viridis at 3a resolution,2065510140,YES,5
+Chemistry,20066,"michel, h",1988,1980,1982,three dimensional crystals of a membrane protein complex the photosynthetic reaction centre from rhodopseudomonas viridis,1488248212,YES,1
+Chemistry,20066,"michel, h",1988,1980,1984,x ray structure analysis of a membrane protein complex electron density map at 3 a resolution and a model of the chromophores of the photosynthetic reaction center from rhodopseudomonas viridis,1916260872,YES,5
+Chemistry,20066,"michel, h",1988,1980,1985,structure of the protein subunits in the photosynthetic reaction centre of rhodopseudomonas viridis at 3a resolution,2065510140,YES,5
+Chemistry,20067,"cram, d",1987,1980,1952,studies in stereochemistry x the rule of steric control of asymmetric induction in the syntheses of acyclic systems,2327841955,YES,2
+Chemistry,20068,"lehn, j",1987,1980,1969,diaza polyoxa macrocycles et macrobicycles,2092320578,YES,3
+Chemistry,20069,"pedersen, c",1987,1980,1967,cyclic polyethers and their complexes with metal salts,2045288781,YES,1
+Chemistry,20070,"polanyi, j",1986,1980,1972,concepts in reaction dynamics,1992840343,YES,1
+Chemistry,20070,"polanyi, j",1986,1980,1969,location of energy barriers i effect on the dynamics of reactions a bc,1966701000,YES,2
+Chemistry,20071,herschba.dr,1986,1980,1969,molecular beam reactive scattering apparatus with electron bombardment detector,2038263790,YES,4
+Chemistry,20071,herschba.dr,1986,1980,1970,combination rules for van der waals force constants,2093135107,YES,2
+Chemistry,20072,"lee, y",1986,1980,1972,crossed molecular beam study of f c2h4 c2d4,1521493173,YES,2
+Chemistry,20072,"lee, y",1986,1980,1972,intermolecular potentials from crossed beam differential elastic scattering measurements iv ar ar,2010311338,YES,3
+Chemistry,20072,"lee, y",1986,1980,1969,molecular beam reactive scattering apparatus with electron bombardment detector,2038263790,YES,4
+Chemistry,20073,"karle, j",1985,1980,1956,a theory of phase determination for the four types of non centrosymmetric space groups 1p222 2p22 3p12 3p22,2011912423,YES,2
+Chemistry,20074,"hauptman, h",1985,1980,1956,a theory of phase determination for the four types of non centrosymmetric space groups 1p222 2p22 3p12 3p22,2011912423,YES,2
+Chemistry,20075,merrifie.rb,1984,1980,1963,solid phase peptide synthesis i the synthesis of a tetrapeptide,2320556745,YES,1
+Chemistry,20076,"taube, h",1983,1980,1952,rates and mechanisms of substitution in inorganic complexes in solution,2060270846,YES,1
+Chemistry,20077,"klug, a",1982,1980,1968,reconstruction of three dimensional structures from electron micrographs,2001024934,YES,2
+Chemistry,20077,"klug, a",1982,1980,1962,physical principles in the construction of regular viruses,2078507839,YES,2
+Chemistry,20078,"fukui, k",1981,1980,1952,a molecular orbital theory of reactivity in aromatic hydrocarbons,2077796804,YES,3
+Chemistry,20079,"hoffmann, r",1981,1980,1963,an extended huckel theory i hydrocarbons,1981458170,YES,1
+Chemistry,20079,"hoffmann, r",1981,1980,1969,the conservation of orbital symmetry,2008844584,YES,2
+Chemistry,20079,"hoffmann, r",1981,1980,1965,selection rules for concerted cycloaddition reactions,2320823423,YES,2
+Chemistry,20079,"hoffmann, r",1981,1980,1965,stereochemistry of electrocyclic reactions,2323511279,YES,2
+Chemistry,20079,"hoffmann, r",1981,1980,1965,selection rules for sigmatropic reactions,2324482439,YES,2
+Chemistry,20080,"gilbert, w",1980,1980,1977,a new method for sequencing dna,1992595091,YES,2
+Chemistry,20081,"sanger, f",1980,1980,1977,dna sequencing with chain terminating inhibitors,2138270253,YES,3
+Chemistry,20082,"berg, p",1980,1980,1977,labeling deoxyribonucleic acid to high specific activity in vitro by nick translation with dna polymerase i,2029987769,YES,4
+Chemistry,20083,"wittig, g",1979,1970,1953,zur reaktionsweise des pentaphenyl phosphors und einiger derivate,2146184169,YES,2
+Chemistry,20083,"wittig, g",1979,1970,1954,uber triphenyl phosphin methylene als olefinbildende reagenzien i mitteil,2153772742,YES,2
+Chemistry,20084,"brown, h",1979,1970,1958,directive effects in aromatic substitution .30. electrophilic substituent constants,,YES,
+Chemistry,20085,"mitchell, p",1978,1970,1961,Coupling of phosphorylation to electron and hydrogen transfer by a chemi-osmotic type of mechanism.,1964126982,YES,1
+Chemistry,20086,"prigogine, i",1977,1970,1969,dynamical and statistical descriptions of n body systems,2047085243,YES,3
+Chemistry,20087,"lipscomb, w",1976,1970,1962,theory of polyhedral molecules i physical factorizations of the secular equation,1982596993,YES,2
+Chemistry,20087,"lipscomb, w",1976,1970,1962,boron hydrides lcao mo and resonance studies,2028808912,YES,2
+Chemistry,20087,"lipscomb, w",1976,1970,1962,theory of polyhedral molecules iii population analyses and reactivities for the carboranes,2080629537,YES,2
+Chemistry,20087,"lipscomb, w",1976,1970,1961,coupling of phosphorylation to electron and hydrogen transfer by a chemi osmotic type of mechanism,1964126982,YES,1
+Chemistry,20088,"prelog, v",1975,1970,1966,specification of molecular chirality,2102110064,YES,3
+Chemistry,20088,"prelog, v",1975,1970,1960,description of steric relationships across single bonds,2009828525,YES,2
+Chemistry,20088,"prelog, v",1975,1970,1956,the specification of asymmetric configuration in organic chemistry,2053032227,YES,3
+Chemistry,20089,cornfort.jw,1975,1970,1962,studies on the biosynthesis of cholesterol xvi chemical synthesis of 1 h2 3 2 c 14 and 1 d2 2 c 14 trans trans farnesyl pyrophosphate and their utilization in squalene biosynthesis,64228731,YES,
+Chemistry,20090,"flory, p",1974,1970,1936,molecular size distribution in linear condensation polymers1,2315929257,YES,1
+Chemistry,20090,"flory, p",1974,1970,1937,the mechanism of vinyl polymerizations1,2324076384,YES,1
+Chemistry,20091,wilkinso.g,1973,1970,1952,the structure of iron bis cyclopentadienyl,2318422058,YES,4
+Chemistry,20092,"fischer, e",1973,1970,1952,cyclopentadien metallkomplexe ein neuer typ metallorganischer verbindungen,1972315278,YES,2
+Chemistry,20093,"anfinsen, c",1972,1970,1961,the kinetics of formation of native ribonuclease during oxidation of the reduced polypeptide chain,1991498388,YES,4
+Chemistry,20094,"stein, w",1972,1970,1958,automatic recording apparatus for use in the chromatography of amino acids,2017470279,YES,3
+Chemistry,20094,"stein, w",1972,1970,1958,chromatography of amino acids on sulfonated polystyrene resins an improved system,2035178202,YES,3
+Chemistry,20095,"moore, s",1972,1970,1958,automatic recording apparatus for use in the chromatography of amino acids,2017470279,YES,3
+Chemistry,20096,"herzberg, g.",1971,1970,1965,analysis of the 4050 a group of the c 3 molecule,2031237286,YES,4
+Chemistry,20096,"herzberg, g.",1971,1970,1959,the lyman bands of molecular hydrogen,1988837171,YES,2
+Chemistry,20096,"herzberg, g.",1971,1970,1961,the bakerian lecture the spectra and structures of free methyl and free methylene,1982976316,YES,0
+Chemistry,20096,"herzberg, g.",1971,1970,1966,the spectrum and structure of singlet ch 2,2143085463,YES,2
+Chemistry,20096,"herzberg, g.",1971,1970,1956,absorption spectrum of free ch3 and cd3 radicals,1665503681,YES,2
+Chemistry,20097,"leloir, l",1970,1970,1955,a modified colorimetric method for the estimation of n acetylamino sugars,1535002104,YES,
+Chemistry,20098,"barton, d",1969,1960,1956,the principles of conformational analysis,2014815386,YES,2
+Chemistry,20099,"hassel, o",1969,1960,1947,the structure of molecules containing cyclohexane or pyranose rings,2050318825,YES,5
+Chemistry,20100,"onsager, l",1968,1960,1931,reciprocal relations in irreversible processes ii,2002116790,YES,1
+Chemistry,20101,"norrish, r",1967,1960,1949,chemical reactions produced by very high light intensities,2035481966,YES,2
+Chemistry,20102,"porter, g",1967,1960,1949,chemical reactions produced by very high light intensities,2035481966,YES,2
+Chemistry,20103,"eigen, m",1967,1960,1954,uber die kinetik sehr schnell verlaufender ionenreaktionen in wasseriger losung,2330576647,YES,0
+Chemistry,20104,"mulliken, r",1966,1960,1955,electronic population analysis on lcao mo molecular wave functions i,1650728208,YES,1
+Chemistry,20105,"woodward, r",1965,1960,1952,the total synthesis of steroids1,2323851137,YES,5
+Chemistry,20105,"woodward, r",1965,1960,1959,the mechanism of the diels alder reaction,2136973601,YES,2
+Chemistry,20105,"woodward, r",1965,1960,1958,cis hydroxylation of a synthetic steroid intermediate with iodine silver acetate and wet acetic acid,2314340496,YES,2
+Chemistry,20106,"hodgkin, d",1964,1960,1956,structure of vitamin b12,1986091806,YES,6
+Chemistry,20107,"ziegler, k",1963,1960,1955,polymerisation von athylen und anderen olefinen,2154165252,YES,4
+Chemistry,20108,"natta, g",1963,1960,1955,crystalline high polymers of  olefins,2584716243,YES,7
+Chemistry,20109,"kendrew, j",1962,1960,1958,a three dimensional model of the myoglobin molecule obtained by x ray analysis,1985854865,YES,6
+Chemistry,20109,"kendrew, j",1962,1960,1960,structure of myoglobin a three dimensional fourier synthesis at 2 a resolution,2004436328,YES,7
+Chemistry,20110,"perutz, m",1962,1960,1960,structure of haemoglobin a three dimensional fourier synthesis at 5 5 a resolution obtained by x ray analysis,2088437224,YES,6
+Chemistry,20111,"calvin, m",1961,1960,1950,the path of carbon in photosynthesis vii respiration and photosynthesis,1990139631,YES,2
+Chemistry,20111,"calvin, m",1961,1960,1952,the path of carbon in photosynthesis xx the steady state,1573693525,YES,2
+Chemistry,20111,"calvin, m",1961,1960,1950,the path of carbon in photosynthesis v paper chromatography and radioautography of the products,1988811508,YES,6
+Chemistry,20112,"libby, w",1960,1960,1949,age determination by radiocarbon content world wide assay of natural radiocarbon,2013668561,YES,3
+Chemistry,20113,"heyrovsky, j",1959,1950,1924,the processes at the mercury dropping cathode part i the deposition of metals,2160441152,YES,1
+Chemistry,20113,"heyrovsky, j",1959,1950,2010,researches with the dropping mercury cathode part ii the polarograph,2067877546,YES,2
+Chemistry,20114,"sanger, f",1958,1950,1945,the free amino groups of insulin,1918431092,YES,1
+Chemistry,20114,"sanger, f",1958,1950,1955,the disulphide bonds of insulin,2414829511,YES,4
+Chemistry,20114,"sanger, f",1958,1950,1955,disulphide interchange reactions,69257807,YES,2
+Chemistry,20115,"todd, a",1957,1950,1945,studies on phosphorylation .2. the reaction of dialkyl phosphites with polyhalogen compounds in presence of bases - a new method for the phosphorylation of amines,2007487132,YES,3
+Chemistry,20115,"todd, a",1957,1950,1945,studies on phosphorylation .1. dibenzyl chlorophosphonate as a phosphorylating agent,1964933902,YES,3
+Chemistry,20116,"hinshelwood, c",1956,1950,1938,333 the activation energy of organic reactions part iv transmission of substituent influences in ester hydrolysis,2070976790,YES,2
+Chemistry,20116,"hinshelwood, c",1956,1950,1930,further investigations on the kinetics of gaseous oxidation reactions,2040558105,YES,2
+Chemistry,20116,"hinshelwood, c",1956,1950,1934,227 on the factors determining the velocity of reactions in solution molecular statistics of the benzoylation of amines,1988560669,YES,2
+Chemistry,20117,n. n. semenov,1956,1950,1935,Chemical kinetics and chain reactions,633340598,YES,
+Chemistry,20118,"duvigneaud, v",1955,1950,1953,the synthesis of an octapeptide amide with the hormonal activity of oxytocin,2322067933,YES,6
+Chemistry,20118,"duvigneaud, v",1955,1950,1954,the synthesis of oxytocin1,2328863734,YES,5
+Chemistry,20119,"pauling, l",1954,1950,1951,the structure of proteins two hydrogen bonded helical configurations of the polypeptide chain,2140992384,YES,3
+Chemistry,20120,"staudinger, h",1953,1950,1921,uber neue organische phosphorverbindungen iv phosphinimine,2076493833,YES,2
+Chemistry,20120,"staudinger, h",1953,1950,1920,einwirkungen von aliphatischen diazoverbindungen auf thioketone,2045842456,YES,2
+Chemistry,20120,"staudinger, h",1953,1950,1919,uber neue organische phosphorverbindungen iii phosphinmethylenderivate und phosphinimine,2043716459,YES,2
+Chemistry,20121,"synge, r",1952,1950,1941,a new form of chromatogram employing two liquid phases a theory of chromatography 2 application to the micro determination of the higher monoamino acids in proteins,1965103059,YES,2
+Chemistry,20122,"martin, a",1952,1950,1941,a new form of chromatogram employing two liquid phases a theory of chromatography 2 application to the micro determination of the higher monoamino acids in proteins,1965103059,YES,2
+Chemistry,20123,"seaborg, g",1951,1950,1946,radioactive element 94 from deuterons on uranium,2005101692,YES,4
+Chemistry,20124,"mcmillan, e",1951,1950,1940,radioactive element 93,2065744907,YES,2
+Chemistry,20125,"alder, k",1950,1950,1928,synthesen in der hydroaromatischen reihe,2000547662,YES,2
+Chemistry,20126,"diels, o",1950,1950,1928,synthesen in der hydroaromatischen reihe,2000547662,YES,2
+Chemistry,20127,"giauque, w",1949,1940,1933,attainment of temperatures below 1 absolute by demagnetization ofgd2 so4 3 8h2o,1621230895,YES,2
+Chemistry,20128,"tiselius, a",1948,1940,1937,a new apparatus for electrophoretic analysis of colloidal mixtures,2094419713,YES,1
+Chemistry,20128,"tiselius, a",1948,1940,1939,an electrophoretic study of immune sera and purified antibody preparations,2046577012,YES,2
+Chemistry,20128,"tiselius, a",1948,1940,1937,electrophoresis of serum globulin electrophoretic analysis of normal and immune sera,1462038810,YES,1
+Chemistry,20129,"robinson, r",1947,1940,1917,lxxv a theory of the mechanism of the phytochemical synthesis of certain alkaloids,2022144691,YES,1
+Chemistry,20130,"stanley, w",1946,1940,1936,the inactivation of crystalline tobacco mosaic virus protein,2062912582,YES,1
+Chemistry,20130,"stanley, w",1946,1940,1936,chemical studies on the virus of tobacco mosaic vi the isolation from diseased turkish tobacco plants of a crystalline protein possessing the properties of tobacco mosaic virus,2734553823,YES,
+Chemistry,20131,"northrop, j",1946,1940,1929,a method for the determination of diffusion constants and the calculation of the radius and weight of the hemoglobin molecule,2013282061,YES,2
+Chemistry,20132,"sumner, j",1946,1940,1926,the isolation and crystallization of the enzyme urease preliminary paper,1511494479,YES,
+Chemistry,20133,"virtanen, a",1945,1940,1932,the enzymatic fission and synthesis of asparaginic acid.,,YES,
+Chemistry,20134,"hahn, o",1944,1940,1939,uber den nachweis und das verhalten der bei der bestrahlung des urans mittels neutronen entstehenden erdalkalimetalle,2074403122,YES,2
+Chemistry,20135,"hevesy, g",1943,1940,1923,the absorption and translocation of lead by plants a contribution to the application of the method of radioactive indicators in the investigation of the change of substance in plants,1493302394,YES,1
+Chemistry,20136,"ruzicka, l",1939,1930,1923,hohere terpenverbindungen ix uber die totalsynthese des d l nerolidols und des farnesols,2072973533,YES,1
+Chemistry,20136,"ruzicka, l",1939,1930,1923,hohere terpenverbindungen viii uber die konstitution des nerolidols peruviol,1964350782,YES,1
+Chemistry,20136,"ruzicka, l",1939,1930,1925,hohere terpenverbindungen xxiv ringbildungen bei sesquiterpenen totalsynthese des bisabolens und eines hexahydro cadalins,1982719436,YES,2
+Chemistry,20136,"ruzicka, l",1939,1930,1935,uber androstendion einen hochwirksamen mannlichen pragungsstoff ein beitrag zur genese der keimdrusenhormone,2333753054,YES,2
+Chemistry,20137,"butenandt, a",1939,1930,1934,zur isolierung und charakterisierung des corpus luteum hormons,2152050528,YES,2
+Chemistry,20137,"butenandt, a",1939,1930,1935,notiz uber ein isomeres allo pregnanol 3 on 20,2041102817,YES,2
+Chemistry,20137,"butenandt, a",1939,1930,1934,uber androsteron iii isolierung eines neuen physiologisch unwirksamen sterinderivates aus mannerharn seine verknupfung mit dehydro androsteron und androsteron ein beitrag zur konstitution des androsterons,2324702483,YES,2
+Chemistry,20137,"butenandt, a",1939,1930,1935,uber testosteron umwandlung des dehydro androsterons in androstendiol und testosteron ein weg zur darstellung des testosterons aus cholesterin,2320778421,YES,2
+Chemistry,20137,"butenandt, a",1939,1930,1934,uberfuhrung des pregnandiols in corpus luteum hormon,2064866007,YES,2
+Chemistry,20138,"kuhn, r",1938,1930,1933,mikro bestimmung von acetyl benzoyl und c methylgruppen,2055831527,YES,2
+Chemistry,20139,"haworth, w",1937,1930,1928,the structure of carbohydrates,2080334091,YES,1
+Chemistry,20139,"haworth, w",1937,1930,1928,lxxxiii polysaccharides part i the structure of inulin,2031570059,YES,2
+Chemistry,20140,"karrer, p",1937,1930,1931,zur kenntnis des vitamins a aus fischtranen,2163189310,YES,3
+Chemistry,20141,"debye, p",1936,1930,1912,zur theorie der spezifischen warmen,1972128701,YES,1
+Chemistry,20142,"joliot, f",1935,1930,1934,artificial production of a new kind of radio element,1973083520,YES,2
+Chemistry,20143,"curie, i",1935,1930,1934,. Production artificielle d'lments radioactifs - II. Preuve chimique de la transmutation des lments,2090325778,YES,2
+Chemistry,20144,"urey, h",1934,1930,1932,a hydrogen isotope of mass 2,2035264337,YES,3
+Chemistry,20145,"langmuir, i",1932,1930,1918,the adsorption of gases on plane surfaces of glass mica and platinum,1986113254,YES,1
+Chemistry,20145,"langmuir, i",1932,1930,1917,the constitution and fundamental properties of solids and liquids ii liquids 1,2746503605,YES,1
+Chemistry,20145,"langmuir, i",1932,1930,1917,the constitution and fundamental properties of solids and liquids,2051995369,YES,1
+Chemistry,20145,"langmuir, i",1932,1930,1917,the constitution and fundamental properties of solids and liquids part ii liquids,2089260408,YES,1
+Chemistry,20146,carl bosch,1931,1930,1913,formation of anthracite,,YES,
+Chemistry,20147,carl bosch,1931,1930,1913,ABSORBING AMMONIA AND APPARATUS THEREFOR,2486733299,YES,
+Chemistry,20148,"fischer, h",1930,1930,1894,Einfluss der configuration auf die wirkung der enzyme.,1992787746,YES,1
+Chemistry,20149,"harden, a",1929,1920,1906,the alcoholic ferment of yeast juice,1976820754,YES,2
+Chemistry,20150,"von euler, h",1929,1920,1926,enzymatische spaltung von dipeptiden ii,2325081292,YES,2
+Chemistry,20151,"windaus, a",1928,1920,1924,untersuchungen uber die konstitution des colchicins,1987925710,YES,1
+Chemistry,20151,"windaus, a",1928,1920,1925,uber ein in chloroform unlosliches glykosid aus digitalis blattern das gitoxin,2031036703,YES,2
+Chemistry,20152,"wieland, h",1927,1920,1922,uber den mechanismus der oxydationsvorgange,2314460680,YES,1
+Chemistry,20153,"svedberg, t",1926,1920,1924,the ultra centrifuge a new instrument for the determination of size and distribution of size of particle in amicroscopic colloids,2329751713,YES,2
+Chemistry,20153,"svedberg, t",1926,1920,1923,determination of size and distribution of size of particle by centrifugal methods,2334422461,YES,2
+Chemistry,20154,"zsigmondy, r",1925,1920,1902,uber sichtbarmachung und grosenbestimmung ultramikoskopischer teilchen mit besonderer anwendung auf goldrubinglaser,1981124145,YES,2
+Chemistry,20155,fritz pregl,1923,1920,1905,method of determination of carbon and hydrogen in organic compounds,,YES,
+Chemistry,20156,"aston, f",1922,1920,1919,the possibility of separating isotopes.,,YES,
+Chemistry,20157,"soddy, f",1921,1920,1915,the density of lead from ceylon thorite,1988813223,YES,1
+Chemistry,20157,"soddy, f",1921,1920,1913,the origin of actinium,1992056649,YES,1
+Chemistry,20157,"soddy, f",1921,1920,1914,cxxxii the atomic weight of lead from ceylon thorite,2028328651,YES,2
+Chemistry,20158,"nernst, w",1920,1920,1911,der energieinhalt fester stoffe,2059200827,YES,1
+Chemistry,20158,"nernst, w",1920,1920,1911,spezifische warme und quantentheorie,1921764522,YES,2
+Chemistry,20159,"haber, f",1918,1910,1913,uber die technische darstellung von ammoniak aus den elementen,1949899304,YES,2
+Chemistry,20160,"willstatter, r",1915,1910,1913,untersuchungen uber die anthocyane i uber den farbstoff der kornblume,1973911009,YES,2
+Chemistry,20160,"willstatter, r",1915,1910,1913,zur kenntnis der hydrolyse von cellulose i,1968331280,YES,2
+Chemistry,20161,"richards, t",1914,1910,1903,revision des atomgewichtes von casium,1542301768,YES,2
+Chemistry,20161,"richards, t",1914,1910,1905,a revision of the atomic weights of sodium and chlorine 1,2077742339,YES,2
+Chemistry,20161,"richards, t",1914,1910,1905,revision der atomgewichte von natrium und chlor,2089851537,YES,2
+Chemistry,20162,victor grignard,1912,1910,1900,regarding some new organometallic combinations of magnesium and their application to alcohol synthesis and hydrocarbides.,,YES,
+Chemistry,20163,"rutherford, e",1908,1900,1902,lxxxiv the radioactivity of thorium compounds ii the cause and nature of radioactivity,2035526860,YES,2
+Medicine,30001,"ohsumi, y",2016,2010,1993,isolation and characterization of autophagy defective mutants of saccharomyces cerevisiae,2011580247,YES,2
+Medicine,30001,"ohsumi, y",2016,2010,1992,autophagy in yeast demonstrated with proteinase deficient mutants and conditions for its induction,2126801593,YES,5
+Medicine,30002,youyou tu,2015,2010,1977,A new sesquiterpene lactone-qinghaosu,,YES,
+Medicine,30003,"omura, s",2015,2010,1979,avermectins new family of potent anthelmintic agents producing organism and fermentation,2082909688,YES,15
+Medicine,30004,"campbell, wc",2015,2010,1979,avermectins new family of potent anthelmintic agents efficacy of the b1a component,2112130390,YES,8
+Medicine,30005,"moser, ei",2014,2010,2005,microstructure of a spatial map in the entorhinal cortex,1970792572,YES,5
+Medicine,30006,"okeefe, j",2014,2010,1971,the hippocampus as a spatial map preliminary evidence from unit activity in the freely moving rat,2052515926,YES,2
+Medicine,30007,"moser, mb",2014,2010,2005,microstructure of a spatial map in the entorhinal cortex,1970792572,YES,5
+Medicine,30008,"sudhof, tc",2013,2010,1990,phospholipid binding by a synaptic vesicle protein homologous to the regulatory region of protein kinase c,1967817609,YES,5
+Medicine,30008,"sudhof, tc",2013,2010,1992,synaptotagmin a calcium sensor on the synaptic vesicle surface,1976283234,YES,4
+Medicine,30008,"sudhof, tc",2013,2010,1993,botulinum neurotoxin a selectively cleaves the synaptic protein snap 25,2007982098,YES,9
+Medicine,30008,"sudhof, tc",2013,2010,1994,synaptotagmin i a major ca2 sensor for transmitter release at a central synapse,2165302477,YES,7
+Medicine,30009,"schekman, r",2013,2010,1980,identification of 23 complementation groups required for post translational events in the yeast secretory pathway,2059775037,YES,3
+Medicine,30009,"schekman, r",2013,2010,1979,secretion and cell surface growth are blocked in a temperature sensitive mutant of saccharomyces cerevisiae,1966446749,YES,2
+Medicine,30010,"rothman, je",2013,2010,1993,a protein assembly disassembly pathway in vitro that may correspond to sequential steps of synaptic vesicle docking activation and fusion,1971016259,YES,5
+Medicine,30010,"rothman, je",2013,2010,1998,visualizing secretion and synaptic transmission with ph sensitive green fluorescent proteins,2016166286,YES,3
+Medicine,30010,"rothman, je",2013,2010,1998,snarepins minimal machinery for membrane fusion,2027775552,YES,8
+Medicine,30010,"rothman, je",2013,2010,1993,snap receptors implicated in vesicle targeting and fusion,2085680244,YES,7
+Medicine,30011,"yamanaka, s",2012,2010,2006,induction of pluripotent stem cells from mouse embryonic and adult fibroblast cultures by defined factors,2125987139,YES,2
+Medicine,30011,"yamanaka, s",2012,2010,2007,induction of pluripotent stem cells from adult human fibroblasts by defined factors,2138977668,YES,7
+Medicine,30012,"gurdon, jb",2012,2010,1962,adult frogs derived from the nuclei of single somatic cells,2094753906,YES,1
+Medicine,30012,"gurdon, jb",2012,2010,1962,the developmental capacity of nuclei taken from intestinal epithelium cells of feeding tadpoles,2153824299,YES,
+Medicine,30013,"steinman, rm",2011,2010,1973,identification of a novel cell type in peripheral lymphoid organs of mice i morphology quantitation tissue distribution,2145049340,YES,2
+Medicine,30014,"hoffmann, ja",2011,2010,1996,the dorsoventral regulatory gene cassette spatzle toll cactus controls the potent antifungal response in drosophila adults,2137590150,YES,5
+Medicine,30014,"hoffmann, ja",2011,2010,1996,the dorsoventral regulatory gene cassette controls the potent antifungal response in drosophila adults,277392156,YES,
+Medicine,30015,"beutler, b",2011,2010,1998,defective lps signaling in c3h hej and c57bl 10sccr mice mutations in tlr4 gene,2129319296,YES,14
+Medicine,30016,"edwards, rg",2010,2010,1978,birth after the reimplantation of a human embryo,2069463805,YES,2
+Medicine,30017,"szostak, jw",2009,2000,1982,cloning yeast telomeres on linear plasmid vectors,1977437036,YES,2
+Medicine,30018,"greider, cw",2009,2000,1985,identification of a specific telomere terminal transferase activity in tetrahymena extracts,2122740168,YES,2
+Medicine,30019,"blackburn, eh",2009,2000,1982,cloning yeast telomeres on linear plasmid vectors,1977437036,YES,2
+Medicine,30019,"blackburn, eh",2009,2000,1985,identification of a specific telomere terminal transferase activity in tetrahymena extracts,2122740168,YES,2
+Medicine,30020,"barresinoussi, f",2008,2000,1983,isolation of a t lymphotropic retrovirus from a patient at risk for acquired immune deficiency syndrome aids,1977282539,YES,12
+Medicine,30021,"hausen, hz",2008,2000,1984,a new type of papillomavirus dna its presence in genital cancer biopsies and in cell lines derived from cervical cancer,1722478811,YES,
+Medicine,30022,"montagnier, l",2008,2000,1983,isolation of a t lymphotropic retrovirus from a patient at risk for acquired immune deficiency syndrome aids,1977282539,YES,12
+Medicine,30023,"evans, mj",2007,2000,1981,establishment in culture of pluripotential cells from mouse embryos,2045899482,YES,2
+Medicine,30024,"capecchi, mr",2007,2000,1987,site directed mutagenesis by gene targeting in mouse embryo derived stem cells,1993834457,YES,2
+Medicine,30024,"capecchi, mr",2007,2000,1980,high efficiency transformation by direct microinjection of dna into cultured mammalian cells,2061555550,YES,1
+Medicine,30025,"smithies, o",2007,2000,1987,targetted correction of a mutant hprt gene in mouse embryonic stem cells,2032002636,YES,7
+Medicine,30025,"smithies, o",2007,2000,1984,a comprehensive set of sequence analysis programs for the vax,2009310436,YES,3
+Medicine,30026,"mello, cc",2006,2000,1998,potent and specific genetic interference by double stranded rna in caenorhabditis elegans,1647075334,YES,6
+Medicine,30027,"fire, a",2006,2000,1998,potent and specific genetic interference by double stranded rna in caenorhabditis elegans,1647075334,YES,6
+Medicine,30028,"warren, jr",2005,2000,1984,unidentified curved bacilli in the stomach of patients with gastritis and peptic ulceration,2143107875,YES,2
+Medicine,30029,"marshall, bj",2005,2000,1984,unidentified curved bacilli in the stomach of patients with gastritis and peptic ulceration,2143107875,YES,2
+Medicine,30030,"buck, l",2004,2000,1991,a novel multigene family may encode odorant receptors a molecular basis for odor recognition,2097186487,YES,2
+Medicine,30031,"axel, r",2004,2000,1991,a novel multigene family may encode odorant receptors a molecular basis for odor recognition,2097186487,YES,2
+Medicine,30032,"mansfield, p",2003,2000,1977,multi planar image formation using nmr spin echoes,2065113098,YES,1
+Medicine,30033,"lauterbur, pc",2003,2000,1973,image formation by induced local interactions examples employing nuclear magnetic resonance,2020623316,YES,1
+Medicine,30034,"horvitz, hr",2002,2000,1986,genetic control of programmed cell death in the nematode c elegans,1969331809,YES,1
+Medicine,30035,"brenner, s",2002,2000,1974,the genetics of caenorhabditis elegans,1944127002,YES,
+Medicine,30036,"sulston, je",2002,2000,1977,post embryonic cell lineages of the nematode caenorhabditis elegans,1986006829,YES,2
+Medicine,30037,"nurse, p",2001,2000,1987,negative regulation of mitosis by wee1 a gene encoding a protein kinase homolog,2038340312,YES,2
+Medicine,30037,"nurse, p",2001,2000,1987,complementation used to clone a human homologue of the fission yeast cell cycle control gene cdc2,1980585800,YES,2
+Medicine,30038,"hunt, t",2001,2000,1983,cyclin a protein specified by maternal mrna in sea urchin eggs that is destroyed at each cleavage division,2090827556,YES,5
+Medicine,30039,"hartwell, lh",2001,2000,1971,genetic control of the cell division cycle in yeast iv genes controlling bud emergence and cytokinesis,2057764157,YES,1
+Medicine,30040,"kandel, er",2000,2000,1970,neuronal correlates of habituation and dishabituation of the gill withdrawal reflex in aplysia,2149101054,YES,4
+Medicine,30041,greengar.p,2000,2000,1969,cyclic nucleotide dependent protein kinases iv widespread occurrence of adenosine 3 5 monophosphate dependent protein kinase in various tissues and phyla of the animal kingdom,2013216313,YES,2
+Medicine,30042,"carlsson, a",2000,2000,1957,3 4 dihydroxyphenylalanine and 5 hydroxytryptophan as reserpine antagonists,2085518524,YES,3
+Medicine,30042,"carlsson, a",2000,2000,1958,a fluorimetric method for the determination of dopamine 3 hydroxytyramine,2021432299,YES,2
+Medicine,30042,"carlsson, a",2000,2000,1958,a method for the fluorimetric determination of adrenaline and noradrenaline in tissues 1,2055404553,YES,3
+Medicine,30043,"blobel, g",1999,1990,1975,transfer of proteins across membranes i presence of proteolytically processed and unprocessed nascent immunoglobulin light chains on membrane bound ribosomes of murine myeloma,2146923243,YES,2
+Medicine,30044,"murad, f",1998,1990,1977,nitric oxide activates guanylate cyclase and increases guanosine 3 5 cyclic monophosphate levels in various tissue preparations,2000075945,YES,4
+Medicine,30044,"murad, f",1998,1990,1977,stimulation of guanylate cyclase by sodium nitroprusside nitroglycerin and nitric oxide in various tissue preparations and comparison to the effects of sodium azide and hydroxylamine,43833714,YES,
+Medicine,30045,"furchgott, rf",1998,1990,1980,the obligatory role of endothelial cells in the relaxation of arterial smooth muscle by acetylcholine,2169182236,YES,2
+Medicine,30045,"furchgott, rf",1998,1990,1986,phosphodiesterase inhibitors induce endothelium dependent relaxation of rat and rabbit aorta by potentiating the effects of spontaneously released endothelium derived relaxing factor,1942534618,YES,
+Medicine,30045,"furchgott, rf",1998,1990,1986,depression of contractile responses in rat aorta by spontaneously released endothelium derived relaxing factor,2311393071,YES,
+Medicine,30046,"ignarro, lj",1998,1990,1987,endothelium derived relaxing factor from pulmonary artery and vein possesses pharmacologic and chemical properties identical to those of nitric oxide radical,1992718978,YES,4
+Medicine,30046,"ignarro, lj",1998,1990,1987,endothelium derived relaxing factor produced and released from artery and vein is nitric oxide,2092145002,YES,5
+Medicine,30047,"prusiner, sb",1997,1990,1982,novel proteinaceous infectious particles cause scrapie,2013679718,YES,1
+Medicine,30048,zinkerna.rm,1996,1990,1974,restriction of in vitro t cell mediated cytotoxicity in lymphocytic choriomeningitis within a syngeneic or semiallogeneic system,1985774274,YES,2
+Medicine,30048,zinkerna.rm,1996,1990,1974,immunological surveillance against altered self components by sensitised t lymphocytes in lymphocytic choriomeningitis,1998240361,YES,2
+Medicine,30049,"doherty, pc",1996,1990,1974,restriction of in vitro t cell mediated cytotoxicity in lymphocytic choriomeningitis within a syngeneic or semiallogeneic system,1985774274,YES,2
+Medicine,30049,"doherty, pc",1996,1990,1974,immunological surveillance against altered self components by sensitised t lymphocytes in lymphocytic choriomeningitis,1998240361,YES,2
+Medicine,30050,"nussleinvolhard, c",1995,1990,1980,mutations affecting segment number and polarity in drosophila,2000572318,YES,2
+Medicine,30051,"wieschaus, e",1995,1990,1980,mutations affecting segment number and polarity in drosophila,2000572318,YES,2
+Medicine,30052,"lewis, eb",1995,1990,1978,a gene complex controlling segmentation in drosophila,2006788765,YES,1
+Medicine,30053,"rodbell, m",1994,1990,1969,adenyl cyclase in fat cells ii hormone receptors,1578024134,YES,
+Medicine,30053,"rodbell, m",1994,1990,1971,the glucagon sensitive adenyl cyclase system in plasma membranes of rat liver iv effects of guanyl nucleotides on binding of 125i glucagon,1490796893,YES,
+Medicine,30053,"rodbell, m",1994,1990,1971,the glucagon sensitive adenyl cyclase system in plasma membranes of rat liver i properties,1546236203,YES,
+Medicine,30053,"rodbell, m",1994,1990,1971,the glucagon sensitive adenyl cyclase system in plasma membranes of rat liver v an obligatory role of guanyl nucleotides in glucagon action,1863678882,YES,
+Medicine,30053,"rodbell, m",1994,1990,1971,the glucagon sensitive adenyl cyclase system in plasma membranes of rat liver iii binding of glucagon method of assay and specificity,1657719861,YES,
+Medicine,30053,"rodbell, m",1994,1990,1969,adenyl cyclase in fat cells i properties and the effects of adrenocorticotropin and fluoride,1591872616,YES,
+Medicine,30054,"gilman, ag",1994,1990,1980,purification of the regulatory component of adenylate cyclase,1984080990,YES,6
+Medicine,30055,"sharp, pa",1993,1990,1977,Sizing and mapping of early adenovirus mRNAs by gel electrophoresis of S1 endonuclease-digested hybrids,2054073262,YES,2
+Medicine,30056,"roberts, rj",1993,1990,1977,an amazing sequence arrangement at the 5 ends of adenovirus 2 messenger rna,1996948250,YES,4
+Medicine,30057,"fischer, eh",1992,1990,1955,Conversion of phosphorylase b to phosphorylase a in muscle extracts.,2409039558,YES,
+Medicine,30057,"fischer, eh",1992,1990,1956,The phosphorylase b to a converting enzyme of rabbit skeletal muscle,2071356747,YES,2
+Medicine,30058,"krebs, eg",1992,1990,1958,the reaction of sodium borohydride with muscle phosphorylase1,2317118960,YES,4
+Medicine,30059,"sakmann, b",1991,1990,1981,mproved patch-clamp techniques for high-resolution current recording from cells and cell-free membrane patches,2009667219,YES,5
+Medicine,30060,"neher, e",1991,1990,1981,Improved patch-clamp techniques for high-resolution current recording from cells and cell-free membrane patches,2009667219,YES,5
+Medicine,30061,thomas ed,1990,1990,1959,SUPRALETHAL WHOLE BODY IRRADIATION AND ISOLOGOUS MARROW TRANSPLANTATION IN MAN,2118298035,YES,5
+Medicine,30062,"murray, je",1990,1990,1956,Successful Homotransplantation of the Kidney in an Identical Twin,1481400953,YES,
+Medicine,30063,"varmus, he",1989,1980,1976,dna related to the transforming gene s of avian sarcoma viruses is present in normal avian dna,2004771750,YES,4
+Medicine,30064,"bishop, jm",1989,1980,1976,dna related to the transforming gene s of avian sarcoma viruses is present in normal avian dna,2004771750,YES,4
+Medicine,30065,"black, jw",1988,1980,1972,definition and antagonism of histamine h2 receptors,2074949244,YES,5
+Medicine,30065,"black, jw",1988,1980,1962,pharmacology of a new adrenergic beta receptor blocking compound nethalide,1987712838,YES,2
+Medicine,30066,"hitchings, gh",1988,1980,1952,studies on condensed pyrimidine systems ix the synthesis of some 6 substituted purines,2324396664,YES,3
+Medicine,30066,"hitchings, gh",1988,1980,1954,antagonists of nucleic acid derivatives viii synergism in combinations of biochemically related antimetabolites,2106985791,YES,
+Medicine,30067,"elion, gb",1988,1980,1952,studies on condensed pyrimidine systems ix the synthesis of some 6 substituted purines,2324396664,YES,3
+Medicine,30067,"elion, gb",1988,1980,1954,antagonists of nucleic acid derivatives viii synergism in combinations of biochemically related antimetabolites,2106985791,YES,
+Medicine,30068,"tonegawa, s",1987,1980,1976,evidence for somatic rearrangement of immunoglobulin genes coding for variable and constant regions,1982039072,YES,2
+Medicine,30069,"cohen, s",1986,1980,1954,a nerve growth stimulating factor isolated from sarcom as 37 and 180,2040742427,YES,3
+Medicine,30069,"cohen, s",1986,1980,1956,a nerve growth stimulating factor isolated from snake venom,2103276585,YES,2
+Medicine,30070,"levimontalcini, r",1986,1980,1952,effects of mouse tumor transplantation on the nervous system,1965289808,YES,1
+Medicine,30071,"brown, ms",1985,1980,1973,regulation of 3 hydroxy 3 methylglutaryl coenzyme a reductase activity in human fibroblasts by lipoproteins,2021537613,YES,3
+Medicine,30071,"brown, ms",1985,1980,1974,binding and degradation of low density lipoproteins by cultured human fibroblasts comparison of cells from a normal subject and from a patient with homozygous familial hypercholesterolemia,1485806819,YES,
+Medicine,30072,"goldstein, jl",1985,1980,1974,binding and degradation of low density lipoproteins by cultured human fibroblasts comparison of cells from a normal subject and from a patient with homozygous familial hypercholesterolemia,1485806819,YES,
+Medicine,30073,"milstein, c",1984,1980,1975,continuous cultures of fused cells secreting antibody of predefined specificity,2030522563,YES,2
+Medicine,30074,"kohler, g",1984,1980,1975,continuous cultures of fused cells secreting antibody of predefined specificity,2030522563,YES,2
+Medicine,30075,"jerne, nk",1984,1980,1955,the natural selection theory of antibody formation,2064008537,YES,1
+Medicine,30075,"jerne, nk",1984,1980,1974,towards a network theory of the immune system,1566766802,YES,
+Medicine,30076,"mcclintock, b",1983,1980,1951,chromosome organization and genic expression,2130578722,YES,1
+Medicine,30076,"mcclintock, b",1983,1980,1950,the origin and behavior of mutable loci in maize,2026519705,YES,1
+Medicine,30076,"mcclintock, b",1983,1980,1942,the fusion of broken ends of chromosomes following nuclear fusion,2027884659,YES,1
+Medicine,30076,"mcclintock, b",1983,1980,1941,the stability of broken ends of chromosomes in zea mays,1829553711,YES,
+Medicine,30076,"mcclintock, b",1983,1980,1951,mutable loci in maize,2221571340,YES,
+Medicine,30077,samuelss.b,1982,1980,1975,thromboxanes a new group of biologically active compounds derived from prostaglandin endoperoxides,2030087792,YES,3
+Medicine,30077,samuelss.b,1982,1980,1974,prostaglandin endoperoxides novel transformations of arachidonic acid in human platelets,2050568232,YES,2
+Medicine,30077,samuelss.b,1982,1980,1974,isolation and structure of two prostaglandin endoperoxides that cause platelet aggregation,2010694924,YES,4
+Medicine,30077,samuelss.b,1982,1980,1979,arachidonic acid metabolism in polymorphonuclear leukocytes effects of ionophore a23187,2059290365,YES,2
+Medicine,30077,samuelss.b,1982,1980,1979,leukotriene c a slow reacting substance from murine mastocytoma cells,2123773797,YES,3
+Medicine,30077,samuelss.b,1982,1980,1974,prostaglandin endoperoxides vii novel transformations of arachidonic acid in guinea pig lung,2035879817,YES,2
+Medicine,30078,"vane, jr",1982,1980,1976,an enzyme isolated from arteries transforms prostaglandin endoperoxides to an unstable substance that inhibits platelet aggregation,2021403302,YES,4
+Medicine,30078,"vane, jr",1982,1980,1971,inhibition of prostaglandin synthesis as a mechanism of action for aspirin like drugs,2008574207,YES,1
+Medicine,30079,"bergstrom, s",1982,1980,1958,on the regulation of bile acid formation in the rat liver,2043258254,YES,2
+Medicine,30079,"bergstrom, s",1982,1980,1959,observations on the effects of infusion of prostnglnndin e in man,2019393655,YES,5
+Medicine,30080,"hubel, dh",1981,1980,1962,receptive fields binocular interaction and functional architecture in the cat s visual cortex,2116360511,YES,2
+Medicine,30080,"hubel, dh",1981,1980,1968,receptive fields and functional architecture of monkey striate cortex,2117731089,YES,2
+Medicine,30080,"hubel, dh",1981,1980,1963,single cell responses in striate cortex of kittens deprived of vision in one eye,1870538900,YES,2
+Medicine,30080,"hubel, dh",1981,1980,1965,comparison of the effects of unilateral and bilateral eye closure on cortical unit responses in kittens,148261105,YES,2
+Medicine,30080,"hubel, dh",1981,1980,1965,receptive fields and functional architecture in two nonstriate visual areas 18 and 19 of the cat,1594551768,YES,2
+Medicine,30081,"sperry, rw",1981,1980,1963,chemoaffinity in the orderly growth of nerve fiber patterns and connections,1980094138,YES,1
+Medicine,30082,"wiesel, tn",1981,1980,1962,receptive fields binocular interaction and functional architecture in the cat s visual cortex,2116360511,YES,2
+Medicine,30082,"wiesel, tn",1981,1980,1968,receptive fields and functional architecture of monkey striate cortex,2117731089,YES,2
+Medicine,30082,"wiesel, tn",1981,1980,1963,single cell responses in striate cortex of kittens deprived of vision in one eye,1870538900,YES,2
+Medicine,30082,"wiesel, tn",1981,1980,1965,receptive fields and functional architecture in two nonstriate visual areas 18 and 19 of the cat,1594551768,YES,2
+Medicine,30082,"wiesel, tn",1981,1980,1965,comparison of the effects of unilateral and bilateral eye closure on cortical unit responses in kittens,148261105,YES,2
+Medicine,30083,"snell, gd",1980,1980,1952,some transamination reactions involving vitamin b6,2339544843,YES,
+Medicine,30084,"dausset, j",1980,1980,1959,the serology and the prognosis of 128 cases of autoimmune hemolytic anemia,50207406,YES,
+Medicine,30084,"dausset, j",1980,1980,1959,acquired hemolytic anemia with polyagglutinability of red blood cells due to a new factor present in normal human serum anti tn,54806471,YES,
+Medicine,30084,"dausset, j",1980,1980,1954,leukoagglutinins v leukoagglutinins in chronic idiopathic or symptomatic pancytopenia and in paroxysmal nocturnal hemoglobinuria,2417702495,YES,
+Medicine,30085,benacerr.b,1980,1980,1966,properties of antibodies cytophilic for macrophages,2086695584,YES,2
+Medicine,30085,benacerr.b,1980,1980,1963,properties of guinea pig 7s antibodies ii identification of antibodies involved in passive cutaneous and systemic anaphylaxis,2169383488,YES,3
+Medicine,30085,benacerr.b,1980,1980,1963,properties of guinea pig 7s antibodies i electrophoretic separation of two types of guinea pig 7s antibodies,2094124809,YES,4
+Medicine,30085,benacerr.b,1980,1980,1963,studies on the specificity of the cellular infiltrate in delayed hypersensitivity reactions,2098523678,YES,
+Medicine,30085,benacerr.b,1980,1980,1961,the role of the reticuloendothelial system in the host reaction to neoplasia,1669625243,YES,
+Medicine,30086,"hounsfield, gn",1979,1970,1973,computerized transverse axial scanning tomography part 1 description of system,2123169298,YES,1
+Medicine,30087,"cormack, am",1979,1970,1963,representation of a function by its line integrals with some radiological applications,2004804713,YES,1
+Medicine,30088,"nathans, d",1978,1970,1971,specific cleavage of simian virus 40 dna by restriction endonuclease of hemophilus influenzae,2090526981,YES,2
+Medicine,30089,"arber, w",1978,1970,1962,host specificity of dna produced by escherichia coli ii control over acceptance of dna from infecting phage ,1518906504,YES,2
+Medicine,30090,"smith, ho",1978,1970,1970,a restriction enzyme from hemophilus influenzae i purification and general properties,1506010125,YES,2
+Medicine,30090,"smith, ho",1978,1970,1970,a restriction enzyme from hemophilus influenzae ii base sequence of the recognition site,1534152204,YES,2
+Medicine,30091,"schally, av",1977,1970,1969,discovery of modification of the synthetic tripeptide sequence of the thyrotropin releasing hormone having activity,2014610831,YES,5
+Medicine,30091,"schally, av",1977,1970,1969,the identity of chemical and hormonal properties of the thyrotropin releasing hormone and pyroglutamyl histidyl proline amide,2130799585,YES,5
+Medicine,30091,"schally, av",1977,1970,1969,isolation and properties of porcine thyrotropin releasing hormone,1506714296,YES,
+Medicine,30092,guillemi.r,1977,1970,1970,characterization of ovine hypothalamic hypophysiotropic tsh releasing factor,2087547931,YES,6
+Medicine,30093,"yalow, rs",1977,1970,1959,quantitative aspects of the reaction between insulin and insulin binding antibody,2105670555,YES,2
+Medicine,30093,"yalow, rs",1977,1970,1956,insulin i131 metabolism in human subjects demonstration of insulin binding globulin in the circulation of insulin treated subjects,2111637985,YES,5
+Medicine,30093,"yalow, rs",1977,1970,1960,immunoassay of endogenous plasma insulin in man,2015230257,YES,2
+Medicine,30093,"yalow, rs",1977,1970,1959,assay of plasma insulin in human subjects by immunological methods,2028994036,YES,2
+Medicine,30094,"gajdusek, dc",1976,1970,1966,experimental transmission of a kuru like syndrome to chimpanzees,2043400793,YES,3
+Medicine,30095,"blumberg, bs",1976,1970,1965,a new antigen in leukemia sera,2082505865,YES,1
+Medicine,30096,baltimor.d,1975,1970,1970,viral rna dependent dna polymerase rna dependent dna polymerase in virions of rna tumour viruses,2013241878,YES,1
+Medicine,30097,"temin, hm",1975,1970,1970,viral rna dependent dna polymerase rna dependent dna polymerase in virions of rous sarcoma virus,201050536,YES,2
+Medicine,30098,"dulbecco, r",1975,1970,1954,plaque formation and isolation of pure lines with poliomyelitis viruses,2046171723,YES,2
+Medicine,30099,"duve, cd",1974,1970,1955,tissue fractionation studies 6 intracellular distribution patterns of enzymes in rat liver tissue,1205458192,YES,5
+Medicine,30099,"duve, cd",1974,1970,1955,tissue fractionation studies 5 the association of acid phosphatase with a special class of cytoplasmic granules in rat liver,170240114,YES,3
+Medicine,30099,"duve, cd",1974,1970,1955,tissue fractionation studies 4 comparative study of the binding of acid phosphatase  glucuronidase and cathepsin by rat liver particles,2415205045,YES,2
+Medicine,30100,"palade, ge",1974,1970,1955,the fine structure of neurons,2106858079,YES,2
+Medicine,30100,"palade, ge",1974,1970,1955,a small particulate component of the cytoplasm,2080669995,YES,1
+Medicine,30101,"claude, a",1974,1970,1946,fractionation of mammalian liver cells by differential centrifugation i problems methods and preparation of extract,2144434797,YES,1
+Medicine,30101,"claude, a",1974,1970,1945,a study of tissue culture cells by electron microscopy methods and preliminary observations,2162734772,YES,3
+Medicine,30101,"claude, a",1974,1970,1946,fractionation of mammalian liver cells by differential centrifugation ii experimental procedures and results,2090488193,YES,1
+Medicine,30101,"claude, a",1974,1970,1946,the distribution of cytochrome oxidase and succinoxidase in the cytoplasm of the mammalian liver cell,38403571,YES,
+Medicine,30102,karl von frisch,1973,1970,1927,Aus dem Leben der Bienen,1785442005,YES,1
+Medicine,30103,"lorenz, k",1973,1970,1935,Der Kumpan in der Umwelt des Vogels,1999595872,YES,1
+Medicine,30103,"lorenz, k",1973,1970,1937,The Companion in the Bird's World,2331925520,YES,1
+Medicine,30103,"lorenz, k",1973,1970,1937,ber die Bildung des Instinktbegriffes,2029111077,YES,1
+Medicine,30104,"edelman, gm",1972,1970,1959,dissociation of  globulin,2317779596,YES,1
+Medicine,30105,"porter, rr",1972,1970,1959,the hydrolysis of rabbit  globulin and antibodies with crystalline papain,1786523947,YES,1
+Medicine,30106,"sutherland, ew",1971,1970,1962,adenyl cyclase iii the effect of catecholamines and choline esters on the formation of adenosine 3 5 phosphate by preparations from cardiac muscle and liver,1488609485,YES,
+Medicine,30106,"sutherland, ew",1971,1970,1962,adenyl cyclase iv the effects of neurohormones on the formation of adenosine 3 5 phosphate by preparations from brain and other tissues,1501394106,YES,
+Medicine,30106,"sutherland, ew",1971,1970,1962,adenyl cyclase i distribution preparation and properties,1529705405,YES,
+Medicine,30106,"sutherland, ew",1971,1970,1962,adenosine 3 5 phosphate in biological materials i purification and properties of cyclic 3 5 nucleotide phosphodiesterase and use of this enzyme to characterize adenosine 3 5 phosphate in human urine,1602784471,YES,
+Medicine,30107,von euler us,1970,1970,1956,evidence for the presence of noradrenaline in submicroscopic structures of adrenergic axons,2030670408,YES,2
+Medicine,30108,"axelrod, j",1970,1970,1957,o methylation of epinephrine and other catechols in vitro and in vivo,2036416641,YES,1
+Medicine,30108,"axelrod, j",1970,1970,1958,enzymatic o methylation of epinephrine and other catechols,1543624067,YES,
+Medicine,30109,"katz, b",1970,1970,1949,the effect of sodium ions on the electrical activity of the giant axon of the squid,2097400197,YES,2
+Medicine,30109,"katz, b",1970,1970,1954,quantal components of the end plate potential,2106081526,YES,2
+Medicine,30109,"katz, b",1970,1970,1957,a study of the desensitization produced by acetylcholine at the motor end plate,2009285843,YES,2
+Medicine,30109,"katz, b",1970,1970,1951,an analysis of the end plate potential recorded with an intra cellular electrode,2117059432,YES,2
+Medicine,30109,"katz, b",1970,1970,1952,spontaneous subthreshold activity at motor nerve endings,2102492718,YES,2
+Medicine,30110,"luria, se",1969,1960,1943,MUTATIONS OF BACTERIA FROM VIRUS SENSITIVITY TO VIRUS RESISTANCE,2170343590,YES,
+Medicine,30111,"hershey, ad",1969,1960,1952,independent functions of viral protein and nucleic acid in growth of bacteriophage,1988037647,YES,2
+Medicine,30112,"delbruck, m",1969,1960,1943,MUTATIONS OF BACTERIA FROM VIRUS SENSITIVITY TO VIRUS RESISTANCE,2170343590,YES,
+Medicine,30113,"nirenberg, m",1968,1960,1961,the dependence of cell free protein synthesis in e coli upon naturally occurring or synthetic polyribonucleotides,2060528969,YES,2
+Medicine,30113,"nirenberg, m",1968,1960,1961,the dependence of cell free protein synthesis in e coli upon naturally occuring or synthetic polyribonucleotides,2156946543,YES,
+Medicine,30114,"khorana, hg",1968,1960,1961,nucleoside polyphosphates x 1 the synthesis and some reactions of nucleoside 5 phosphoromorpholidates and related compounds improved methods for the preparation of nucleoside 5 polyphosphates1,2321344708,YES,2
+Medicine,30114,"khorana, hg",1968,1960,1958,carbodiimides viii 1 observations on the reactions of carbodiimides with acids and some new applications in the synthesis of phosphoric acid esters,2043501016,YES,3
+Medicine,30114,"khorana, hg",1968,1960,1962,studies on polynucleotides xiv 1specific synthesis of the c3 c5 interribonucleotide linkage syntheses of uridylyl 3 5 uridine and uridylyl 3 5 adenosine2,2329543029,YES,4
+Medicine,30114,"khorana, hg",1968,1960,1963,studies on polynucleotides xxiv 1 the stepwise synthesis of specific deoxyribopolynucleotides 4 2 protected derivatives of deoxyribonucleosides and new syntheses of deoxyribonucleoside 3 phosphates3,2328366366,YES,4
+Medicine,30114,"khorana, hg",1968,1960,1959,studies on polynucleotides iii enzymic degradation substrate specificity and properties of snake venom phosphodiesterase,953047224,YES,
+Medicine,30115,"holley, rw",1968,1960,1965,Structure of a Ribonucleic Acid,2024412145,YES,8
+Medicine,30116,"granit, r",1967,1960,1953,supraspinal control of the muscle spindles and its significance,2061183544,YES,3
+Medicine,30116,"granit, r",1967,1960,1956,excitatory and inhibitory processes acting upon individual purkinje cells of the cerebellum in cats,2047758880,YES,2
+Medicine,30116,"granit, r",1967,1960,1956,tonic and phasic ventral horn cells differentiated by post tetanic potentiation in cat extensors,2016789585,YES,3
+Medicine,30116,"granit, r",1967,1960,1944,fibre interaction in injured or compressed region of nerve,2026324210,YES,3
+Medicine,30116,"granit, r",1967,1960,1933,the components of the retinal action potential in mammals and their relation to the discharge in the optic nerve,2061401540,YES,1
+Medicine,30117,"hartline, hk",1967,1960,1952,the peripheral origin of nervous activity in the visual system,2152164341,YES,3
+Medicine,30118,"wald, g",1967,1960,1952,cistrans isomers of vitamin a and retinene in vision,2066637830,YES,2
+Medicine,30118,"wald, g",1967,1960,1952,cis trans isomers of vitamin a and retinene in the rhodopsin system,2037138473,YES,2
+Medicine,30118,"wald, g",1967,1960,1953,the molar extinction of rhodopsin,2105756791,YES,2
+Medicine,30118,"wald, g",1967,1960,1963,pre lumirhodopsin and the bleaching of visual pigments,2004213037,YES,2
+Medicine,30119,"huggins, c",1966,1960,1941,studies on prostatic cancer i the effect of castration of estrogen and of androgen injection on serum phosphatases in metastatic carcinoma of the prostate,2108955823,YES,
+Medicine,30120,"rous, p",1966,1960,1910,a transmissible avian neoplasm sarcoma of the common fowl,2012383467,YES,1
+Medicine,30120,"rous, p",1966,1960,1911,a sarcoma of the fowl transmissible by an agent separable from the tumor cells,2050973237,YES,1
+Medicine,30121,"monod, j",1965,1960,1961,genetic regulatory mechanisms in the synthesis of proteins,2032619610,YES,2
+Medicine,30122,"lwoff, a",1965,1960,1950,induction of bacteriophage production in a bacterium,1697141686,YES,
+Medicine,30123,"jacob, f",1965,1960,1961,on the regulation of gene activity,2100416355,YES,2
+Medicine,30123,"jacob, f",1965,1960,1961,genetic regulatory mechanisms in the synthesis of proteins,2032619610,YES,2
+Medicine,30123,"jacob, f",1965,1960,1963,allosteric proteins and cellular control systems,2050643839,YES,3
+Medicine,30123,"jacob, f",1965,1960,1961,general conclusions teleonomic mechanisms in cellular metabolism growth and differentiation,2327883350,YES,2
+Medicine,30124,"lynen, f",1964,1960,1953,enzymes of fatty acid metabolism,1965802835,YES,2
+Medicine,30125,"bloch, k",1964,1960,1943,the biological conversion of cholesterol to cholic acid,188147345,YES,
+Medicine,30126,"eccles, jc",1963,1960,1952,the recording of potentials from motoneurones with an intracellular electrode,2098749676,YES,3
+Medicine,30126,"eccles, jc",1963,1960,1954,cholinergic and inhibitory synapses in a pathway from motor axon collaterals to motoneurones,2073929966,YES,3
+Medicine,30127,"hodgkin, al",1963,1960,1952,a quantitative description of membrane current and its application to conduction and excitation in nerve,1985940938,YES,2
+Medicine,30128,"huxley, af",1963,1960,1952,a quantitative description of membrane current and its application to conduction and excitation in nerve,1985940938,YES,2
+Medicine,30129,"wilkins, mhf",1962,1960,1953,molecular structure of deoxypentose nucleic acids,1502527096,YES,3
+Medicine,30130,"watson, jd",1962,1960,1953,molecular structure of nucleic acids a structure for deoxyribose nucleic acid,2126466006,YES,2
+Medicine,30130,"watson, jd",1962,1960,1953,the structure of dna,2127674396,YES,2
+Medicine,30130,"watson, jd",1962,1960,1953,genetical implications of the structure of deoxyribonucleic acid,2077423161,YES,2
+Medicine,30131,"crick, fhc",1962,1960,1953,the packing of  helices simple coiled coils,2116441099,YES,1
+Medicine,30131,"crick, fhc",1962,1960,1953,genetical implications of the structure of deoxyribonucleic acid,2077423161,YES,2
+Medicine,30131,"crick, fhc",1962,1960,1953,molecular structure of nucleic acids a structure for deoxyribose nucleic acid,2126466006,YES,2
+Medicine,30132,"vonbekesy, g",1961,1960,1947,the variation of phase along the basilar membrane with sinusoidal vibrations,1987303129,YES,1
+Medicine,30132,"vonbekesy, g",1961,1960,1947,a new audiometer,2059693774,YES,1
+Medicine,30133,"medawar, pb",1960,1960,1951,the technique of free skin grafting in mammals,1929691604,YES,
+Medicine,30134,"burnet, fm",1960,1960,1950,the failure of antibody production in the chick embryo,2092545283,YES,3
+Medicine,30135,"kornberg, a",1959,1950,1958,enzymatic synthesis of deoxyribonucleic acid i preparation of substrates and partial purification of an enzyme from escherichia coli,1569060300,YES,
+Medicine,30136,"ochoa, s",1959,1950,1955,116 isocitric dehydrogenase system tpn from pig heart,2200933292,YES,1
+Medicine,30136,"ochoa, s",1959,1950,1955,124 malic enzyme,2206310676,YES,1
+Medicine,30137,"lederberg, j",1958,1950,1946,gene recombination in escherichia coli,2084267545,YES,2
+Medicine,30138,"beadle, gw",1958,1950,1941,genetic control of biochemical reactions in neurospora,1982444105,YES,2
+Medicine,30139,"tatum, el",1958,1950,1941,genetic control of biochemical reactions in neurospora,1982444105,YES,2
+Medicine,30140,"bovet, d",1957,1950,1937,protective effect of phenolic ethers in the course of histaminic intoxication.,,YES,
+Medicine,30141,"richards, dw",1956,1950,1947,physiological studies of the effects of intermittent positive pressure breathing on cardiac output in man,2254377077,YES,4
+Medicine,30141,"richards, dw",1956,1950,1948,comparison of the fick and dye injection methods of measuring the cardiac output in man,2466595599,YES,11
+Medicine,30141,"richards, dw",1956,1950,1948,pulmonary in sufficiency i physiological classification clinical methods of analysis standard values in normal subjects,2156375589,YES,3
+Medicine,30142,"cournand, a",1956,1950,1948,pulmonary in sufficiency i physiological classification clinical methods of analysis standard values in normal subjects,2156375589,YES,3
+Medicine,30142,"cournand, a",1956,1950,1947,physiological studies of the effects of intermittent positive pressure breathing on cardiac output in man,2254377077,YES,4
+Medicine,30142,"cournand, a",1956,1950,1948,comparison of the fick and dye injection methods of measuring the cardiac output in man,2466595599,YES,11
+Medicine,30143,"theorell, h",1955,1950,1935,the yellow oxidation-enzyme,,YES,
+Medicine,30144,"robbins, fc",1954,1950,1949,cultivation of the lansing strain of poliomyelitis virus in cultures of various human embryonic tissues,2010653647,YES,3
+Medicine,30145,"weller, th",1954,1950,1949,cultivation of the lansing strain of poliomyelitis virus in cultures of various human embryonic tissues,2010653647,YES,3
+Medicine,30146,"enders, jf",1954,1950,1949,cultivation of the lansing strain of poliomyelitis virus in cultures of various human embryonic tissues,2010653647,YES,3
+Medicine,30147,"lipmann, f",1953,1950,1945,a specific micromethod for the determination of acyl phosphates,1547207533,YES,
+Medicine,30148,"krebs, ha",1953,1950,1937,metabolism of ketonic acids in animal tissues,1802786708,YES,2
+Medicine,30149,"waksman, sa",1952,1950,1944,streptomycin a substance exhibiting antibiotic activity against gram positive and gram negative bacteria,2008541744,YES,3
+Medicine,30149,"waksman, sa",1952,1950,1940,bacteriostatic and bactericidal substances produced by a soil actinomyces,2039606811,YES,2
+Medicine,30149,"waksman, sa",1952,1950,1940,the soil as a source of microorganisms antagonistic to disease producing bacteria,1839943429,YES,
+Medicine,30150,"theiler, m",1951,1950,1937,spontaneous encephalomyelitis of mice a new virus disease,2013142695,YES,1
+Medicine,30151,"kendall, ec",1950,1950,1937,atrophy of the adrenal cortex of the rat produced by the administration of large amounts of cortin,2091033683,YES,2
+Medicine,30151,"kendall, ec",1950,1950,1936,the chemistry of crystalline substances isolated from the suprarenal gland,1550095350,YES,
+Medicine,30152,"reichstein, t",1950,1950,1937,desoxy cortico steron 21 oxy progesteron aus 5 3 oxy atio cholensaure,2036574905,YES,2
+Medicine,30152,"reichstein, t",1950,1950,1934,eine ergiebige synthese der l ascorbinsaure c vitamin,2000315362,YES,2
+Medicine,30153,"hench, ps",1950,1950,1949,the effect of a hormone of the adrenal cortex (17-hydroxy-11-dehydrocorticosterone - compound-e) and of pituitary adrenocorticotropic hormone on rheumatoid arthritis - preliminary report,2598622911,YES,4
+Medicine,30154,"hess, wr",1949,1940,1936,hypothalamus und die zentren des autonomen nervensystems physiologie,2009015488,YES,1
+Medicine,30155,"moniz, e",1949,1940,1937,prefrontal leucotomy in the treatment of mental disorders,2068610106,YES,1
+Medicine,30156,"muller, p",1948,1940,1944,the constitution and toxic effect of natural and new synthetic insect killing substances,2310206987,YES,
+Medicine,30157,"cori, gt",1947,1940,1929,glycogen formation in the liver from d and l lactic acid,1792813549,YES,
+Medicine,30158,"houssay, ba",1947,1940,1944,thyroid and metathyroid diabetes,2086536469,YES,1
+Medicine,30158,"houssay, ba",1947,1940,1942,the sensitivity to hypertensin adrenalin and renin of unanesthetized normal adrenalectomized hypophysectomized and nephrectomized dogs,746385147,YES,2
+Medicine,30159,"cori, cf",1947,1940,1929,glycogen formation in the liver from d and l lactic acid,1792813549,YES,
+Medicine,30160,"muller, hj",1946,1940,1928,the production of mutations by x rays,2034764451,YES,1
+Medicine,30160,"muller, hj",1946,1940,1928,the measurement of gene mutation rate in drosophila its high variability and its dependence upon temperature,1756712566,YES,
+Medicine,30161,"chain, e",1945,1940,1941,further observations on penicillin,2038162697,YES,7
+Medicine,30161,"chain, e",1945,1940,1940,penicillin as a chemotherapeutic agent,2090583956,YES,7
+Medicine,30161,"chain, e",1945,1940,1940,an enzyme from bacteria able to destroy penicillin,2018883772,YES,2
+Medicine,30162,"fleming, a",1945,1940,1929,on the antibacterial action of cultures of a penicillium with special reference to their use in the isolation of b influenzae,2177846120,YES,
+Medicine,30163,"florey, hw",1945,1940,1940,penicillin as a chemotherapeutic agent,2090583956,YES,7
+Medicine,30164,"erlanger, j",1944,1940,1925,the nature of conduction of an impulse in the relatively refractory period,2523278764,YES,2
+Medicine,30164,"erlanger, j",1944,1940,1929,the role of fiber size in the establishment of a nerve block by pressure or cocaine,2289231395,YES,2
+Medicine,30164,"erlanger, j",1944,1940,1924,the compound nature of the action current of nerve as disclosed by the cathode ray oscillograph,2533274284,YES,2
+Medicine,30164,"erlanger, j",1944,1940,1922,a study of the action currents of nerve with the cathode ray oscillograph,2472595679,YES,2
+Medicine,30164,"erlanger, j",1944,1940,1927,the role played by the sizes of the constituent fibers of a nerve trunk in determining the form of its action potential wave,2566908111,YES,2
+Medicine,30165,"gasser, hs",1944,1940,1925,the nature of conduction of an impulse in the relatively refractory period,2523278764,YES,2
+Medicine,30165,"gasser, hs",1944,1940,1929,the role of fiber size in the establishment of a nerve block by pressure or cocaine,2289231395,YES,2
+Medicine,30165,"gasser, hs",1944,1940,1924,the compound nature of the action current of nerve as disclosed by the cathode ray oscillograph,2533274284,YES,2
+Medicine,30165,"gasser, hs",1944,1940,1922,a study of the action currents of nerve with the cathode ray oscillograph,2472595679,YES,2
+Medicine,30165,"gasser, hs",1944,1940,1927,the role played by the sizes of the constituent fibers of a nerve trunk in determining the form of its action potential wave,2566908111,YES,2
+Medicine,30166,"doisy, ea",1943,1940,1939,the isolation of vitamins k1 and,2466898066,YES,5
+Medicine,30166,"doisy, ea",1943,1940,1939,the isolation of vitamin k2,2072714604,YES,
+Medicine,30167,"dam, h",1943,1940,1935,the antihaemorrhagic vitamin of the chick occurrence and chemical nature,1967136383,YES,1
+Medicine,30167,"dam, h",1943,1940,1935,the antihaemorrhagic vitamin of the chick,207049882,YES,1
+Medicine,30168,"domagk, g",1939,1930,1935,eine neue klasse von desinfektionsmitteln,2039414773,YES,1
+Medicine,30168,"domagk, g",1939,1930,1935,ein beitrag zur chemotherapie der bakteriellen infektionen,1964719327,YES,1
+Medicine,30169,"heymans, c",1938,1930,1931,"the mechanism of bradycardia caused by nicotine, lobeline, cyanine, sodium sulphur, nitrite and morphine. the asphyctic bradycardia",,YES,
+Medicine,30170,"gyorgyi, as",1937,1930,1932,hexuronic acid as the antiscorbutic factor,1967909777,YES,1
+Medicine,30171,"dale, hh",1936,1930,1914,the action of certain esters and ethers of choline and their relation to muscarine,2260604921,YES,
+Medicine,30172,"loewi, o",1936,1930,1924,uber humorale ubertragbarkeit der herznervenwirkung,1499186559,YES,2
+Medicine,30173,"spemann, h",1935,1930,1924,uber induktion von embryonalanlagen durch implantation artfremder organisatoren,2048075051,YES,2
+Medicine,30174,"minot, gr",1934,1930,1926,treatment of pernicious anemia by a special diet,2032615709,YES,1
+Medicine,30174,"minot, gr",1934,1930,1927,a diet rich in liver in the treatment of pernicious anemia study of one hundred and five cases,2034899879,YES,2
+Medicine,30175,"whipple, gh",1934,1930,1920,blood volume studies iii behavior of large series of dyes introduced into the circulating blood,2777465940,YES,3
+Medicine,30176,"murphy, wp",1934,1930,1926,treatment of pernicious anemia by a special diet,2032615709,YES,1
+Medicine,30176,"murphy, wp",1934,1930,1927,a diet rich in liver in the treatment of pernicious anemia study of one hundred and five cases,2034899879,YES,2
+Medicine,30177,"morgan, th",1933,1930,1916,sex limited inheritance in drosophila,2053878202,YES,1
+Medicine,30178,"adrian, ed",1932,1930,1929,the discharge of impulses in motor nerve fibres part ii the frequency of discharge in reflex and voluntary contractions,2104904223,YES,2
+Medicine,30178,"adrian, ed",1932,1930,1928,the discharge of impulses in motor nerve fibres part i impulses in single fibres of the phrenic nerve,2011803983,YES,2
+Medicine,30179,"warburg, o",1931,1930,1928,uber die geschwindigkeit der photochemischen kohlensaurezersetzung in lebenden zellen ii,1593702539,YES,1
+Medicine,30179,"warburg, o",1931,1930,1928,uber die wirkung des kohlenoxyds auf den stoffwechsel der hefe,14753086,YES,1
+Medicine,30180,"hopkins, fg",1929,1920,1912,feeding experiments illustrating the importance of accessory factors in normal dietaries,2059685491,YES,1
+Medicine,30181,"nicolle, c",1928,1920,1909,experimental reproduction of exanthematic typhus in the monkey,,YES,
+Medicine,30181,"nicolle, c",1928,1920,1909,experiemntal transmission of the exanthematic typhus by the body louse.,,YES,
+Medicine,30182,"einthoven, w",1924,1920,1903,ein neues galvanometer,1967506984,YES,1
+Medicine,30183,"macleod, jjr",1923,1920,1921,The internal secretion of the pancreas,2112366494,YES,2
+Medicine,30184,"banting, fg",1923,1920,1922,the internal secretion of the pancreas,2112366494,YES,2
+Medicine,30184,"banting, fg",1923,1920,1922,pancreatic extracts in the treatment of diabetes mellitus,176352299,YES,
+Medicine,30185,"meyerhof, o",1922,1920,1919,uber die atmung der froschmuskulatur,2073406286,YES,1
+Medicine,30186,"hill, av",1922,1920,1910,a new mathematical treatment of changes of ionic concentration in muscle and nerve under the action of electric currents with a theory as to their mode of excitation,1969031193,YES,1
+Medicine,30186,"hill, av",1922,1920,1913,the combinations of haemoglobin with oxygen and with carbon monoxide i,2242726375,YES,1
+Medicine,30187,"krogh, a",1920,1920,1919,the rate of diffusion of gases through animal tissues with some remarks on the coefficient of invasion,1994652225,YES,1
+Medicine,30187,"krogh, a",1920,1920,1913,the regulation of respiration and circulation during the initial stages of muscular work,2079512683,YES,2
+Medicine,30187,"krogh, a",1920,1920,1919,the supply of oxygen to the tissues and the regulation of the capillary circulation,2110457661,YES,1
+Medicine,30187,"krogh, a",1920,1920,1919,the number and distribution of capillaries in muscles with calculations of the oxygen pressure head necessary for supplying the tissue,2109393326,YES,1
+Medicine,30188,charles robert richet,1913,1910,1902,the anaphylactic effect of certain venoms,,YES,
+Medicine,30188,charles robert richet,1913,1910,1902,the anaphylactic effects of the actinotoxin on the arterial pressure,,YES,
+Medicine,30188,charles robert richet,1913,1910,1902,the physiological effects of the poison of fisher strands and tentacles of coelenterata (hypnotoxin),,YES,
+Medicine,30189,"carrel, a",1912,1910,1906,results of the biterminal transplantation of veins,2067983941,YES,2
+Medicine,30189,"carrel, a",1912,1910,1910,viii on the experimental surgery of the thoracic aorta and heart,142463470,YES,1
+Medicine,30189,"carrel, a",1912,1910,1908,results of the transplantation of blood vessels organs and limbs,2052889597,YES,1
+Medicine,30189,"carrel, a",1912,1910,1907,the surgery of blood vessels etc,2294441179,YES,
