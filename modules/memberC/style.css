@@ -2,8 +2,7 @@
  * 成员 C · 社会网络生态：三图水平切换组件
  * ============================================================ */
 
-/* ---- memberA layout rules appended to make memberC shell match memberA ---- */
-.member-a-dashboard {
+.module-c /* scope appended memberA-like rules to module-c only */ .member-a-dashboard {
   width: 100%;
   height: 100%;
   min-height: 0;
@@ -15,10 +14,10 @@
   scrollbar-width: thin;
 }
 
-.member-a-hero,
-.member-a-tabs,
-.member-a-panel,
-.member-a-visual {
+.module-c /* scope appended memberA-like rules to module-c only */ .member-a-hero,
+.module-c .member-a-tabs,
+.module-c .member-a-panel,
+.module-c .member-a-visual {
   border: 1px solid rgba(19, 33, 29, 0.08);
   border-radius: var(--radius-lg);
   background: rgba(255, 250, 240, 0.82);
@@ -26,27 +25,27 @@
   backdrop-filter: blur(18px);
 }
 
-.member-a-hero {
+.module-c .member-a-hero {
   display: block;
   gap: 0.75rem;
   align-items: center;
   padding: clamp(0.62rem, 1.2vw, 0.9rem);
 }
 
-.member-a-hero h2 {
+.module-c .member-a-hero h2 {
   margin: 0.42rem 0 0;
   font-size: clamp(1.45rem, 2.25vw, 2.35rem);
   line-height: 1.08;
 }
 
-.member-a-tabs {
+.module-c .member-a-tabs {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
   padding: 0.38rem;
 }
 
-.member-a-tab {
+.module-c .member-a-tab {
   min-height: 2.3rem;
   border: 0;
   border-radius: 12px;
@@ -59,12 +58,12 @@
   transition: background 0.25s var(--ease-out), color 0.25s var(--ease-out), transform 0.25s var(--ease-out);
 }
 
-.member-a-tab.is-active {
+.module-c .member-a-tab.is-active {
   color: #fffaf0;
   background: linear-gradient(135deg, #1d3f36, #d25d3d);
 }
 
-.member-a-content {
+.module-c .member-a-content {
   min-height: 0;
   height: auto;
   max-height: none;
@@ -80,7 +79,7 @@
   align-items: stretch;
 }
 
-.member-a-panel {
+.module-c .member-a-panel {
   min-height: 0;
   height: fit-content;
   max-height: 100%;
@@ -91,7 +90,7 @@
   overflow: hidden;
 }
 
-.member-c-info {
+.module-c .member-c-info {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -99,7 +98,7 @@
   min-width: 0;
 }
 
-.member-a-visual {
+.module-c .member-a-visual {
   align-self: start;
   min-height: 0 !important;
   max-height: none !important;
@@ -109,11 +108,11 @@
   background: rgba(255, 255, 255, 0.86);
 }
 
-.member-c-chart-panel {
+.module-c .member-c-chart-panel {
   min-width: 0;
 }
 
-/* end appended memberA rules */
+/* end appended memberA rules (now scoped under .module-c) */
 
 .mc-root {
   display: flex;
