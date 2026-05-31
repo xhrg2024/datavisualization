@@ -1,22 +1,86 @@
-<section id="section-alluvial" class="page page-module module-d" data-page="alluvial" data-title="破壁 · 他们在研究什么？" data-module="alluvial" data-data-file="./data/memberD_data.json">
-  <div class="page-grid module-grid">
-    <div class="page-copy">
-      <p class="eyebrow eyebrow--rose">成员 D · 主题演化</p>
-      <h2>破壁 · 他们在研究什么？</h2>
-      <p class="lede">
-        追踪百年间诺奖研究主题的漂移与演化，观察传统学科与微观主题的错位、交叉与重组，讲清知识疆域如何被不断打破与重绘。
+<section id="section-alluvial" class="page page-module module-d" data-page="alluvial" data-title="破壁 · 他们在研究什么？" data-module="alluvial" data-data-file="./data/memberD/memberD_data.json">
+  <div class="member-d-dashboard">
+    <header class="member-d-hero">
+      <div>
+        <p class="eyebrow eyebrow--rose">成员 D · 知识疆域演化</p>
+        <h2>破壁 · 他们在研究什么？</h2>
+        <p>
+          从传统诺奖学科进入 OpenAlex 微观主题，观察科研前沿如何在数十年间生长、迁移，并越过学科边界。
+        </p>
+      </div>
+      <div class="member-d-source-note">
+        <span>数据口径</span>
+        <strong>诺奖得主论文记录 × OpenAlex Topics</strong>
+        <small>进入本章节后按需读取；切换学科时增量加载。</small>
+      </div>
+    </header>
+
+    <div class="member-d-toolbar">
+      <div class="member-d-tabs" role="tablist" aria-label="成员 D 可视化视图">
+        <button class="member-d-tab is-active" type="button" role="tab" aria-selected="true" data-d-view="evolution">01 · 前沿演化</button>
+        <button class="member-d-tab" type="button" role="tab" aria-selected="false" data-d-view="bridges">02 · 学科破壁</button>
+        <button class="member-d-tab" type="button" role="tab" aria-selected="false" data-d-view="breadth">03 · 得主扩散度</button>
+      </div>
+
+      <div class="member-d-filter" data-d-discipline-panel>
+        <span>诺奖学科</span>
+        <div class="member-d-segmented" role="group" aria-label="选择诺奖学科">
+          <button type="button" data-d-discipline="Physics">物理</button>
+          <button type="button" data-d-discipline="Chemistry">化学</button>
+          <button type="button" class="is-active" data-d-discipline="Medicine">医学</button>
+        </div>
+      </div>
+
+      <label class="member-d-period" data-d-period-panel>
+        <span>观察窗口</span>
+        <select data-d-period>
+          <option value="all">1900 年以来</option>
+          <option value="early">1900–1949</option>
+          <option value="middle">1950–1989</option>
+          <option value="recent">1990–2019</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="member-d-narrative" aria-label="成员 D 阅读路径">
+      <strong>阅读路径</strong>
+      <span>01 · 先看主题如何随时间迁移</span>
+      <i>→</i>
+      <span>02 · 再看主题如何跨越传统学科</span>
+      <i>→</i>
+      <span>03 · 最后回到得主的聚焦与扩散</span>
+    </div>
+
+    <div class="member-d-content">
+      <aside class="member-d-panel">
+        <div class="member-d-kpis" data-d-kpis></div>
+        <div class="member-d-reading" data-d-reading></div>
+      </aside>
+
+      <div class="member-d-visual">
+        <div class="member-d-figure-head">
+          <div>
+            <span data-d-kicker>主题河流 · MEDICINE</span>
+            <p class="member-d-question"><b>本图回答的问题</b><strong data-d-question>01 回答：微观主题如何随年代更替？</strong></p>
+            <h3 data-d-chart-title>微观主题如何随时代更替？</h3>
+          </div>
+          <p data-d-caption>面积表示一个主题在各年代主主题记录中的占比。</p>
+        </div>
+        <div class="member-d-chart" data-chart-target aria-label="成员 D 主题演化图"></div>
+        <p class="member-d-takeaway" data-d-takeaway></p>
+        <div class="member-d-status" data-d-status role="status" aria-live="polite">
+          <span class="member-d-status__dot"></span>
+          <span data-d-status-text>进入本章节后读取真实论文数据。</span>
+          <span data-d-status-progress></span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="member-d-summary">
+      <strong>模块总结</strong>
+      <p>
+        本模块并不评价诺奖得主的高低，而是借助 OpenAlex 微观主题重新观察诺奖论文。传统的物理、化学与医学分类只是外层框架；真实研究主题持续迁移，并在部分方向上交叉汇合。知识破壁并非突然发生，而是在长期累积、扩散与跨学科流入中逐渐形成。
       </p>
-      <div class="story-brief">
-        <span>学科与主题映射</span>
-        <span>热点兴衰流向</span>
-        <span>跨学科破壁程度</span>
-        <span>主题聚合与分散</span>
-      </div>
-    </div>
-    <div class="page-visual chart-visual">
-      <div class="chart-frame">
-        <div class="chart-container" data-chart-target aria-label="Alluvial chart container"></div>
-      </div>
-    </div>
+    </footer>
   </div>
 </section>
