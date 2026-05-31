@@ -14,6 +14,7 @@ mimetypes.add_type('image/png', '.png')
 mimetypes.add_type('image/jpeg', '.jpg')
 mimetypes.add_type('image/webp', '.webp')
 mimetypes.add_type('text/csv', '.csv')
+mimetypes.add_type('image/svg+xml', '.svg')
 
 PORT = 8080
 Handler = http.server.SimpleHTTPRequestHandler

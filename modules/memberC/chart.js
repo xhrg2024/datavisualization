@@ -108,8 +108,8 @@ export class NetworkChart {
     this._resizeObserver = null;
     this.page = this.root.closest('.page-module') || document;
     this.summary = this.page.querySelector('[data-mc-summary]');
-    this.detailPanel = this.page.querySelector('[data-mc-fig2-detail]');
-    this.authorPanel = this.page.querySelector('[data-mc-fig2-author]');
+    this.detailPanel = d3.select(this.page.querySelector('[data-mc-fig2-detail]'));
+    this.authorPanel = d3.select(this.page.querySelector('[data-mc-fig2-author]'));
 
     // 浮动提示框（绑定在 body 上，使用 pageX/pageY 定位）
     this.tip = d3.select('body').append('div').attr('class', 'mc-tooltip').style('opacity', 0);
@@ -171,13 +171,13 @@ export class NetworkChart {
 
   updateRightRail(index) {
     const showDetails = index === 1;
-    if (this.detailPanel) {
-      this.detailPanel.style.display = showDetails ? '' : 'none';
-      if (!showDetails) this.detailPanel.innerHTML = '';
+    if (this.detailPanel && !this.detailPanel.empty()) {
+      this.detailPanel.style('display', showDetails ? '' : 'none');
+      if (!showDetails) this.detailPanel.html('');
     }
-    if (this.authorPanel) {
-      this.authorPanel.style.display = showDetails ? '' : 'none';
-      if (!showDetails) this.authorPanel.innerHTML = '';
+    if (this.authorPanel && !this.authorPanel.empty()) {
+      this.authorPanel.style('display', showDetails ? '' : 'none');
+      if (!showDetails) this.authorPanel.html('');
     }
   }
 
