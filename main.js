@@ -1,4 +1,4 @@
-./data/memberB_data.jsonimport { MacroChart } from './modules/memberA/chart.js';
+import { MacroChart } from './modules/memberA/chart.js';
 import { TrajectoryChart } from './modules/memberB/chart.js';
 import { NetworkChart } from './modules/memberC/chart.js';
 import { AlluvialChart } from './modules/memberD/chart.js';
