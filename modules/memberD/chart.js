@@ -9,18 +9,15 @@ const DISCIPLINES = ['Physics', 'Chemistry', 'Medicine'];
 const DISCIPLINE_META = {
   Physics: {
     label: '物理',
-    color: '#4f7890',
-    file: './data/memberD/Physics publication record_openalex_enriched.csv'
+    color: '#4f7890'
   },
   Chemistry: {
     label: '化学',
-    color: '#b56c43',
-    file: './data/memberD/Chemistry publication record_openalex_enriched.csv'
+    color: '#b56c43'
   },
   Medicine: {
     label: '医学',
-    color: '#66875e',
-    file: './data/memberD/Medicine publication record_openalex_enriched.csv'
+    color: '#66875e'
   }
 };
 
@@ -65,235 +62,23 @@ function fitLabel(value, length = 38) {
   return text.length > length ? `${text.slice(0, length - 1)}…` : text;
 }
 
-function toNumber(value, fallback = 0) {
-  const number = Number.parseFloat(value);
-  return Number.isFinite(number) ? number : fallback;
-}
-
-function isTrue(value) {
-  return /^(true|yes|1)$/i.test(String(value ?? '').trim());
-}
-
 function increment(map, key, amount = 1) {
   if (!key) return;
   map.set(key, (map.get(key) ?? 0) + amount);
 }
 
-function splitTopics(value) {
-  return Array.from(new Set(
-    String(value ?? '')
-      .split(/\s*;\s*/)
-      .map((topic) => topic.trim())
-      .filter(Boolean)
-  ));
-}
-
-function getField(row, index, name) {
-  const position = index.get(name);
-  return position === undefined ? '' : row[position];
-}
-
-function topicEntropy(topicCounts) {
-  const total = d3.sum(topicCounts.values());
-  if (total <= 0 || topicCounts.size <= 1) return 0;
-  const entropy = d3.sum(Array.from(topicCounts.values()), (count) => {
-    const share = count / total;
-    return -share * Math.log(share);
-  });
-  const evenness = entropy / Math.log(topicCounts.size);
-  const rangeFactor = Math.min(1, Math.log1p(topicCounts.size) / Math.log(24));
-  return evenness * rangeFactor;
-}
-
-class CsvStreamParser {
-  constructor(onRow) {
-    this.onRow = onRow;
-    this.field = '';
-    this.row = [];
-    this.inQuotes = false;
-    this.pendingQuote = false;
-    this.started = false;
-  }
-
-  feed(text, final = false) {
-    let cursor = 0;
-    let chunk = text;
-
-    if (!this.started) {
-      chunk = chunk.replace(/^\uFEFF/, '');
-      this.started = true;
-    }
-
-    if (this.pendingQuote) {
-      if (chunk[0] === '"') {
-        this.field += '"';
-        cursor = 1;
-      } else {
-        this.inQuotes = false;
-      }
-      this.pendingQuote = false;
-    }
-
-    for (; cursor < chunk.length; cursor += 1) {
-      const char = chunk[cursor];
-
-      if (this.inQuotes) {
-        if (char !== '"') {
-          this.field += char;
-          continue;
-        }
-
-        if (cursor + 1 < chunk.length) {
-          if (chunk[cursor + 1] === '"') {
-            this.field += '"';
-            cursor += 1;
-          } else {
-            this.inQuotes = false;
-          }
-        } else if (final) {
-          this.inQuotes = false;
-        } else {
-          this.pendingQuote = true;
-        }
-        continue;
-      }
-
-      if (char === '"') {
-        this.inQuotes = true;
-      } else if (char === ',') {
-        this.row.push(this.field);
-        this.field = '';
-      } else if (char === '\n') {
-        this.emitRow();
-      } else if (char !== '\r') {
-        this.field += char;
-      }
-    }
-
-    if (final) {
-      if (this.pendingQuote) {
-        this.inQuotes = false;
-        this.pendingQuote = false;
-      }
-      if (this.field.length || this.row.length) {
-        this.emitRow();
-      }
-    }
-  }
-
-  emitRow() {
-    this.row.push(this.field);
-    this.field = '';
-    if (this.row.length > 1 || this.row[0] !== '') {
-      this.onRow(this.row);
-    }
-    this.row = [];
-  }
-}
-
-function createAggregate(discipline) {
+function hydrateAggregate(discipline, aggregate) {
   return {
+    ...aggregate,
     discipline,
-    rows: 0,
-    enrichedRows: 0,
-    topicRows: 0,
-    prizePapers: 0,
-    top10Papers: 0,
-    citations: 0,
-    minYear: Infinity,
-    maxYear: -Infinity,
-    topicCounts: new Map(),
-    primaryCounts: new Map(),
-    primaryByDecade: new Map(),
-    rowsByDecade: new Map(),
-    laureateMap: new Map(),
-    laureates: [],
-    ready: false
+    topicCounts: new Map(aggregate.topicCounts ?? []),
+    primaryByDecade: new Map(
+      Object.entries(aggregate.primaryByDecade ?? {})
+        .map(([decade, counts]) => [Number(decade), new Map(counts)])
+    ),
+    laureates: aggregate.laureates ?? [],
+    ready: true
   };
-}
-
-function addRowToAggregate(aggregate, row, index) {
-  aggregate.rows += 1;
-
-  const openAlexId = getField(row, index, 'openalex_id');
-  if (!openAlexId) return;
-  aggregate.enrichedRows += 1;
-
-  const year = Math.trunc(toNumber(
-    getField(row, index, 'openalex_publication_year')
-      || getField(row, index, 'Pub year'),
-    NaN
-  ));
-  const validYear = Number.isFinite(year) && year >= 1800 && year <= 2030;
-  const decade = validYear ? Math.floor(year / 10) * 10 : null;
-  const citations = Math.max(0, toNumber(getField(row, index, 'openalex_cited_by_count'), 0));
-  const top10 = isTrue(getField(row, index, 'openalex_top_10_percent'));
-  const prizePaper = isTrue(getField(row, index, 'Is prize-winning paper'));
-  const primaryTopic = getField(row, index, 'openalex_primary_topic').trim();
-  const topics = splitTopics(getField(row, index, 'openalex_topics'));
-  if (primaryTopic && !topics.includes(primaryTopic)) topics.unshift(primaryTopic);
-
-  aggregate.citations += citations;
-  if (top10) aggregate.top10Papers += 1;
-  if (prizePaper) aggregate.prizePapers += 1;
-
-  if (validYear) {
-    aggregate.minYear = Math.min(aggregate.minYear, year);
-    aggregate.maxYear = Math.max(aggregate.maxYear, year);
-    increment(aggregate.rowsByDecade, decade);
-  }
-
-  if (topics.length) {
-    aggregate.topicRows += 1;
-    topics.forEach((topic) => increment(aggregate.topicCounts, topic));
-  }
-
-  if (primaryTopic) {
-    increment(aggregate.primaryCounts, primaryTopic);
-    if (validYear) {
-      if (!aggregate.primaryByDecade.has(decade)) {
-        aggregate.primaryByDecade.set(decade, new Map());
-      }
-      increment(aggregate.primaryByDecade.get(decade), primaryTopic);
-    }
-  }
-
-  const laureateId = getField(row, index, 'Laureate ID').trim();
-  if (!laureateId) return;
-
-  if (!aggregate.laureateMap.has(laureateId)) {
-    aggregate.laureateMap.set(laureateId, {
-      id: laureateId,
-      name: getField(row, index, 'Laureate name').trim() || laureateId,
-      papers: 0,
-      citations: 0,
-      top10Papers: 0,
-      topics: new Map()
-    });
-  }
-
-  const laureate = aggregate.laureateMap.get(laureateId);
-  laureate.papers += 1;
-  laureate.citations += citations;
-  if (top10) laureate.top10Papers += 1;
-  topics.forEach((topic) => increment(laureate.topics, topic));
-}
-
-function finalizeAggregate(aggregate) {
-  aggregate.laureates = Array.from(aggregate.laureateMap.values()).map((laureate) => {
-    const sortedTopics = Array.from(laureate.topics.entries()).sort((a, b) => d3.descending(a[1], b[1]));
-    return {
-      ...laureate,
-      topicCount: laureate.topics.size,
-      topicAnnotations: d3.sum(laureate.topics.values()),
-      diversity: topicEntropy(laureate.topics),
-      topTopic: sortedTopics[0]?.[0] ?? '未标注主题',
-      topTopicShare: sortedTopics.length ? sortedTopics[0][1] / d3.sum(sortedTopics, (item) => item[1]) : 0,
-      top10Rate: laureate.papers ? laureate.top10Papers / laureate.papers : 0
-    };
-  });
-  aggregate.ready = true;
-  return aggregate;
 }
 
 export class AlluvialChart {
@@ -306,12 +91,8 @@ export class AlluvialChart {
     this.view = 'evolution';
     this.discipline = 'Medicine';
     this.period = 'all';
-    this.baseRows = [];
     this.baseCounts = new Map();
     this.aggregates = new Map();
-    this.loading = new Map();
-    this.progress = new Map();
-    this.renderQueued = false;
 
     this.kpis = this.page?.querySelector('[data-d-kpis]');
     this.reading = this.page?.querySelector('[data-d-reading]');
@@ -383,22 +164,23 @@ export class AlluvialChart {
     if (this.disciplinePanel) this.disciplinePanel.hidden = this.view === 'bridges';
   }
 
-  async loadData() {
+  async loadData(dataPath = './data/memberD_processed.json') {
     try {
-      this.baseRows = await d3.csv('./data/memberD/nobel.csv', d3.autoType);
-      this.baseCounts = new Map(d3.rollups(
-        this.baseRows.filter((row) => DISCIPLINES.includes(row.category)),
-        (rows) => rows.length,
-        (row) => row.category
-      ));
-      this.updateProgressStatus();
+      const data = await d3.json(dataPath);
+      if (!data?.disciplines) throw new Error('Processed Member D data is missing disciplines.');
+      this.baseCounts = new Map(Object.entries(data.baseCounts ?? {}));
+      this.aggregates = new Map(DISCIPLINES.map((discipline) => [
+        discipline,
+        hydrateAggregate(discipline, data.disciplines[discipline] ?? {})
+      ]));
+      this.setStatus('ready', '已载入轻量化论文主题聚合数据。');
     } catch (error) {
-      console.warn('Member D base table could not be loaded:', error);
-      this.setStatus('error', '基础诺奖表读取失败；论文主题图仍可单独加载。');
+      console.error('Member D processed data load failed:', error);
+      this.setStatus('error', '轻量化论文主题数据读取失败。');
+      this.renderPlaceholder('D 模块数据读取失败。', '请确认 data/memberD_processed.json 已随仓库提交。');
     }
 
     this.render();
-    this.activateIfNeeded();
     return this;
   }
 
@@ -415,107 +197,7 @@ export class AlluvialChart {
 
   activateIfNeeded() {
     if (!this.page?.classList.contains('is-active')) return;
-    if (this.view === 'bridges') {
-      DISCIPLINES.forEach((discipline) => this.loadDiscipline(discipline));
-    } else {
-      this.loadDiscipline(this.discipline);
-    }
-  }
-
-  async loadDiscipline(discipline) {
-    if (this.aggregates.has(discipline)) return this.aggregates.get(discipline);
-    if (this.loading.has(discipline)) return this.loading.get(discipline);
-
-    const promise = this.aggregateCsv(discipline)
-      .then((aggregate) => {
-        this.aggregates.set(discipline, aggregate);
-        this.loading.delete(discipline);
-        this.progress.set(discipline, { state: 'ready', loaded: 1, total: 1 });
-        this.updateProgressStatus();
-        this.queueRender();
-        return aggregate;
-      })
-      .catch((error) => {
-        this.loading.delete(discipline);
-        this.progress.set(discipline, { state: 'error', loaded: 0, total: 1 });
-        this.updateProgressStatus();
-        console.error(`Member D ${discipline} data load failed:`, error);
-        this.renderPlaceholder(`${DISCIPLINE_META[discipline].label}论文表读取失败。`);
-        return null;
-      });
-
-    this.loading.set(discipline, promise);
-    return promise;
-  }
-
-  async aggregateCsv(discipline) {
-    const aggregate = createAggregate(discipline);
-    const meta = DISCIPLINE_META[discipline];
-    const response = await fetch(meta.file, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}: ${meta.file}`);
-
-    const total = Number(response.headers.get('content-length')) || 0;
-    const decoder = new TextDecoder('utf-8');
-    let loaded = 0;
-    let lastProgressAt = 0;
-    let index = null;
-
-    this.progress.set(discipline, { state: 'loading', loaded, total });
-    this.updateProgressStatus();
-
-    const parser = new CsvStreamParser((row) => {
-      if (!index) {
-        index = new Map(row.map((name, position) => [name.trim(), position]));
-        return;
-      }
-      addRowToAggregate(aggregate, row, index);
-    });
-
-    if (!response.body) {
-      const text = await response.text();
-      loaded = text.length;
-      parser.feed(text, true);
-    } else {
-      const reader = response.body.getReader();
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        loaded += value.byteLength;
-        parser.feed(decoder.decode(value, { stream: true }));
-        const now = performance.now();
-        if (now - lastProgressAt > 140) {
-          this.progress.set(discipline, { state: 'loading', loaded, total });
-          this.updateProgressStatus();
-          lastProgressAt = now;
-        }
-      }
-      parser.feed(decoder.decode(), true);
-    }
-
-    return finalizeAggregate(aggregate);
-  }
-
-  updateProgressStatus() {
-    const loading = Array.from(this.progress.entries()).filter(([, item]) => item.state === 'loading');
-    const errors = Array.from(this.progress.entries()).filter(([, item]) => item.state === 'error');
-
-    if (loading.length) {
-      const label = loading.map(([discipline]) => DISCIPLINE_META[discipline].label).join('、');
-      const loaded = d3.sum(loading, ([, item]) => item.loaded);
-      const total = d3.sum(loading, ([, item]) => item.total);
-      const percent = total ? loaded / total : 0;
-      this.setStatus('loading', `正在读取${label}论文记录`, total ? PERCENT(percent) : '');
-      return;
-    }
-
-    if (errors.length) {
-      const label = errors.map(([discipline]) => DISCIPLINE_META[discipline].label).join('、');
-      this.setStatus('error', `${label}论文表读取失败。`);
-      return;
-    }
-
-    const ready = Array.from(this.aggregates.keys()).map((discipline) => DISCIPLINE_META[discipline].label);
-    this.setStatus('ready', ready.length ? `已载入：${ready.join('、')}论文主题。` : '等待读取论文主题。');
+    this.render();
   }
 
   setStatus(state, text, progress = '') {
@@ -523,15 +205,6 @@ export class AlluvialChart {
     this.status?.classList.toggle('is-error', state === 'error');
     if (this.statusText) this.statusText.textContent = text;
     if (this.statusProgress) this.statusProgress.textContent = progress;
-  }
-
-  queueRender() {
-    if (this.renderQueued) return;
-    this.renderQueued = true;
-    requestAnimationFrame(() => {
-      this.renderQueued = false;
-      this.render();
-    });
   }
 
   prepareSvg(height = CHART_HEIGHT) {
@@ -803,7 +476,7 @@ export class AlluvialChart {
     this.setPanel(
       [
         { value: NUMBER(aggregate.topicRows), label: '带主题论文' },
-        { value: NUMBER(aggregate.primaryCounts.size), label: 'OpenAlex 主主题数' },
+        { value: NUMBER(aggregate.primaryTopicCount), label: 'OpenAlex 主主题数' },
         { value: this.baseCounts.get(this.discipline) ?? '—', label: `${meta.label}奖得主记录数` },
         { value: `${aggregate.minYear}–${aggregate.maxYear}`, label: '论文时间跨度' }
       ],
