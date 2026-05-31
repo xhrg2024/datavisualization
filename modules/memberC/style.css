@@ -392,6 +392,41 @@
   line-height: 1.4;
 }
 
+.mc-fig2-detail-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.55rem;
+}
+
+.mc-fig2-detail-head h3 {
+  margin: 0;
+}
+
+.mc-fig2-detail-head p {
+  margin: 0.25rem 0 0;
+  color: #5a6a62;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.mc-fig2-detail-clear {
+  flex: 0 0 auto;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(53, 94, 75, 0.26);
+  border-radius: 999px;
+  background: rgba(53, 94, 75, 0.06);
+  color: #355e4b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mc-fig2-detail-clear:hover {
+  background: rgba(53, 94, 75, 0.12);
+}
+
 .mc-fig2-author-head {
   display: flex;
   align-items: center;

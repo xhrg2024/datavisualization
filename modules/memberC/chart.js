@@ -612,12 +612,28 @@ export class NetworkChart {
         </div>`);
     }
 
+    function renderDetailPlaceholder() {
+      currentPair = null;
+      self.detailPanel.html(`
+        <div class="mc-fig2-detail-head">
+          <h3>论文详情</h3>
+          <p>点击上方任意关系路径，查看样例论文信息。</p>
+        </div>`);
+    }
+
     function renderDetail(pair) {
       currentPair = pair;
       const paperTopN = Math.max(1, parseNumber(self.sel('[data-mc-fig2-paper-topn]').node().value) || 5);
       const papers = (pair.sample_papers || []).slice().sort((a, b) => (parseNumber(b.score) || 0) - (parseNumber(a.score) || 0)).slice(0, paperTopN);
       if (papers.length === 0) {
-        self.detailPanel.html(`<h3>${pair.laureate_a} ↔ ${pair.laureate_b}</h3><p>合作强度：<strong>${pair.coop_weight_sum}</strong></p><p>暂无样例论文。</p>`);
+        self.detailPanel.html(`
+          <div class="mc-fig2-detail-head">
+            <h3>${pair.laureate_a} ↔ ${pair.laureate_b}</h3>
+            <button type="button" class="mc-fig2-detail-clear" data-mc-fig2-detail-clear>收起详情</button>
+          </div>
+          <p>合作强度：<strong>${pair.coop_weight_sum}</strong></p><p>暂无样例论文。</p>`);
+        const clearBtn = self.detailPanel.node().querySelector('[data-mc-fig2-detail-clear]');
+        clearBtn?.addEventListener('click', () => { renderDetailPlaceholder(); });
         return;
       }
       const html = papers.map((p) => {
@@ -638,7 +654,14 @@ export class NetworkChart {
           ${abstract ? `<div class="paper-abstract"><strong>摘要：</strong>${abstract}</div>` : ''}
         </li>`;
       }).join('');
-      self.detailPanel.html(`<h3>${pair.laureate_a} ↔ ${pair.laureate_b}</h3><p>合作篇数：<strong>${pair.coop_weight_sum}</strong>，展示评分最高的前 <strong>${paperTopN}</strong> 篇论文。</p><p>样例论文：</p><ul>${html}</ul>`);
+      self.detailPanel.html(`
+        <div class="mc-fig2-detail-head">
+          <h3>${pair.laureate_a} ↔ ${pair.laureate_b}</h3>
+          <button type="button" class="mc-fig2-detail-clear" data-mc-fig2-detail-clear>收起详情</button>
+        </div>
+        <p>合作篇数：<strong>${pair.coop_weight_sum}</strong>，展示评分最高的前 <strong>${paperTopN}</strong> 篇论文。</p><p>样例论文：</p><ul>${html}</ul>`);
+      const clearBtn = self.detailPanel.node().querySelector('[data-mc-fig2-detail-clear]');
+      clearBtn?.addEventListener('click', () => { renderDetailPlaceholder(); });
     }
 
     function renderAuthorDetail(node) {
@@ -974,7 +997,7 @@ export class NetworkChart {
           renderAuthorDetail(d);
         });
 
-      self.detailPanel.html('<h3>论文详情</h3><p>点击上方任意关系路径，查看评分最高的样例论文。</p>');
+      renderDetailPlaceholder();
       renderAuthorPlaceholder();
 
       if (selected[0]) {
