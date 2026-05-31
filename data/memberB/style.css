@@ -1,0 +1,319 @@
+/* 成员B - 学术生命周期演进 样式 */
+
+.member-b-dashboard {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: clamp(0.45rem, 1vw, 0.7rem);
+  overflow-y: auto;
+  padding-right: 0.2rem;
+  scrollbar-width: thin;
+}
+
+.member-b-hero,
+.member-b-tabs,
+.member-b-panel,
+.member-b-visual {
+  border: 1px solid rgba(19, 33, 29, 0.08);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 240, 0.82);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.member-b-hero {
+  display: block;
+  gap: 0.75rem;
+  align-items: center;
+  padding: clamp(0.62rem, 1.2vw, 0.9rem);
+}
+
+.member-b-hero h2 {
+  margin: 0.42rem 0 0;
+  font-size: clamp(1.45rem, 2.25vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.member-b-hero .lede {
+  font-size: clamp(0.88rem, 1vw, 1rem);
+  line-height: 1.62;
+}
+
+.member-b-tabs {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.38rem;
+}
+
+.member-b-tab {
+  min-height: 2.3rem;
+  border: 0;
+  border-radius: 12px;
+  color: #263b33;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: background 0.25s var(--ease-out), color 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+
+.member-b-tab:hover {
+  transform: translateY(-1px);
+  background: rgba(53, 94, 75, 0.08);
+}
+
+.member-b-tab.is-active {
+  color: #fffaf0;
+  background: linear-gradient(135deg, #d25d3d, #d8a83e);
+}
+
+.member-b-content {
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1fr);
+  gap: clamp(0.6rem, 1.25vw, 0.9rem);
+  align-items: start;
+  overflow: visible;
+  flex: 1;
+}
+
+.member-b-panel {
+  min-height: 0;
+  height: fit-content;
+  max-height: 100%;
+  padding: clamp(0.75rem, 1.25vw, 1rem);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0.85rem;
+  overflow: hidden;
+}
+
+.member-b-kpis {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.member-b-kpi {
+  min-height: 3.72rem;
+  border-radius: 12px;
+  padding: 0.68rem;
+  background: linear-gradient(145deg, rgba(255, 250, 240, 0.92), rgba(249, 239, 226, 0.74));
+  border: 1px solid rgba(19, 33, 29, 0.08);
+}
+
+.member-b-kpi strong {
+  display: block;
+  font-size: clamp(1.08rem, 1.55vw, 1.48rem);
+  line-height: 1;
+  color: #163329;
+}
+
+.member-b-kpi span {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.member-b-notes {
+  min-height: 0;
+  overflow: auto;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.member-b-notes h3 {
+  margin: 0 0 0.42rem;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.member-b-notes ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.member-b-notes li + li {
+  margin-top: 0.28rem;
+}
+
+.module-b .page-visual.member-b-visual {
+  align-self: start;
+  min-height: calc(100vh - 180px) !important;
+  max-height: none !important;
+  padding: 1.25rem;
+  height: fit-content !important;
+  overflow: visible;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.module-b .member-b-visual .chart-frame {
+  position: relative;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0.35rem;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.module-b .member-b-visual .chart-container.member-b-chart {
+  position: relative;
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: none !important;
+  overflow: visible;
+}
+
+.member-b-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+}
+
+.member-b-svg text {
+  font-family: inherit;
+}
+
+.member-b-axis text {
+  fill: rgba(19, 33, 29, 0.62);
+  font-size: 11px;
+}
+
+.member-b-axis path,
+.member-b-axis line,
+.member-b-grid line {
+  stroke: rgba(19, 33, 29, 0.12);
+}
+
+.member-b-grid path {
+  display: none;
+}
+
+.member-b-title {
+  fill: #14251f;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.member-b-hint {
+  fill: rgba(19, 33, 29, 0.48);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.member-b-section-title {
+  fill: #223a32;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.member-b-subtitle,
+.member-b-label,
+.member-b-small {
+  fill: rgba(19, 33, 29, 0.65);
+  font-size: 11px;
+}
+
+.member-b-label {
+  font-weight: 700;
+  fill: rgba(19, 33, 29, 0.78);
+}
+
+.member-b-line {
+  fill: none;
+  stroke: #ffb35c;
+  stroke-width: 3;
+}
+
+.member-b-area {
+  fill: url(#member-b-area-grad);
+}
+
+.member-b-heat-line {
+  fill: none;
+  stroke: #d25d3d;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.72;
+}
+
+.member-b-bar {
+  transition: opacity 0.2s ease;
+}
+
+.member-b-bar:hover {
+  opacity: 1 !important;
+}
+
+.member-b-ref-label {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.member-b-interaction-layer {
+  fill: transparent;
+  pointer-events: all;
+  cursor: crosshair;
+}
+
+.member-b-tooltip {
+  position: absolute;
+  z-index: 5;
+  max-width: 220px;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  color: #14251f;
+  background: rgba(255, 250, 240, 0.96);
+  border: 1px solid rgba(19, 33, 29, 0.12);
+  box-shadow: 0 12px 28px rgba(26, 41, 34, 0.14);
+  pointer-events: none;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  transition: opacity 0.15s ease;
+}
+
+.member-b-tooltip strong {
+  display: block;
+  margin-bottom: 0.16rem;
+  font-size: 0.84rem;
+}
+
+.member-b-legend text {
+  fill: rgba(19, 33, 29, 0.68);
+  font-size: 10.5px;
+}
+
+@media (max-width: 980px) {
+  .member-b-dashboard {
+    min-height: auto;
+    overflow: auto;
+  }
+
+  .member-b-hero,
+  .member-b-content {
+    grid-template-columns: 1fr;
+  }
+
+  .member-b-tabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .member-b-panel,
+  .member-b-visual {
+    min-height: 360px;
+  }
+}
