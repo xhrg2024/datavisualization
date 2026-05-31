@@ -27,85 +27,7 @@ const PALETTE = {
   paper: 'rgba(255, 250, 240, 0.9)'
 };
 
-const VIEW_COPY = {
-  trajectory: {
-    title: '学术生命周期对齐',
-    notes: [
-      '以每位得主的首篇论文年份为原点（T+0），横轴表示学术年龄，追踪学术产出随时间的变化轨迹。',
-      '主图橙色面积图展示平均年发表量，虚线标注平均获奖学术年龄T+28，说明诺奖级成果需近三十年积累。',
-      '下图展示引用影响力趋势：红色线表示平均引用数，金色虚线表示FWCI（领域加权引用影响力）。',
-      'FWCI反映论文引用相对于同领域同年代论文的平均水平，FWCI>1表示高于平均，<1表示低于平均。',
-      '三学科FWCI差异显著：物理学家最高（11.5），医学家次之（9.5），化学家最低（6.7）。',
-      '这种差异反映了不同学科的引用文化：物理理论工作引用集中，化学实验工作引用分散。'
-    ]
-  },
-  comparison: {
-    title: '获奖前后产出对比',
-    notes: [
-      '堆叠条形图直观展示每位得主获奖前（蓝色）与获奖后（金色）的论文产出对比。',
-      '三学科差异显著：化学家获奖前产出最高（平均167篇），医学居中（92篇），物理最少（68篇）。',
-      '普遍规律：多数得主在获奖前已积累大部分成果，获奖后产出明显下降，降幅约31-43%。',
-      '化学家获奖后下降幅度最大（43%），可能与转向行政职务或大型项目协调有关。',
-      '医学家获奖后下降幅度最小（32%），反映医学研究的持续性特点。',
-      '这一现象揭示：诺贝尔奖更多是对过往卓越成就的肯定，而非对未来产出的激励。'
-    ]
-  },
-  heatmap: {
-    title: '黄金创作期分布',
-    notes: [
-      '三个热力图分别展示物理、化学、医学三学科的创新高峰时空分布，横轴为年代，纵轴为学术年龄。',
-      '颜色深浅表示该时空点的得主数量，越深代表该年代该年龄段处于高峰期的得主越多。',
-      '峰值标注显示各学科产出最集中的年代和年龄段，揭示创新高峰的时空规律。',
-      '化学家高峰最早：多在T+20至T+30年间达到产出峰值，与实验化学的积累特性相关。',
-      '医学家高峰居中：通常在T+25至T+35年间，反映临床医学需要长期实践积累。',
-      '物理学家高峰最晚：常在T+30至T+40年间，说明理论物理突破需要更长时间的深度思考。'
-    ]
-  },
-  evolution: {
-    title: '得主画像演变',
-    notes: [
-      '上图展示1901-2024年间各年代得主平均获奖年龄的演变趋势，可见明显的时代变迁。',
-      '下图展示各年代得主平均论文产出的变化情况，反映科研产出模式的历史演变。',
-      '关键发现：20世纪早期获奖年龄较早（T+22左右），21世纪明显推迟（T+32左右）。',
-      '论文产出在近几十年大幅增长：化学家平均261篇最多，物理学家111篇最少。',
-      '不同学科用不同颜色区分，鼠标悬停可查看具体年代、学科的平均值和得主数量。',
-      '这种演变趋势反映了科研环境的变化：从个人天才时代走向大型团队协作时代。'
-    ]
-  },
-  rhythm: {
-    title: '产出节奏分型',
-    notes: [
-      '上图展示三学科得主产出集中度（Top3年份产出占总产出比例）的分布情况。',
-      '每条横线代表一个学科，圆点代表个体得主，竖线表示该学科的平均集中度。',
-      '集中度反映产出节奏：高集中度表示少数年份爆发式高产，低集中度表示持续稳定产出。',
-      '下图展示典型高集中度与低集中度得主的产出轨迹面积图对比，直观呈现节奏差异。',
-      '学科差异：物理学家更倾向高集中度（突破型），化学家分布较均匀（积累型）。',
-      '这种差异揭示了科学创新的多样性：有的学者靠关键突破成名，有的靠持续积累立足。'
-    ]
-  },
-  cohort: {
-    title: '世代对比分析',
-    notes: [
-      '上图展示不同出生年代、不同学科得主的平均获奖学术年龄热力图，色块颜色深浅表示数值大小。',
-      '下图展示不同出生年代、不同学科得主的平均学术生涯长度热力图，揭示世代间的显著差异。',
-      '横向对比：同一世代不同学科的获奖年龄存在明显差异，化学家平均T+30年，医学家T+29年，物理学家T+26年。',
-      '纵向对比：早期世代获奖年龄较早，现代世代明显推迟，整体平均学术年龄为T+28。',
-      '关键发现：化学家获奖年龄最晚，反映实验化学需要长期积累；物理学家最早，体现理论突破的时效性。',
-      '这种演变揭示了科研制度的历史变迁：从个人天才时代到大型团队协作时代的转变。'
-    ]
-  },
-  radar: {
-    title: '个人差异雷达',
-    notes: [
-      '左图雷达图对比高产组（Top 25%，蓝色实线）与低产组（Bottom 25%，金色虚线）的五维特征。',
-      '五个维度：获奖学术年龄、生涯长度、总引用、获奖前产出、获奖生理年龄，全面刻画学者特征。',
-      '右图散点图展示所有得主的论文产出与引用影响力关系，虚线将散点分为四个象限。',
-      '高产组特征：学术生涯更长（平均55年）、获奖前产出更多（平均451篇）、总引用更高（平均5.7万次）。',
-      '低产组特征：获奖年龄更早（平均T+19年）、学术生涯较短（平均26年），代表早期突破型成功路径。',
-      '这一对比揭示科学创新的多样性：没有唯一的成功模式，广度与深度都能通向诺贝尔奖。'
-    ]
-  }
-};
+// 文字解说已移到 data/memberB/memberB_data.json 的 view_copy 字段中
 
 export class TrajectoryChart {
   constructor(containerSelector, bus) {
@@ -155,7 +77,7 @@ export class TrajectoryChart {
   }
 
   async loadData(url) {
-    const memberData = await fetch(url).then((response) => response.json());
+    const memberData = await fetch(url, { cache: 'no-store' }).then((response) => response.json());
     this.data = memberData;
     this.render();
     return this;
@@ -171,7 +93,7 @@ export class TrajectoryChart {
     this.width = Math.max(620, bounds.width);
     const heights = {
       trajectory: 1050, comparison: 1300, heatmap: 890,
-      evolution: 650, rhythm: 590, cohort: 730, radar: 600
+      evolution: 650, rhythm: 620, cohort: 730, radar: 600
     };
     this.height = heights[this.view] || 820;
     this.svg.attr('viewBox', `0 0 ${this.width} ${this.height}`).style('height', `${this.height}px`);
@@ -191,7 +113,9 @@ export class TrajectoryChart {
   }
 
   renderPanel() {
-    const copy = VIEW_COPY[this.view];
+    // 从数据中读取文字解说
+    const viewCopy = this.data?.view_copy || {};
+    const copy = viewCopy[this.view] || { title: '', notes: [] };
     const kpis = this.getKpis();
     if (this.kpis) {
       this.kpis.innerHTML = kpis.map((item) => `
@@ -322,7 +246,7 @@ export class TrajectoryChart {
         }
         yearBuckets[year].papers += t.papers;
         yearBuckets[year].count += 1;
-        if (t.citations != null) yearBuckets[year].citations += t.citations;
+        if (t.avg_citations != null) yearBuckets[year].citations += t.avg_citations;
         if (t.avg_fwci != null) yearBuckets[year].fwci += t.avg_fwci;
       });
     });
@@ -1577,10 +1501,18 @@ export class TrajectoryChart {
     const laureates = this.data.laureates;
     const categories = ['Physics', 'Chemistry', 'Medicine'];
 
-    // Calculate concentration
+    // Calculate concentration: peak_output / total_papers
+    // peak_output 可以是数字（高峰年份论文数）或数组（多年高峰）
     const enriched = laureates.map(l => {
       const total = l.total_papers || 1;
-      const peakSum = (l.peak_output || []).slice(0, 3).reduce((a, b) => a + b, 0);
+      let peakSum = 0;
+      if (Array.isArray(l.peak_output)) {
+        peakSum = l.peak_output.slice(0, 3).reduce((a, b) => a + b, 0);
+      } else if (typeof l.peak_output === 'number') {
+        // 如果只有一个高峰值，乘以高峰年份数量
+        const peakYearCount = (l.peak_years || []).length || 1;
+        peakSum = l.peak_output * Math.min(peakYearCount, 3);
+      }
       return { ...l, concentration: peakSum / total };
     }).filter(l => l.concentration >= 0 && l.concentration <= 1);
 
@@ -1655,12 +1587,14 @@ export class TrajectoryChart {
     // Pick top and bottom 1 per category (exclude outliers with too few papers or trajectory points)
     const examples = [];
     categories.forEach(cat => {
-      const catL = enriched.filter(l =>
-        l.category === cat &&
-        (l.peak_output || []).length > 0 &&
-        (l.aligned_trajectory || []).length >= 10 &&
-        (l.total_papers || 0) >= 20
-      );
+      const catL = enriched.filter(l => {
+        // peak_output 可以是数字或数组
+        const hasPeak = Array.isArray(l.peak_output) ? l.peak_output.length > 0 : (l.peak_output || 0) > 0;
+        return l.category === cat &&
+          hasPeak &&
+          (l.aligned_trajectory || []).length >= 10 &&
+          (l.total_papers || 0) >= 20;
+      });
       catL.sort((a, b) => b.concentration - a.concentration);
       if (catL[0]) examples.push(catL[0]);
       if (catL[catL.length - 1] && catL[catL.length - 1] !== catL[0]) examples.push(catL[catL.length - 1]);
