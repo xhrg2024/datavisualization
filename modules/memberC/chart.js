@@ -171,13 +171,21 @@ export class NetworkChart {
 
   updateRightRail(index) {
     const showDetails = index === 1;
+    // detailPanel / authorPanel 仅用于图 2（合作弧线）的右侧详情展示。
+    // 当非图 2 时，务必隐藏并清理其内容，避免被其它面板复用或残留。
     if (this.detailPanel && !this.detailPanel.empty()) {
       this.detailPanel.style('display', showDetails ? '' : 'none');
-      if (!showDetails) this.detailPanel.html('');
+      this.detailPanel.attr('aria-hidden', showDetails ? 'false' : 'true');
+      if (!showDetails) {
+        try { this.detailPanel.html(''); } catch (e) { this.detailPanel.node().innerHTML = ''; }
+      }
     }
     if (this.authorPanel && !this.authorPanel.empty()) {
       this.authorPanel.style('display', showDetails ? '' : 'none');
-      if (!showDetails) this.authorPanel.html('');
+      this.authorPanel.attr('aria-hidden', showDetails ? 'false' : 'true');
+      if (!showDetails) {
+        try { this.authorPanel.html(''); } catch (e) { this.authorPanel.node().innerHTML = ''; }
+      }
     }
   }
 
@@ -190,6 +198,15 @@ export class NetworkChart {
     if (this.outerTabs && this.outerTabs.length) {
       this.outerTabs.forEach((tab, idx) => tab.classList.toggle('is-active', idx === this.activeIndex));
     }
+    // Ensure right-side panel state is always synchronized with the active panel.
+    // Calling updateRightRail here guarantees the right rail won't get out of sync when
+    // the visual track is manipulated by other code paths.
+    try {
+      this.updateRightRail(this.activeIndex);
+    } catch (e) {
+      // 防御性容错：若更新失败则记录错误但不阻塞主流程
+      console.error('同步右侧面板失败：', e);
+    }
   }
 
   switchTo(index) {
@@ -197,8 +214,18 @@ export class NetworkChart {
     if (target === this.activeIndex && this.rendered[target]) return;
     this.activeIndex = target;
     this.applyTrackTransform();
-    // 首次切换到某图时按需绘制（懒渲染，保证切换顺畅）
-    if (this.dataLoaded && !this.rendered[target]) {
+    // 无论是否已经渲染过，都需要同步右侧面板的显示状态，
+    // 否则在复用已渲染面板时右侧详情会保持旧状态不更新。
+    try {
+      this.updateRightRail(target);
+    } catch (e) {
+      // 防御性容错：若更新失败不阻塞切换
+      console.error('更新右侧面板时出错：', e);
+    }
+
+    // 切换到任一图时都重新渲染当前面板，避免右侧统计/详情残留上一个图的内容。
+    // 数据只加载一次，重绘只复用缓存数据，不会再次请求 CSV。
+    if (this.dataLoaded) {
       this.renderPanel(target);
     }
   }
@@ -374,17 +401,37 @@ export class NetworkChart {
       const allCounts = filtered.map((d) => d.author_count).filter((d) => d != null);
       const sortedCounts = allCounts.filter((d) => d > 0).sort((a, b) => a - b);
       const meanVal = sortedCounts.length > 0 ? d3.mean(sortedCounts) : 5;
+      const categories = ['Physics', 'Chemistry', 'Medicine'];
+      const avgByCategory = (cat) => {
+        const vals = data.filter((d) => d.category === cat && d.author_count != null && d.author_count > 0).map((d) => d.author_count);
+        return vals.length ? d3.mean(vals) : null;
+      };
 
-      self.setSummary(
-        '图 1 · 团队规模演化',
-        [
-          { value: filtered.length, label: '样本论文' },
-          { value: decades.length, label: '年代分组' },
-          { value: new Set(filtered.map((d) => d.category).filter(Boolean)).size, label: '学科数' },
-          { value: Number.isFinite(meanVal) ? meanVal.toFixed(1) : '—', label: '平均作者数' }
-        ],
-        '按学科筛选后查看作者规模分布。'
-      );
+      if (category === 'all') {
+        self.setSummary(
+          '图 1 · 团队规模演化',
+          [
+            { value: avgByCategory('Physics') == null ? '—' : avgByCategory('Physics').toFixed(1), label: '物理平均作者数' },
+            { value: avgByCategory('Chemistry') == null ? '—' : avgByCategory('Chemistry').toFixed(1), label: '化学平均作者数' },
+            { value: avgByCategory('Medicine') == null ? '—' : avgByCategory('Medicine').toFixed(1), label: '医学/生物平均作者数' },
+            { value: Number.isFinite(meanVal) ? meanVal.toFixed(1) : '—', label: '整体平均作者数' }
+          ],
+          '先看不同学科的团队规模均值，再看年代变化。'
+        );
+      } else {
+        const medianVal = sortedCounts.length ? d3.median(sortedCounts) : null;
+        const largeTeamShare = filtered.length ? filtered.filter((d) => d.author_count >= 5).length / filtered.length : null;
+        self.setSummary(
+          '图 1 · 团队规模演化',
+          [
+            { value: filtered.length, label: '当前样本论文' },
+            { value: Number.isFinite(meanVal) ? meanVal.toFixed(1) : '—', label: '平均作者数' },
+            { value: medianVal == null ? '—' : medianVal.toFixed(1), label: '中位作者数' },
+            { value: largeTeamShare == null ? '—' : `${(largeTeamShare * 100).toFixed(0)}%`, label: '≥5人团队占比' }
+          ],
+          `当前仅显示 ${category} 学科；下方分布看团队规模随年代的变化。`
+        );
+      }
 
       const x = d3.scaleBand().domain(decades).range([0, width]).padding(0.5);
       const cap = (sortedCounts.length > 0) ? (d3.quantile(sortedCounts, 0.90) || d3.max(sortedCounts)) : 10;
@@ -701,16 +748,24 @@ export class NetworkChart {
 
       const filtered = pairs.filter((d) => d.coop_weight_sum >= minw).sort((a, b) => b.coop_weight_sum - a.coop_weight_sum);
       const selected = filtered.slice(0, topn);
+      const avgByCategory = (cat) => {
+        const vals = selected
+          .filter((d) => getMetaForName(d.laureate_a).category === cat)
+          .map((d) => d.coop_weight_sum)
+          .filter((v) => v != null);
+        return vals.length ? d3.mean(vals) : null;
+      };
+      const overallAvg = selected.length ? d3.mean(selected, (d) => d.coop_weight_sum) : null;
 
       self.setSummary(
         '图 2 · 合作弧线',
         [
-          { value: filtered.length, label: '符合阈值的关系' },
-          { value: selected.length, label: '当前展示关系' },
-          { value: new Set(selected.flatMap((d) => [d.laureate_a, d.laureate_b]).map(normalizeName)).size, label: '得主节点数' },
-          { value: totalPairs, label: '关系总数' }
+          { value: avgByCategory('Physics') == null ? '—' : avgByCategory('Physics').toFixed(1), label: '物理平均合作强度' },
+          { value: avgByCategory('Chemistry') == null ? '—' : avgByCategory('Chemistry').toFixed(1), label: '化学平均合作强度' },
+          { value: avgByCategory('Medicine') == null ? '—' : avgByCategory('Medicine').toFixed(1), label: '医学/生物平均合作强度' },
+          { value: overallAvg == null ? '—' : overallAvg.toFixed(1), label: '当前展示均值' }
         ],
-        `前 ${self.sel('[data-mc-fig2-paper-topn]').node().value} 篇论文会在右侧档案卡展开。`
+        `只看当前阈值和前 ${self.sel('[data-mc-fig2-paper-topn]').node().value} 篇样例；数字重点看不同学科的平均合作强度。`
       );
 
       if (selected.length === 0) {
@@ -805,7 +860,7 @@ export class NetworkChart {
       svg.append('text').attr('x', width / 2).attr('y', 18).attr('text-anchor', 'middle').attr('font-size', 12).attr('fill', '#444')
         .text(`原始对数 ${totalPairs} | 阈值后 ${filtered.length} | 当前展示 ${links.length} | 得主 ${nodes.length} 人`);
       svg.append('text').attr('x', width / 2).attr('y', 36).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', '#666')
-        .text(`当前仅渲染前 ${topn} 条最强关系；要看全部 ${filtered.length} 条，请把“最多关系条数”调大。`);
+        .text('弧线把两位得主的合作关系连起来，线越粗表示合作越频繁；点到弧线后可在右侧查看对应论文和作者。');
 
       const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
@@ -1062,16 +1117,41 @@ export class NetworkChart {
 
       const cells = Array.from(agg.values()).filter((d) => d.edge_count >= minw);
 
+      const categoryTotals = new Map([
+        ['Physics', { sum: 0, count: 0 }],
+        ['Chemistry', { sum: 0, count: 0 }],
+        ['Medicine', { sum: 0, count: 0 }]
+      ]);
+      const resolveCategory = (name) => {
+        const meta = self.metaByKey.get(normalizeName(name));
+        return meta && categoryTotals.has(meta.category) ? meta.category : null;
+      };
+      es.forEach((e) => {
+        const category = resolveCategory(e.target);
+        if (!category) return;
+        const bucketStats = categoryTotals.get(category);
+        bucketStats.sum += Math.max(0, (e.source_pub_year || 0) - (e.target_pub_year || 0));
+        bucketStats.count += 1;
+      });
+      const avgByCategory = (category) => {
+        const stats = categoryTotals.get(category);
+        return stats && stats.count > 0 ? stats.sum / stats.count : null;
+      };
+      const overallAvg = es.length ? d3.mean(es, (d) => Math.max(0, (d.source_pub_year || 0) - (d.target_pub_year || 0))) : null;
+
       self.setSummary(
         '图 3 · 内部引用热力',
         [
-          { value: es.length, label: '有效引用边' },
-          { value: minw, label: '最小阈值' },
-          { value: granularity === 'decade' ? '10 年' : granularity === 'five' ? '5 年' : '逐年', label: '聚合粒度' },
-          { value: cells.length, label: '满足条件格子' }
+          { value: avgByCategory('Physics') == null ? '—' : avgByCategory('Physics').toFixed(1), label: '物理平均回溯年数' },
+          { value: avgByCategory('Chemistry') == null ? '—' : avgByCategory('Chemistry').toFixed(1), label: '化学平均回溯年数' },
+          { value: avgByCategory('Medicine') == null ? '—' : avgByCategory('Medicine').toFixed(1), label: '医学/生物平均回溯年数' },
+          { value: overallAvg == null ? '—' : overallAvg.toFixed(1), label: '整体平均回溯年数' }
         ],
-        '只保留时间上成立的引用关系，因此画面保持干净的上三角结构。'
+        '这组卡片直接比较各学科的平均回溯年数，比单纯引用次数更有区分度。'
       );
+
+      svg.append('text').attr('x', width / 2).attr('y', 54).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', '#666')
+        .text('每个格子都是一个时间段对；颜色越深，说明这个时间对上的引用越集中。');
 
       if (cells.length === 0) {
         svg.append('text').attr('x', 20).attr('y', 40).text('当前阈值过高，已没有满足条件的格子。请把“最小引用论文数”调低到 1 或 2。').attr('fill', '#900');
