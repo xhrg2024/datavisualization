@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT / "data" / "memberD"
-OUTPUT = ROOT / "data" / "memberD_processed.json"
+OUTPUT = DATA_DIR / "memberD_processed.json"
 DISCIPLINE_FILES = {
     "Physics": "Physics publication record_openalex_enriched.csv",
     "Chemistry": "Chemistry publication record_openalex_enriched.csv",

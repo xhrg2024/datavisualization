@@ -164,7 +164,7 @@ export class AlluvialChart {
     if (this.disciplinePanel) this.disciplinePanel.hidden = this.view === 'bridges';
   }
 
-  async loadData(dataPath = './data/memberD_processed.json') {
+  async loadData(dataPath = './data/memberD/memberD_processed.json') {
     try {
       const data = await d3.json(dataPath);
       if (!data?.disciplines) throw new Error('Processed Member D data is missing disciplines.');
@@ -177,7 +177,7 @@ export class AlluvialChart {
     } catch (error) {
       console.error('Member D processed data load failed:', error);
       this.setStatus('error', '轻量化论文主题数据读取失败。');
-      this.renderPlaceholder('D 模块数据读取失败。', '请确认 data/memberD_processed.json 已随仓库提交。');
+      this.renderPlaceholder('D 模块数据读取失败。', '请确认 data/memberD/memberD_processed.json 已随仓库提交。');
     }
 
     this.render();
