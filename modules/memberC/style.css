@@ -2,24 +2,150 @@
  * 成员 C · 社会网络生态：三图水平切换组件
  * ============================================================ */
 
+/* ---- memberA layout rules appended to make memberC shell match memberA ---- */
+.member-a-dashboard {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: clamp(0.45rem, 1vw, 0.7rem);
+  overflow-y: auto;
+  padding-right: 0.2rem;
+  scrollbar-width: thin;
+}
+
+.member-a-hero,
+.member-a-tabs,
+.member-a-panel,
+.member-a-visual {
+  border: 1px solid rgba(19, 33, 29, 0.08);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 240, 0.82);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.member-a-hero {
+  display: block;
+  gap: 0.75rem;
+  align-items: center;
+  padding: clamp(0.62rem, 1.2vw, 0.9rem);
+}
+
+.member-a-hero h2 {
+  margin: 0.42rem 0 0;
+  font-size: clamp(1.45rem, 2.25vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.member-a-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.38rem;
+}
+
+.member-a-tab {
+  min-height: 2.3rem;
+  border: 0;
+  border-radius: 12px;
+  color: #263b33;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: background 0.25s var(--ease-out), color 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+
+.member-a-tab.is-active {
+  color: #fffaf0;
+  background: linear-gradient(135deg, #1d3f36, #d25d3d);
+}
+
+.member-a-content {
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  display: grid;
+  /* 左图右信息，两个独立幕布 */
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: clamp(0.6rem, 1.25vw, 0.9rem);
+  align-items: start;
+  overflow: visible;
+}
+
+.member-c-content {
+  align-items: stretch;
+}
+
+.member-a-panel {
+  min-height: 0;
+  height: fit-content;
+  max-height: 100%;
+  padding: clamp(0.75rem, 1.25vw, 1rem);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0.85rem;
+  overflow: hidden;
+}
+
+.member-c-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: auto;
+  min-width: 0;
+}
+
+.member-a-visual {
+  align-self: start;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 1.25rem;
+  height: fit-content !important;
+  overflow: visible;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.member-c-chart-panel {
+  min-width: 0;
+}
+
+/* end appended memberA rules */
+
 .mc-root {
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: min(68vh, 650px);
+  min-height: 0;
+  padding: 0.35rem;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 227, 170, 0.3), transparent 30%),
+    radial-gradient(circle at top right, rgba(170, 223, 190, 0.22), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 248, 244, 0.86));
+  box-shadow: 0 22px 50px rgba(18, 24, 33, 0.14);
+  overflow: hidden;
 }
 
 .mc-switcher {
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 0.5rem;
+  gap: 0.65rem;
   color: #2b3b34;
 }
 
 /* 顶部标签 */
 .mc-topbar {
   flex: 0 0 auto;
+}
+
+/* 在 memberC 中隐藏内部 mc 顶部标签，使用 member-a 的外部标签作为控制 */
+.module-c .mc-topbar {
+  display: none;
 }
 
 .mc-tabs {
@@ -34,7 +160,7 @@
   padding: 0.45rem 0.6rem;
   border: 1px solid rgba(19, 33, 29, 0.14);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.68);
   color: #4a5a52;
   font-size: 0.82rem;
   font-weight: 600;
@@ -51,7 +177,7 @@
   background: linear-gradient(135deg, #355e4b, #4f8268);
   border-color: transparent;
   color: #fffaf0;
-  box-shadow: 0 6px 16px rgba(53, 94, 75, 0.28);
+  box-shadow: 0 8px 20px rgba(53, 94, 75, 0.28);
 }
 
 /* 视口 + 横向轨道 */
@@ -59,8 +185,8 @@
   position: relative;
   flex: 1 1 auto;
   overflow: hidden;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.56);
   border: 1px solid rgba(19, 33, 29, 0.06);
 }
 
@@ -77,12 +203,18 @@
   width: 33.3333%;
   height: 100%;
   box-sizing: border-box;
-  padding: 0.7rem 0.9rem 1rem;
+  padding: 0.8rem 0.9rem 0.95rem;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.55rem;
+}
+
+.mc-panel[data-mc-panel='1'] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
 }
 
 /* 控件 */
@@ -122,19 +254,24 @@
 
 /* 图表舞台 */
 .mc-stage {
-  flex: 1 1 auto;
-  min-height: 300px;
+  flex: 0 0 auto;
+  /* 放大画布以增强可视化呈现 */
+  height: clamp(360px, 50vh, 640px);
+  min-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .mc-stage svg {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  display: block;
   background: #fbfdfb;
   border: 1px solid rgba(19, 33, 29, 0.08);
-  border-radius: 8px;
+  border-radius: 14px;
+  /* 放大 svg 的最小高度以匹配放大后的舞台 */
+  min-height: 320px;
 }
 
 .mc-note {
@@ -145,13 +282,76 @@
   line-height: 1.55;
 }
 
+.mc-body {
+  display: block;
+  gap: 0.9rem;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.mc-workbench {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: 0;
+}
+
+.mc-insight-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.72rem;
+  min-height: 0;
+  /* 允许右侧栏单独滚动，避免撑高左侧画布 */
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.mc-summary {
+  display: grid;
+  /* 四卡布局 2x2，用于展示四项统计 */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  grid-auto-rows: minmax(72px, auto);
+}
+
+.mc-summary-card {
+  padding: 0.8rem 0.85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(19, 33, 29, 0.08);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 22px rgba(26, 41, 34, 0.06);
+}
+
+.mc-summary-card strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  color: #21352d;
+}
+
+.mc-summary-card span {
+  color: #51605b;
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.mc-summary-caption {
+  margin: 0;
+  color: #51605b;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
 /* 图 2 信息面板 */
 .mc-fig2-info {
   flex: 0 0 auto;
-  padding: 0.6rem 0.75rem;
+  padding: 0.72rem 0.8rem;
   border: 1px solid rgba(19, 33, 29, 0.1);
   background: rgba(252, 252, 253, 0.9);
-  border-radius: 8px;
+  border-radius: 14px;
+  max-height: none;
+  overflow: auto;
+  scrollbar-gutter: stable;
 }
 
 .mc-fig2-info h3 {
@@ -192,13 +392,49 @@
   line-height: 1.4;
 }
 
-.mc-fig2-author {
+.mc-fig2-author-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.55rem;
+}
+
+.mc-fig2-author-head h3 {
+  margin: 0;
+}
+
+.mc-fig2-author-head p {
+  margin: 0.25rem 0 0;
+  color: #5a6a62;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.mc-fig2-author-clear {
+  flex: 0 0 auto;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(53, 94, 75, 0.26);
+  border-radius: 999px;
+  background: rgba(53, 94, 75, 0.06);
+  color: #355e4b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mc-fig2-author-clear:hover {
+  background: rgba(53, 94, 75, 0.12);
+}
+
+.mc-fig2-author-body {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
+  padding-top: 0.2rem;
 }
 
-.mc-fig2-author img {
+.mc-fig2-author-body img {
   width: 78px;
   height: 78px;
   object-fit: cover;
@@ -207,14 +443,35 @@
   flex: 0 0 auto;
 }
 
-.mc-fig2-author .meta h4 {
+.mc-fig2-author-body .meta h4 {
   margin: 0 0 0.35rem;
   font-size: 0.92rem;
   color: #2b3b34;
 }
 
-.mc-fig2-author .meta p {
+.mc-fig2-author-body .meta p {
   margin: 0.2rem 0;
+  color: #5a6a62;
+}
+
+.mc-rail-note {
+  padding: 0.9rem 0.95rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(19, 33, 29, 0.08);
+}
+
+.mc-rail-note strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #21352d;
+}
+
+.mc-rail-note p {
+  margin: 0;
+  color: #51605b;
+  font-size: 0.76rem;
+  line-height: 1.6;
 }
 
 /* 左右箭头 */
@@ -264,6 +521,98 @@
 .mc-dot.is-active {
   background: #355e4b;
   transform: scale(1.25);
+}
+
+.mc-page-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 0.9rem;
+  height: 100%;
+  min-height: 0;
+}
+
+.mc-chapter-banner,
+.mc-page-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.9rem;
+  align-items: start;
+  padding: 1rem 1.1rem;
+  border-radius: 24px;
+  border: 1px solid rgba(19, 33, 29, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 16px 32px rgba(26, 41, 34, 0.08);
+}
+
+.mc-chapter-banner h3 {
+  margin: 0.3rem 0 0.5rem;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.mc-chapter-banner p {
+  margin: 0;
+  color: #51605b;
+  line-height: 1.7;
+}
+
+.mc-chapter-banner__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 0.55rem;
+  align-self: stretch;
+}
+
+.mc-chapter-banner__cards article,
+.mc-page-foot article {
+  padding: 0.8rem 0.9rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(19, 33, 29, 0.08);
+}
+
+.mc-chapter-banner__cards strong,
+.mc-page-foot strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #21352d;
+}
+
+.mc-chapter-banner__cards span,
+.mc-page-foot span {
+  color: #51605b;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.mc-dashboard-frame {
+  min-height: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.46);
+}
+
+.module-c .page-copy {
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
+  justify-content: flex-start;
+}
+
+.module-c .page-visual {
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
+}
+
+.chart-visual--memberc {
+  height: 100%;
+}
+
+.module-c .page-grid {
+  height: calc(100vh - 6.2rem);
+  min-height: 0;
+  align-items: stretch;
 }
 
 /* 浮动提示框 */

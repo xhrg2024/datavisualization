@@ -105,11 +105,17 @@ export class NetworkChart {
     this.loading = false;
     this.rendered = [false, false, false];
     this._resizeRaf = null;
+    this._resizeObserver = null;
+    this.page = this.root.closest('.page-module') || document;
+    this.summary = this.page.querySelector('[data-mc-summary]');
+    this.detailPanel = this.page.querySelector('[data-mc-fig2-detail]');
+    this.authorPanel = this.page.querySelector('[data-mc-fig2-author]');
 
     // 浮动提示框（绑定在 body 上，使用 pageX/pageY 定位）
     this.tip = d3.select('body').append('div').attr('class', 'mc-tooltip').style('opacity', 0);
 
     this.installSwitcher();
+    this.installResizeObserver();
   }
 
   /* ----- 容器内 DOM 查询助手 ----- */
@@ -127,6 +133,16 @@ export class NetworkChart {
       tab.addEventListener('click', () => this.switchTo(Number(tab.dataset.mcTab)));
     });
 
+    // 绑定外层 member-a 风格的标签（如果存在）到图表切换，保证只在当前模块作用域内
+    const pageEl = this.container.closest('[data-page="network"]') || this.container.closest('.module-c') || document;
+    this.outerTabs = pageEl ? Array.from(pageEl.querySelectorAll('.member-a-tab')) : [];
+    this.outerTabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
+        this.outerTabs.forEach((t) => t.classList.toggle('is-active', t === tab));
+        this.switchTo(idx);
+      });
+    });
+
     const prev = this.root.querySelector('[data-mc-prev]');
     const next = this.root.querySelector('[data-mc-next]');
     prev?.addEventListener('click', () => this.switchTo(this.activeIndex - 1));
@@ -135,12 +151,45 @@ export class NetworkChart {
     this.applyTrackTransform();
   }
 
+  installResizeObserver() {
+    if (!this.root || typeof ResizeObserver === 'undefined') return;
+    this._resizeObserver = new ResizeObserver(() => this.resize());
+    this._resizeObserver.observe(this.root);
+  }
+
+  setSummary(title, cards, caption) {
+    if (!this.summary) return;
+    const head = title ? `<p class="mc-summary-caption"><strong>${title}</strong>${caption ? ` · ${caption}` : ''}</p>` : '';
+    const body = (cards || []).map((item) => `
+      <article class="mc-summary-card">
+        <strong>${item.value}</strong>
+        <span>${item.label}</span>
+      </article>
+    `).join('');
+    this.summary.innerHTML = `${head}${body}`;
+  }
+
+  updateRightRail(index) {
+    const showDetails = index === 1;
+    if (this.detailPanel) {
+      this.detailPanel.style.display = showDetails ? '' : 'none';
+      if (!showDetails) this.detailPanel.innerHTML = '';
+    }
+    if (this.authorPanel) {
+      this.authorPanel.style.display = showDetails ? '' : 'none';
+      if (!showDetails) this.authorPanel.innerHTML = '';
+    }
+  }
+
   applyTrackTransform() {
     if (this.track) {
       this.track.style.transform = `translateX(-${this.activeIndex * (100 / PANEL_COUNT)}%)`;
     }
     this.tabs.forEach((tab, idx) => tab.classList.toggle('is-active', idx === this.activeIndex));
     this.dots.forEach((dot, idx) => dot.classList.toggle('is-active', idx === this.activeIndex));
+    if (this.outerTabs && this.outerTabs.length) {
+      this.outerTabs.forEach((tab, idx) => tab.classList.toggle('is-active', idx === this.activeIndex));
+    }
   }
 
   switchTo(index) {
@@ -156,10 +205,11 @@ export class NetworkChart {
 
   /* ----- 尺寸度量 ----- */
   metrics() {
-    const vp = this.root.querySelector('.mc-viewport');
-    const rect = vp ? vp.getBoundingClientRect() : { width: 720, height: 560 };
-    const w = Math.max(360, Math.floor(rect.width) - 28);
-    const h = Math.max(360, Math.floor(rect.height) - 16);
+    const panel = this.root.querySelector(`.mc-panel[data-mc-panel="${this.activeIndex}"]`);
+    const stage = panel ? panel.querySelector('.mc-stage') : null;
+    const rect = stage ? stage.getBoundingClientRect() : { width: 720, height: 410 };
+    const w = Math.max(360, Math.floor(rect.width));
+    const h = Math.max(360, Math.floor(rect.height));
     return { w, h };
   }
 
@@ -167,7 +217,12 @@ export class NetworkChart {
   async loadData(base) {
     if (this.dataLoaded || this.loading) return this;
     this.loading = true;
-    const b = base && base.endsWith('/') ? base : `${base || './data/memberC/'}/`.replace(/\/+$/, '/');
+    let b = base || './data/memberC/';
+    if (!b.endsWith('/')) {
+      const lastSlash = Math.max(b.lastIndexOf('/'), b.lastIndexOf('\\'));
+      b = lastSlash >= 0 ? b.slice(0, lastSlash + 1) : './data/memberC/';
+    }
+    b = b.replace(/\/+$/, '/');
 
     this.showLoading();
 
@@ -266,6 +321,7 @@ export class NetworkChart {
 
   renderPanel(index) {
     if (!this.dataLoaded) return;
+    this.updateRightRail(index);
     if (index === 0) this.renderFig1();
     else if (index === 1) this.renderFig2();
     else if (index === 2) this.renderFig3();
@@ -296,7 +352,7 @@ export class NetworkChart {
     const tip = this.tip;
     const { w, h } = this.metrics();
     const svgW = w;
-    const svgH = Math.max(320, h - 150);
+    const svgH = Math.max(280, h - 8);
 
     const svg = this.sel('[data-mc-svg="1"]');
     svg.attr('width', svgW).attr('height', svgH).attr('viewBox', `0 0 ${svgW} ${svgH}`);
@@ -316,10 +372,21 @@ export class NetworkChart {
       const groups = d3.group(filtered.filter((d) => d.author_count != null), (d) => d.decade);
       const decades = Array.from(groups.keys()).sort((a, b) => +a - +b);
       const allCounts = filtered.map((d) => d.author_count).filter((d) => d != null);
-
-      const x = d3.scaleBand().domain(decades).range([0, width]).padding(0.5);
       const sortedCounts = allCounts.filter((d) => d > 0).sort((a, b) => a - b);
       const meanVal = sortedCounts.length > 0 ? d3.mean(sortedCounts) : 5;
+
+      self.setSummary(
+        '图 1 · 团队规模演化',
+        [
+          { value: filtered.length, label: '样本论文' },
+          { value: decades.length, label: '年代分组' },
+          { value: new Set(filtered.map((d) => d.category).filter(Boolean)).size, label: '学科数' },
+          { value: Number.isFinite(meanVal) ? meanVal.toFixed(1) : '—', label: '平均作者数' }
+        ],
+        '按学科筛选后查看作者规模分布。'
+      );
+
+      const x = d3.scaleBand().domain(decades).range([0, width]).padding(0.5);
       const cap = (sortedCounts.length > 0) ? (d3.quantile(sortedCounts, 0.90) || d3.max(sortedCounts)) : 10;
       const y = d3.scaleLinear().domain([0, Math.max(cap, 10)]).nice().range([height, 0]);
       const yTop = y.domain()[1];
@@ -497,7 +564,7 @@ export class NetworkChart {
 
     const { w, h } = this.metrics();
     const svgW = w;
-    const svgH = Math.max(440, h - 60);
+    const svgH = Math.max(280, h - 8);
 
     const svg = this.sel('[data-mc-svg="2"]');
     svg.attr('width', svgW).attr('height', svgH).attr('viewBox', `0 0 ${svgW} ${svgH}`);
@@ -505,14 +572,13 @@ export class NetworkChart {
 
     const width = svgW;
     const height = svgH;
-    const side = Math.min(170, Math.max(64, Math.round(width * 0.16)));
-    const margin = { top: 60, right: side, bottom: 80, left: side };
+    const side = Math.min(150, Math.max(70, Math.round(width * 0.14)));
+    const margin = { top: 58, right: side, bottom: 70, left: side };
     const innerW = width - margin.left - margin.right;
     const innerH = height - margin.top - margin.bottom;
 
-    const detailPanel = this.sel('[data-mc-fig2-detail]');
-    const authorPanel = this.sel('[data-mc-fig2-author]');
     let currentPair = null;
+    let currentAuthorKey = null;
 
     const categoryColors = { Physics: '#4e79a7', Chemistry: '#f28e2b', Medicine: '#e15759' };
     const laneOrder = ['Physics', 'Chemistry', 'Medicine'];
@@ -537,12 +603,21 @@ export class NetworkChart {
       };
     }
 
+    function renderAuthorPlaceholder() {
+      currentAuthorKey = null;
+      self.authorPanel.html(`
+        <div class="mc-fig2-author-head">
+          <h3>作者信息</h3>
+          <p>点击上方任意圆点，查看作者详细信息。</p>
+        </div>`);
+    }
+
     function renderDetail(pair) {
       currentPair = pair;
       const paperTopN = Math.max(1, parseNumber(self.sel('[data-mc-fig2-paper-topn]').node().value) || 5);
       const papers = (pair.sample_papers || []).slice().sort((a, b) => (parseNumber(b.score) || 0) - (parseNumber(a.score) || 0)).slice(0, paperTopN);
       if (papers.length === 0) {
-        detailPanel.html(`<h3>${pair.laureate_a} ↔ ${pair.laureate_b}</h3><p>合作强度：<strong>${pair.coop_weight_sum}</strong></p><p>暂无样例论文。</p>`);
+        self.detailPanel.html(`<h3>${pair.laureate_a} ↔ ${pair.laureate_b}</h3><p>合作强度：<strong>${pair.coop_weight_sum}</strong></p><p>暂无样例论文。</p>`);
         return;
       }
       const html = papers.map((p) => {
@@ -563,26 +638,39 @@ export class NetworkChart {
           ${abstract ? `<div class="paper-abstract"><strong>摘要：</strong>${abstract}</div>` : ''}
         </li>`;
       }).join('');
-      detailPanel.html(`<h3>${pair.laureate_a} ↔ ${pair.laureate_b}</h3><p>合作篇数：<strong>${pair.coop_weight_sum}</strong>，展示评分最高的前 <strong>${paperTopN}</strong> 篇论文。</p><p>样例论文：</p><ul>${html}</ul>`);
+      self.detailPanel.html(`<h3>${pair.laureate_a} ↔ ${pair.laureate_b}</h3><p>合作篇数：<strong>${pair.coop_weight_sum}</strong>，展示评分最高的前 <strong>${paperTopN}</strong> 篇论文。</p><p>样例论文：</p><ul>${html}</ul>`);
     }
 
     function renderAuthorDetail(node) {
       if (!node) return;
+      currentAuthorKey = node.key;
       const idx = (seededHash(node.key) % 8) + 1;
       const img = `${self.imageBase}placeholder_${idx}.svg`;
       const awardReason = (node.laureateId ? motivationById.get(String(node.laureateId)) : '') || motivationByKey.get(node.key) || '';
-      authorPanel.html(`
-        <img src="${img}" alt="${node.name}" />
-        <div class="meta">
-          <h4>${node.name}</h4>
-          <p>学科：${node.category || 'N/A'}</p>
-          <p>获奖年份：${node.prizeYear || 'N/A'}</p>
-          <p>节点键：${node.key}</p>
-          ${awardReason ? `<p>获奖原因：${awardReason}</p>` : ''}
+      self.authorPanel.html(`
+        <div class="mc-fig2-author-head">
+          <h3>作者信息</h3>
+          <button type="button" class="mc-fig2-author-clear" data-mc-fig2-author-clear>收起详情</button>
+        </div>
+        <div class="mc-fig2-author-body">
+          <img src="${img}" alt="${node.name}" />
+          <div class="meta">
+            <h4>${node.name}</h4>
+            <p>学科：${node.category || 'N/A'}</p>
+            <p>获奖年份：${node.prizeYear || 'N/A'}</p>
+            <p>节点键：${node.key}</p>
+            ${awardReason ? `<p>获奖原因：${awardReason}</p>` : ''}
+          </div>
         </div>`);
+
+      const clearButton = self.authorPanel.node().querySelector('[data-mc-fig2-author-clear]');
+      clearButton?.addEventListener('click', () => {
+        renderAuthorPlaceholder();
+      });
     }
 
     function render() {
+      self.updateRightRail(1);
       const minw = +self.sel('[data-mc-fig2-minw]').node().value;
       const topn = +self.sel('[data-mc-fig2-topn]').node().value;
       const animate = self.sel('[data-mc-fig2-animate]').node().checked;
@@ -591,9 +679,20 @@ export class NetworkChart {
       const filtered = pairs.filter((d) => d.coop_weight_sum >= minw).sort((a, b) => b.coop_weight_sum - a.coop_weight_sum);
       const selected = filtered.slice(0, topn);
 
+      self.setSummary(
+        '图 2 · 合作弧线',
+        [
+          { value: filtered.length, label: '符合阈值的关系' },
+          { value: selected.length, label: '当前展示关系' },
+          { value: new Set(selected.flatMap((d) => [d.laureate_a, d.laureate_b]).map(normalizeName)).size, label: '得主节点数' },
+          { value: totalPairs, label: '关系总数' }
+        ],
+        `前 ${self.sel('[data-mc-fig2-paper-topn]').node().value} 篇论文会在右侧档案卡展开。`
+      );
+
       if (selected.length === 0) {
         svg.append('text').attr('x', 20).attr('y', 40).attr('fill', '#900').text('当前阈值下没有得主合作关系，请降低最小合作强度。');
-        detailPanel.html('<h3>论文详情</h3><p>点击上方任意关系路径，查看样例论文信息。</p>');
+        self.detailPanel.html('<h3>论文详情</h3><p>点击上方任意关系路径，查看样例论文信息。</p>');
         return;
       }
 
@@ -867,9 +966,22 @@ export class NetworkChart {
           tip.style('opacity', 1).html(`${d.name}<br/>学科：${d.category}<br/>奖年：${d.prizeYear || 'N/A'}`).style('left', (event.pageX + 10) + 'px').style('top', (event.pageY + 10) + 'px');
         })
         .on('mouseout', () => { resetHighlight(); tip.style('opacity', 0); })
-        .on('click', (event, d) => renderAuthorDetail(d));
+        .on('click', (event, d) => {
+          if (currentAuthorKey === d.key) {
+            renderAuthorPlaceholder();
+            return;
+          }
+          renderAuthorDetail(d);
+        });
 
-      detailPanel.html('<h3>论文详情</h3><p>点击上方任意关系路径，查看评分最高的样例论文。</p>');
+      self.detailPanel.html('<h3>论文详情</h3><p>点击上方任意关系路径，查看评分最高的样例论文。</p>');
+      renderAuthorPlaceholder();
+
+      if (selected[0]) {
+        renderDetail(selected[0]);
+        const defaultAuthor = getMetaForName(selected[0].laureate_a) || getMetaForName(selected[0].laureate_b);
+        if (defaultAuthor) renderAuthorDetail(defaultAuthor);
+      }
 
       self.sel('[data-mc-fig2-paper-topn]').on('change', () => { if (currentPair) renderDetail(currentPair); });
     }
@@ -890,7 +1002,7 @@ export class NetworkChart {
     const edges = this.fig3Edges;
     const { w, h } = this.metrics();
     const svgW = w;
-    const svgH = Math.max(340, h - 150);
+    const svgH = Math.max(280, h - 8);
 
     const svg = this.sel('[data-mc-svg="3"]');
     svg.attr('width', svgW).attr('height', svgH).attr('viewBox', `0 0 ${svgW} ${svgH}`);
@@ -926,6 +1038,18 @@ export class NetworkChart {
       });
 
       const cells = Array.from(agg.values()).filter((d) => d.edge_count >= minw);
+
+      self.setSummary(
+        '图 3 · 内部引用热力',
+        [
+          { value: es.length, label: '有效引用边' },
+          { value: minw, label: '最小阈值' },
+          { value: granularity === 'decade' ? '10 年' : granularity === 'five' ? '5 年' : '逐年', label: '聚合粒度' },
+          { value: cells.length, label: '满足条件格子' }
+        ],
+        '只保留时间上成立的引用关系，因此画面保持干净的上三角结构。'
+      );
+
       if (cells.length === 0) {
         svg.append('text').attr('x', 20).attr('y', 40).text('当前阈值过高，已没有满足条件的格子。请把“最小引用论文数”调低到 1 或 2。').attr('fill', '#900');
         return;
