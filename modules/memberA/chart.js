@@ -8,7 +8,7 @@ const CATEGORY_COLORS = {
   Physics: '#1d3f36',
   Chemistry: '#3f8f75',
   'Physiology or Medicine': '#d25d3d',
-  Literature: '#f2a65e',
+  Literature: '#937f85',
   Peace: '#d8a83e',
   'Economic Sciences': '#5f8ea0'
 };
@@ -151,7 +151,7 @@ const PALETTE = {
   green: '#3f8f75',
   gold: '#d8a83e',
   rust: '#d25d3d',
-  violet: '#f2a65e',
+  violet: '#937f85',
   sage: '#e8ad4f',
   steel: '#5f8ea0',
   mint: '#bfe1c8',
@@ -399,6 +399,18 @@ export class MacroChart {
     return HISTORIC_COLORS[name] || PALETTE.sage;
   }
 
+  categoryRowsHtml(row, categories, totalKey = null) {
+    return categories.map((category) => {
+      const value = row?.[category] ?? 0;
+      const total = totalKey ? (row?.[totalKey] ?? 0) : null;
+      const share = total ? '（' + d3.format('.1%')(value / total) + '）' : '';
+      return '<span style="display:flex;gap:10px;justify-content:space-between;">'
+        + '<em style="font-style:normal;color:' + CATEGORY_COLORS[category] + ';">' + (CATEGORY_LABELS[category] ?? category) + '</em>'
+        + '<b style="font-weight:700;">' + value + share + '</b>'
+        + '</span>';
+    }).join('');
+  }
+
   axisBottom(group, scale, ticks = 6) {
     group.attr('class', 'member-a-axis').call(d3.axisBottom(scale).ticks(ticks).tickSizeOuter(0));
   }
@@ -422,8 +434,10 @@ export class MacroChart {
       if (!stoppedYears.has(year)) {
         for (const [category, count] of categoryMap.get(year) ?? []) row[category] = count;
       }
+      row.total = d3.sum(categories, (category) => row[category]);
       return row;
     });
+    const stackedRowByYear = new Map(stackedRows.map((row) => [row.year, row]));
 
     const m = { top: 78, right: 54, bottom: 46, left: 52 };
     const chartH = 390;
@@ -462,7 +476,18 @@ export class MacroChart {
       .attr('y', (d) => y(d[1]))
       .attr('height', (d) => y(d[0]) - y(d[1]))
       .attr('width', barWidth)
-      .on('mousemove', (event, d) => this.showTip(event, '<strong>' + d.data.year + '</strong><br>该类别获奖者：' + (d[1] - d[0])))
+      .on('mousemove', (event, d) => {
+        const category = d3.select(event.currentTarget.parentNode).datum().key;
+        const value = d[1] - d[0];
+        const total = d.data.total || 0;
+        this.showTip(event,
+          '<strong>' + d.data.year + ' · ' + (CATEGORY_LABELS[category] ?? category) + '</strong>'
+          + '<br>该领域得奖者：' + value
+          + '<br>当年总数：' + total
+          + (total ? '<br>领域占比：' + d3.format('.1%')(value / total) : '')
+          + '<br><br>' + this.categoryRowsHtml(d.data, categories)
+        );
+      })
       .on('mouseleave', this.hideTip);
 
     const line = d3.line().x((d) => x(d.year)).y((d) => y(d.laureates)).curve(d3.curveMonotoneX);
@@ -483,7 +508,11 @@ export class MacroChart {
         const a = yearly[index - 1] || yearly[index];
         const b = yearly[index];
         const d = Math.abs((a?.year ?? year) - year) < Math.abs((b?.year ?? year) - year) ? a : b;
-        this.showTip(event, '<strong>' + d.year + '</strong><br>获奖者：' + d.laureates);
+        const row = stackedRowByYear.get(d.year);
+        this.showTip(event,
+          '<strong>' + d.year + '</strong><br>获奖者总数：' + d.laureates
+          + '<br><br>' + this.categoryRowsHtml(row, categories)
+        );
       })
       .on('mouseleave', this.hideTip);
     this.drawLegend(categories, 22, 56, 6);
@@ -943,6 +972,7 @@ export class MacroChart {
       for (const category of categories) {
         row[category] = this.memberData.periods.categoryCounts.find((d) => d.period === def.id && d.category === category)?.count ?? 0;
       }
+      row.total = d3.sum(categories, (category) => row[category]);
       return row;
     });
     const periodXStart = d3.min(rows, (d) => d.mid) || 1901;
@@ -971,7 +1001,23 @@ export class MacroChart {
       .attr('stroke-width', 0.8)
       .attr('opacity', 0.86)
       .attr('d', area)
-      .on('mousemove', (event, d) => this.showTip(event, '<strong>' + (CATEGORY_LABELS[d.key] ?? d.key) + '</strong><br>地缘时期中的奖项变化'))
+      .on('mousemove', (event, layer) => {
+        const [mx] = d3.pointer(event, g.node());
+        const year = x.invert(mx);
+        const row = rows.reduce((closest, item) => {
+          if (!closest) return item;
+          return Math.abs(item.mid - year) < Math.abs(closest.mid - year) ? item : closest;
+        }, null);
+        const value = row?.[layer.key] ?? 0;
+        const total = row?.total ?? 0;
+        this.showTip(event,
+          '<strong>' + (CATEGORY_LABELS[layer.key] ?? layer.key) + ' · ' + Math.round(year) + '</strong>'
+          + '<br>对应时期：' + (row?.label ?? '') + '（' + (row?.range ?? '') + '）'
+          + '<br>该领域记录：' + value
+          + '<br>时期总记录：' + total
+          + (total ? '<br>领域占比：' + d3.format('.1%')(value / total) : '')
+        );
+      })
       .on('mouseleave', this.hideTip);
     g.append('g').attr('class', 'member-a-axis').attr('transform', 'translate(0,' + chartH + ')')
       .call(d3.axisBottom(x).tickValues(d3.range(Math.ceil(periodXStart / 10) * 10, Math.floor(periodXEnd / 10) * 10 + 1, 10)).tickFormat(d3.format('d')).tickSizeOuter(0));
