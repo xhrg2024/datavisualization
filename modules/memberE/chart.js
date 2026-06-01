@@ -10,150 +10,344 @@ export class MorphingChart {
       ? document.querySelector(containerSelector)
       : containerSelector;
     this.bus = bus;
-    this.data = [];
-    this.state = { year: 2024, category: 'physics' };
-    this.margin = { top: 36, right: 24, bottom: 50, left: 56 };
+    this.impactByDiscipline = new Map();
+    this.discipline = 'Medicine';
+    this.filters = {
+      minFwci: 100,
+      minCitations: 0
+    };
+    this.margin = { top: 40, right: 36, bottom: 58, left: 70 };
 
-    this.svg = d3.select(this.container).append('svg').attr('class', 'morphing-chart__svg');
-    this.defs = this.svg.append('defs');
-    const gradient = this.defs.append('linearGradient').attr('id', 'morphing-gradient').attr('x1', '0%').attr('x2', '100%');
-    gradient.append('stop').attr('offset', '0%').attr('stop-color', '#66d1c1').attr('stop-opacity', 0.92);
-    gradient.append('stop').attr('offset', '100%').attr('stop-color', '#66d9ff').attr('stop-opacity', 0.18);
+    this.page = this.container?.closest('[data-module="morphing"]');
+    this.kpis = this.page?.querySelector('[data-kpis]');
+    this.reading = this.page?.querySelector('[data-e-reading]');
 
-    this.plot = this.svg.append('g').attr('class', 'morphing-chart__plot');
-    this.axisX = this.plot.append('g').attr('class', 'morphing-chart__axis morphing-chart__axis--x');
-    this.axisY = this.plot.append('g').attr('class', 'morphing-chart__axis morphing-chart__axis--y');
-    this.points = this.plot.append('g').attr('class', 'morphing-chart__points');
-    this.focus = this.plot.append('g').attr('class', 'morphing-chart__focus');
+    this.disciplineButtons = Array.from(this.page?.querySelectorAll('[data-e-discipline]') ?? []);
+    this.minFwciInput = this.page?.querySelector('[data-e-min-fwci]');
+    this.minFwciRange = this.page?.querySelector('[data-e-min-fwci-range]');
+    this.minCitationsInput = this.page?.querySelector('[data-e-min-citations]');
 
-    this.bus.on('yearChange.memberE', (payload) => {
-      this.state.year = payload.year;
-      this.update();
-    });
+    this.svg = d3.select(this.container).append('svg').attr('class', 'member-a-svg');
+    this.plot = this.svg.append('g');
+    this.axisX = this.plot.append('g').attr('class', 'member-a-axis');
+    this.axisY = this.plot.append('g').attr('class', 'member-a-axis');
+    this.grid = this.plot.append('g').attr('class', 'member-a-grid');
+    this.points = this.plot.append('g');
+    this.annotations = this.plot.append('g');
 
-    this.bus.on('categoryChange.memberE', (payload) => {
-      this.state.category = payload.category;
-      this.update();
-    });
+    this.tooltip = d3.select(this.container)
+      .append('div')
+      .attr('class', 'member-a-tooltip')
+      .style('opacity', 0);
+
+    this.installControls();
   }
 
   async loadData(url) {
-    this.data = await fetch(url).then((response) => response.json());
-    this.data.sort((left, right) => d3.ascending(left.year, right.year));
+    const data = await fetch(url).then((response) => response.json());
+    if (!data?.disciplines) {
+      throw new Error('Member E impact data missing disciplines.');
+    }
+
+    this.impactByDiscipline = new Map(Object.entries(data.disciplines));
     this.render();
     return this;
   }
 
   render() {
-    this.update();
+    this.renderImpact();
   }
 
   resize() {
-    this.update();
+    this.renderImpact();
   }
 
-  update() {
-    if (!this.data.length || !this.container) {
+  installControls() {
+    this.disciplineButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (button.disabled) return;
+        this.discipline = button.dataset.eDiscipline;
+        this.disciplineButtons.forEach((item) => item.classList.toggle('is-active', item === button));
+        this.renderImpact();
+      });
+    });
+
+    const syncFwci = (value) => {
+      const numeric = Math.max(0, Number(value) || 0);
+      this.filters.minFwci = numeric;
+      if (this.minFwciInput) this.minFwciInput.value = String(numeric);
+      if (this.minFwciRange) this.minFwciRange.value = String(numeric);
+      this.renderImpact();
+    };
+
+    this.minFwciRange?.addEventListener('input', (event) => {
+      syncFwci(event.target.value);
+    });
+
+    this.minFwciInput?.addEventListener('input', (event) => {
+      syncFwci(event.target.value);
+    });
+
+    this.minCitationsInput?.addEventListener('input', (event) => {
+      this.filters.minCitations = Math.max(0, Number(event.target.value) || 0);
+      this.renderImpact();
+    });
+
+  }
+
+  renderImpact() {
+    if (!this.container) return;
+
+    const meta = DISCIPLINE_META[this.discipline] ?? DISCIPLINE_META.Medicine;
+    const period = PERIODS.all;
+    const dataset = this.impactByDiscipline.get(this.discipline);
+
+    if (!dataset?.papers?.length) {
+      this.setPanel(
+        [
+          { value: '—', label: '可视论文' },
+          { value: '—', label: '平均 FWCI' },
+          { value: '—', label: '平均引用' },
+          { value: '—', label: 'Top 10% 占比' }
+        ],
+        '如何阅读',
+        [
+          '进入本章节后，系统会加载抽样后的论文影响力记录。',
+          '通过筛选器收紧阈值，观察长尾区域的结构变化。'
+        ]
+      );
+      this.renderPlaceholder(`正在准备${meta.label}论文影响力…`);
       return;
     }
 
+    const filtered = dataset.papers.filter((item) => {
+      const year = item.year ?? null;
+      if (year === null || year < period.start || year > period.end) return false;
+      const fwci = Number(item.fwci ?? 0);
+      const citations = Number(item.citations ?? 0);
+      return fwci >= this.filters.minFwci && citations >= this.filters.minCitations;
+    });
+
+    if (!filtered.length) {
+      this.setPanel(
+        [
+          { value: '0', label: '可视论文' },
+          { value: '—', label: '平均 FWCI' },
+          { value: '—', label: '平均引用' },
+          { value: '0%', label: 'Top 10% 占比' }
+        ],
+        '暂无结果',
+        ['当前筛选条件下没有可显示的论文记录。']
+      );
+      this.renderPlaceholder('暂无数据', '请降低阈值或切换学科。');
+      return;
+    }
+
+    this.prepareSvg();
     const bounds = this.container.getBoundingClientRect();
-    const width = Math.max(320, bounds.width);
-    const height = Math.max(420, bounds.height || 420);
+    const width = Math.max(640, bounds.width || 640);
+    const height = Math.max(560, bounds.height || 560);
     const innerWidth = width - this.margin.left - this.margin.right;
     const innerHeight = height - this.margin.top - this.margin.bottom;
-    const clusterMode = this.state.category !== 'all';
-
     this.svg.attr('viewBox', `0 0 ${width} ${height}`);
     this.plot.attr('transform', `translate(${this.margin.left},${this.margin.top})`);
 
-    const xTimeline = d3.scaleLinear()
-      .domain(d3.extent(this.data, (item) => item.year))
-      .range([0, innerWidth]);
+    const minYear = d3.min(filtered, (item) => item.year) ?? period.start;
+    const maxYear = d3.max(filtered, (item) => item.year) ?? period.end;
+    const maxCitations = d3.max(filtered, (item) => Math.max(1, item.citations ?? 0)) ?? 1;
+    const maxFwci = d3.max(filtered, (item) => item.fwci ?? 0) ?? 1;
 
-    const yTimeline = d3.scaleLinear()
-      .domain([0, d3.max(this.data, (item) => item.score) + 8])
+    const x = d3.scaleLinear()
+      .domain([minYear, maxYear])
       .nice()
+      .range([0, innerWidth]);
+    const y = d3.scaleLog()
+      .domain([1, maxCitations * 1.05])
       .range([innerHeight, 0]);
+    const r = d3.scaleSqrt()
+      .domain([0, Math.max(1, maxFwci)])
+      .range([4, 18]);
+    const color = d3.scaleLinear()
+      .domain([0, 1])
+      .range(['#f3ede1', meta.color]);
 
-    const fieldCenters = Array.from(new Set(this.data.map((item) => item.field)));
-    const clusterX = d3.scalePoint().domain(fieldCenters).range([60, innerWidth - 60]).padding(0.6);
-
-    const x = clusterMode ? (item) => clusterX(item.field) : (item) => xTimeline(item.year);
-    const y = clusterMode ? (item) => yTimeline(item.year) : (item) => yTimeline(item.score);
+    this.grid
+      .call(d3.axisLeft(y).ticks(6, '~s').tickSize(-innerWidth).tickFormat(''));
 
     this.axisX
       .attr('transform', `translate(0,${innerHeight})`)
-      .transition()
-      .duration(550)
-      .call(d3.axisBottom(clusterMode ? clusterX : xTimeline).ticks(6).tickSizeOuter(0));
+      .call(d3.axisBottom(x).ticks(6).tickSizeOuter(0));
 
     this.axisY
-      .transition()
-      .duration(550)
-      .call(d3.axisLeft(clusterMode ? yTimeline : yTimeline).ticks(6).tickSizeOuter(0));
+      .call(d3.axisLeft(y).ticks(6, '~s').tickSizeOuter(0));
 
-    const circleSelection = this.points.selectAll('circle').data(this.data, (item) => item.id);
-    circleSelection.join(
-      (enter) => enter.append('circle').attr('class', 'morphing-chart__point').attr('r', 7),
-      (update) => update,
-      (exit) => exit.remove()
-    )
-      .transition()
-      .duration(750)
-      .attr('cx', (item) => x(item))
-      .attr('cy', (item) => y(item))
-      .attr('r', (item) => (item.field === this.state.category ? 11 : 7))
-      .attr('opacity', (item) => (this.state.category === 'all' || item.field === this.state.category ? 1 : 0.25))
-      .attr('fill', (item) => (item.field === this.state.category ? 'url(#morphing-gradient)' : '#edf4ff'));
+    const points = this.points
+      .selectAll('circle')
+      .data(filtered, (item) => item.id)
+      .join('circle')
+      .attr('cx', (item) => x(item.year))
+      .attr('cy', (item) => y(Math.max(1, item.citations ?? 0)))
+      .attr('r', (item) => r(item.fwci ?? 0))
+      .attr('fill', (item) => {
+        const percentile = Number(item.percentile ?? 0);
+        return Number.isFinite(percentile) ? color(Math.min(1, Math.max(0, percentile))) : '#cfe6e3';
+      })
+      .attr('fill-opacity', 0.75)
+      .attr('stroke', (item) => item.isPrize ? meta.color : '#fffaf0')
+      .attr('stroke-width', (item) => item.isPrize ? 1.6 : 0.9)
+      .on('mousemove', (event, item) => {
+        points.attr('fill-opacity', (point) => (point === item ? 0.96 : 0.2));
+        this.showTip(event, `
+          <strong>${escapeHtml(item.title || '未标注标题')}</strong>
+          发表年份：${escapeHtml(item.year ?? '—')}<br>
+          引用数：${NUMBER(item.citations ?? 0)}<br>
+          FWCI：${TWO_DECIMALS(item.fwci ?? 0)}<br>
+          引用百分位：${PERCENT(item.percentile ?? 0)}<br>
+          得主：${escapeHtml(item.laureateName || item.laureateId || '—')}
+        `);
+      })
+      .on('mouseleave', () => {
+        points.attr('fill-opacity', 0.75);
+        this.hideTip();
+      });
 
-    const labelSelection = this.points.selectAll('text').data(this.data.filter((item) => item.field === this.state.category || this.state.category === 'all'), (item) => item.id);
-    labelSelection.join(
-      (enter) => enter.append('text').attr('class', 'morphing-chart__label'),
-      (update) => update,
-      (exit) => exit.remove()
-    )
-      .transition()
-      .duration(750)
-      .attr('x', (item) => x(item) + 12)
-      .attr('y', (item) => y(item) - 10)
-      .text((item) => item.label);
+    this.annotations.selectAll('*').remove();
+    this.annotations.append('text')
+      .attr('class', 'member-a-hint')
+      .attr('x', 0)
+      .attr('y', -12)
+      .text('半径=FWCI；描边高亮诺奖代表作。');
 
-    const selectedPoint = this.data.reduce((closest, item) => {
-      if (!closest) {
-        return item;
-      }
+    this.annotations.append('text')
+      .attr('class', 'member-a-hint')
+      .attr('x', innerWidth - 6)
+      .attr('y', innerHeight - 8)
+      .attr('text-anchor', 'end')
+      .text(`${meta.label} · 影响力散点`);
 
-      return Math.abs(item.year - this.state.year) < Math.abs(closest.year - this.state.year) ? item : closest;
-    }, null);
+    const avgFwci = d3.mean(filtered, (item) => item.fwci ?? 0) ?? 0;
+    const avgCitations = d3.mean(filtered, (item) => item.citations ?? 0) ?? 0;
+    const top10Share = (d3.mean(filtered, (item) => item.isTop10 ? 1 : 0) ?? 0);
+    const strongest = d3.greatest(filtered, (item) => (item.fwci ?? 0) * Math.log1p(item.citations ?? 0));
 
-    const focusSelection = this.focus.selectAll('g').data(selectedPoint ? [selectedPoint] : []);
-    const focusEnter = focusSelection.join((enter) => {
-      const group = enter.append('g').attr('class', 'morphing-chart__focus-group');
-      group.append('line').attr('class', 'morphing-chart__focus-line');
-      group.append('circle').attr('class', 'morphing-chart__focus-dot').attr('r', 12);
-      group.append('text').attr('class', 'morphing-chart__focus-label');
-      return group;
-    });
-
-    focusEnter
-      .transition()
-      .duration(750)
-      .attr('transform', (item) => `translate(${x(item)},${y(item)})`);
-
-    focusEnter.select('.morphing-chart__focus-line')
-      .transition()
-      .duration(750)
-      .attr('x1', 0)
-      .attr('x2', 0)
-      .attr('y1', -70)
-      .attr('y2', 70);
-
-    focusEnter.select('.morphing-chart__focus-label')
-      .transition()
-      .duration(750)
-      .attr('x', 16)
-      .attr('y', -16)
-      .text((item) => `${item.year} · ${item.field}`);
+    this.setPanel(
+      [
+        { value: NUMBER(filtered.length), label: '可视论文' },
+        { value: TWO_DECIMALS(avgFwci), label: '平均 FWCI' },
+        { value: NUMBER(Math.round(avgCitations)), label: '平均引用' },
+        { value: PERCENT(top10Share), label: 'Top 10% 占比' }
+      ],
+      `长尾影响力 · ${meta.label}`,
+      [
+        '先看年份轴上气泡的疏密变化，再观察高 FWCI 是否集中在少数年份。',
+        `本学科影响力最高的代表作是 <em>${escapeHtml(strongest?.title ?? '未标注')}</em>。`,
+        '颜色越深表示引用百分位越高，提示其在学科内的相对位置。'
+      ]
+    );
   }
+
+  prepareSvg() {
+    this.svg.selectAll('*').remove();
+    this.plot = this.svg.append('g');
+    this.axisX = this.plot.append('g').attr('class', 'member-a-axis');
+    this.axisY = this.plot.append('g').attr('class', 'member-a-axis');
+    this.grid = this.plot.append('g').attr('class', 'member-a-grid');
+    this.points = this.plot.append('g');
+    this.annotations = this.plot.append('g');
+    this.tooltip.style('opacity', 0);
+  }
+
+  setPanel(kpis, title, paragraphs) {
+    if (this.kpis) {
+      this.kpis.innerHTML = kpis.map((item) => `
+        <div class="member-a-kpi">
+          <strong>${escapeHtml(item.value)}</strong>
+          <span>${escapeHtml(item.label)}</span>
+        </div>
+      `).join('');
+    }
+
+    if (this.reading) {
+      this.reading.innerHTML = `
+        <h3>${escapeHtml(title)}</h3>
+        <ul>${paragraphs.map((paragraph) => `<li>${paragraph}</li>`).join('')}</ul>
+      `;
+    }
+  }
+
+  renderPlaceholder(message, secondary = '正在加载长尾影响力数据。') {
+    this.prepareSvg();
+    const bounds = this.container.getBoundingClientRect();
+    const width = Math.max(640, bounds.width || 640);
+    const height = Math.max(560, bounds.height || 560);
+    this.svg.attr('viewBox', `0 0 ${width} ${height}`);
+    this.svg.append('line')
+      .attr('x1', 42)
+      .attr('x2', width - 42)
+      .attr('y1', height / 2)
+      .attr('y2', height / 2)
+      .attr('stroke', 'rgba(19, 33, 29, 0.12)');
+    this.svg.append('circle')
+      .attr('cx', width / 2)
+      .attr('cy', height / 2)
+      .attr('r', 7)
+      .attr('fill', '#1d3f36');
+    this.svg.append('text')
+      .attr('x', width / 2)
+      .attr('y', height / 2 - 26)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', 18)
+      .text(message);
+    this.svg.append('text')
+      .attr('class', 'member-a-hint')
+      .attr('x', width / 2)
+      .attr('y', height / 2 + 35)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', 11)
+      .text(secondary);
+  }
+
+  showTip(event, html) {
+    const bounds = this.container.getBoundingClientRect();
+    const tooltipWidth = 220;
+    const left = Math.min(event.clientX - bounds.left + 14, bounds.width - tooltipWidth - 10);
+    const top = Math.min(Math.max(8, event.clientY - bounds.top + 14), bounds.height - 140);
+    this.tooltip
+      .html(html)
+      .style('left', `${Math.max(8, left)}px`)
+      .style('top', `${top}px`)
+      .style('opacity', 1);
+  }
+
+  hideTip() {
+    this.tooltip.style('opacity', 0);
+  }
+}
+
+const DISCIPLINES = ['Physics', 'Chemistry', 'Medicine'];
+
+const DISCIPLINE_META = {
+  Physics: { label: '物理', color: '#1d3f36' },
+  Chemistry: { label: '化学', color: '#3f8f75' },
+  Medicine: { label: '医学', color: '#d25d3d' }
+};
+
+const PERIODS = {
+  all: { label: '1900 年以来', start: 1900, end: 2019 },
+  early: { label: '1900–1949', start: 1900, end: 1949 },
+  middle: { label: '1950–1989', start: 1950, end: 1989 },
+  recent: { label: '1990–2019', start: 1990, end: 2019 }
+};
+
+const NUMBER = d3.format(',');
+const PERCENT = d3.format('.1%');
+const TWO_DECIMALS = d3.format('.2f');
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 }
