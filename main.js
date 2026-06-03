@@ -25,7 +25,7 @@ const moduleSpecs = [
   { module: 'trajectory', src: './modules/memberB/page.html', title: '蓄力 · 卓越是如何炼成的？', dataFile: './data/memberB/memberB_data.json' },
   { module: 'network', src: './modules/memberC/page.html', title: '同行 · 巨人的肩膀与同行者', dataFile: './data/memberC_data.json' },
   { module: 'alluvial', src: './modules/memberD/page.html', title: '破壁 · 他们在研究什么？', dataFile: './data/memberD_data.json' },
-  { module: 'morphing', src: './modules/memberE/page.html', title: '余音 · 改变世界的代表作', dataFile: './data/memberE_data.json' }
+  { module: 'morphing', src: './modules/memberE/page.html', title: '余音 · 改变世界的代表作', dataFile: './data/memberE/memberE_impact.json' }
 ];
 
 const pageLabel = document.querySelector('[data-page-label]');

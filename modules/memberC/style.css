@@ -98,6 +98,37 @@
   min-width: 0;
 }
 
+.module-c .mc-notes {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(19, 33, 29, 0.08);
+  box-shadow: 0 10px 24px rgba(18, 24, 33, 0.06);
+}
+
+.module-c .mc-notes h3 {
+  margin: 0;
+  color: #20322b;
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
+
+.module-c .mc-notes ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+  color: #4a5a52;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.module-c .mc-notes li {
+  margin: 0;
+}
+
 .module-c .member-a-visual {
   align-self: start;
   min-height: 0 !important;
@@ -233,18 +264,80 @@
   gap: 0.35rem;
 }
 
+.module-c .mc-fig3-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-right: 0.35rem;
+  padding: 0.14rem 0.2rem 0.14rem 0.55rem;
+  border: 1px solid rgba(19, 33, 29, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.module-c .mc-fig3-filter > span {
+  color: #4a5a52;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.module-c .mc-segmented {
+  display: flex;
+  padding: 0.14rem;
+  border: 1px solid rgba(19, 33, 29, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.module-c .mc-segmented button {
+  min-height: 1.65rem;
+  padding: 0.26rem 0.68rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #4a5a52;
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 800;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.module-c .mc-segmented button:hover,
+.module-c .mc-segmented button.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, #315750, #4f8268);
+  box-shadow: 0 6px 14px rgba(53, 94, 75, 0.18);
+}
+
+.module-c .mc-segmented button:active {
+  transform: translateY(0.5px);
+}
+
 .mc-controls.mc-check {
   gap: 0.3rem;
 }
 
 .mc-controls select,
 .mc-controls input[type='number'] {
-  padding: 0.25rem 0.4rem;
-  border: 1px solid rgba(19, 33, 29, 0.2);
-  border-radius: 6px;
-  background: #fff;
+  padding: 0.26rem 0.6rem;
+  border: 1px solid rgba(19, 33, 29, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
   color: #2b3b34;
   font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.mc-controls select {
+  padding-right: 1.65rem;
+}
+
+.mc-controls select:focus,
+.mc-controls input[type='number']:focus {
+  outline: none;
+  border-color: rgba(53, 94, 75, 0.55);
+  box-shadow: 0 0 0 3px rgba(53, 94, 75, 0.12);
 }
 
 .mc-controls input[type='number'] {
@@ -652,16 +745,24 @@
 /* 浮动提示框 */
 .mc-tooltip {
   position: absolute;
-  padding: 0.35rem 0.5rem;
-  background: rgba(20, 28, 24, 0.92);
-  color: #fff;
-  border-radius: 5px;
-  font-size: 0.74rem;
-  line-height: 1.4;
+  z-index: 5;
+  max-width: 220px;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  color: #14251f;
+  background: rgba(255, 250, 240, 0.96);
+  border: 1px solid rgba(19, 33, 29, 0.12);
+  box-shadow: 0 12px 28px rgba(26, 41, 34, 0.14);
   pointer-events: none;
-  max-width: 320px;
-  z-index: 50;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  transition: opacity 0.15s ease;
+}
+
+.mc-tooltip strong {
+  display: block;
+  margin-bottom: 0.16rem;
+  font-size: 0.84rem;
 }
 
 @media (max-width: 960px) {

@@ -92,6 +92,38 @@ function resolveHorizontalCollisions(items, left, right, minGap, targetAccessor)
 }
 
 const PANEL_COUNT = 3;
+const FIG3_DISCIPLINE_LABELS = {
+  Physics: '物理',
+  Chemistry: '化学',
+  Medicine: '医学/生物'
+};
+
+const VIEW_COPY = {
+  overview: {
+    title: '团队规模演化与学科差异',
+    notes: [
+      '先看小提琴形状与散点密度：密度更厚的位置代表“常见团队规模”，离群点则提示极大团队。',
+      '再对照红色中位线与虚线均值：若均值明显高于中位数，说明少数大团队在“抬高平均”。',
+      '最后切换学科筛选，对比三学科的均值/中位数/≥5人占比，判断是哪一类学科更依赖大团队。'
+    ]
+  },
+  migration: {
+    title: '得主合作弧线：同行者与合作强度',
+    notes: [
+      '先调“合作篇数不少于/最多关系条数”，让画面只保留最有代表性的高强度合作（线越粗合作越频繁）。',
+      '再沿时间轴看弧线的跨期跨度：跨度越大表示合作跨越更长年代，密集区域代表合作高发期。',
+      '最后点击某条弧线/节点，在右侧核对样例论文与作者信息，把“关系强度”落到具体合作证据上。'
+    ]
+  },
+  centers: {
+    title: '内部引用热力：学科内知识回溯',
+    notes: [
+      '先用上方分段按钮切学科（物理/化学/医学/生物），确认当前只看该学科内部的引用关系。',
+      '再看热力格子的深浅：越深表示“引用论文数”更多；重点观察哪些来源年代更常回溯到哪些被引年代。',
+      '最后调整“聚合粒度/最小引用论文数”，验证结论是否稳健：粒度越粗看长期结构，粒度越细看局部波动。'
+    ]
+  }
+};
 
 export class NetworkChart {
   constructor(containerSelector, bus) {
@@ -104,10 +136,13 @@ export class NetworkChart {
     this.dataLoaded = false;
     this.loading = false;
     this.rendered = [false, false, false];
+    this.fig3Discipline = 'Physics';
     this._resizeRaf = null;
     this._resizeObserver = null;
     this.page = this.root.closest('.page-module') || document;
     this.summary = this.page.querySelector('[data-mc-summary]');
+    this.notes = this.page.querySelector('[data-mc-notes]');
+    this.fig3DisciplineButtons = Array.from(this.page.querySelectorAll('[data-mc-fig3-discipline]') ?? []);
     this.detailPanel = d3.select(this.page.querySelector('[data-mc-fig2-detail]'));
     this.authorPanel = d3.select(this.page.querySelector('[data-mc-fig2-author]'));
 
@@ -148,6 +183,16 @@ export class NetworkChart {
     prev?.addEventListener('click', () => this.switchTo(this.activeIndex - 1));
     next?.addEventListener('click', () => this.switchTo(this.activeIndex + 1));
 
+    this.fig3DisciplineButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        this.fig3Discipline = button.dataset.mcFig3Discipline;
+        this.fig3DisciplineButtons.forEach((item) => item.classList.toggle('is-active', item === button));
+        if (this.dataLoaded && this.activeIndex === 2) {
+          this.renderFig3();
+        }
+      });
+    });
+
     this.applyTrackTransform();
   }
 
@@ -167,6 +212,15 @@ export class NetworkChart {
       </article>
     `).join('');
     this.summary.innerHTML = `${head}${body}`;
+
+    if (this.notes) {
+      const key = this.activeIndex === 0 ? 'overview' : this.activeIndex === 1 ? 'migration' : 'centers';
+      const copy = VIEW_COPY[key];
+      this.notes.innerHTML = `
+        <h3>${copy.title}</h3>
+        <ul>${copy.notes.map((item) => `<li>${item}</li>`).join('')}</ul>
+      `;
+    }
   }
 
   updateRightRail(index) {
@@ -416,7 +470,7 @@ export class NetworkChart {
             { value: avgByCategory('Medicine') == null ? '—' : avgByCategory('Medicine').toFixed(1), label: '医学/生物平均作者数' },
             { value: Number.isFinite(meanVal) ? meanVal.toFixed(1) : '—', label: '整体平均作者数' }
           ],
-          '先看不同学科的团队规模均值，再看年代变化。'
+          '先看三类学科的平均作者数，再沿着年代变化判断团队规模是变大还是变小。'
         );
       } else {
         const medianVal = sortedCounts.length ? d3.median(sortedCounts) : null;
@@ -429,7 +483,7 @@ export class NetworkChart {
             { value: medianVal == null ? '—' : medianVal.toFixed(1), label: '中位作者数' },
             { value: largeTeamShare == null ? '—' : `${(largeTeamShare * 100).toFixed(0)}%`, label: '≥5人团队占比' }
           ],
-          `当前仅显示 ${category} 学科；下方分布看团队规模随年代的变化。`
+          `当前仅显示 ${category} 学科；先看右侧统计，再看下方分布判断该学科的团队规模是否更集中。`
         );
       }
 
@@ -715,7 +769,10 @@ export class NetworkChart {
       if (!node) return;
       currentAuthorKey = node.key;
       const idx = (seededHash(node.key) % 8) + 1;
-      const img = `${self.imageBase}placeholder_${idx}.svg`;
+      const placeholderImg = `${self.imageBase}placeholder_${idx}.svg`;
+      // 根据作者名生成候选图片文件名：小写化、逗号+空格→下划线、其余空格→下划线，扩展名为 .png
+      const candidateName = node.name.trim().toLowerCase().replace(/,\s*/g, '_').replace(/\s+/g, '_');
+      const candidateImg = `${self.imageBase}${candidateName}.png`;
       const awardReason = (node.laureateId ? motivationById.get(String(node.laureateId)) : '') || motivationByKey.get(node.key) || '';
       self.authorPanel.html(`
         <div class="mc-fig2-author-head">
@@ -723,7 +780,7 @@ export class NetworkChart {
           <button type="button" class="mc-fig2-author-clear" data-mc-fig2-author-clear>收起详情</button>
         </div>
         <div class="mc-fig2-author-body">
-          <img src="${img}" alt="${node.name}" />
+          <img src="${candidateImg}" alt="${node.name}" onerror="this.src='${placeholderImg}'" />
           <div class="meta">
             <h4>${node.name}</h4>
             <p>学科：${node.category || 'N/A'}</p>
@@ -765,7 +822,7 @@ export class NetworkChart {
           { value: avgByCategory('Medicine') == null ? '—' : avgByCategory('Medicine').toFixed(1), label: '医学/生物平均合作强度' },
           { value: overallAvg == null ? '—' : overallAvg.toFixed(1), label: '当前展示均值' }
         ],
-        `只看当前阈值和前 ${self.sel('[data-mc-fig2-paper-topn]').node().value} 篇样例；数字重点看不同学科的平均合作强度。`
+        `先看不同学科的平均合作强度，再结合当前阈值和前 ${self.sel('[data-mc-fig2-paper-topn]').node().value} 篇样例判断合作网络的密度。`
       );
 
       if (selected.length === 0) {
@@ -1089,12 +1146,28 @@ export class NetworkChart {
     const width = svgW - 80;
     const height = svgH - 80;
     const self = this;
+    const activeDiscipline = this.fig3Discipline || 'Physics';
+    const activeLabel = FIG3_DISCIPLINE_LABELS[activeDiscipline] || activeDiscipline;
+
+    this.fig3DisciplineButtons.forEach((button) => {
+      const active = button.dataset.mcFig3Discipline === activeDiscipline;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
 
     function render() {
       const minw = +self.sel('[data-mc-fig3-minw]').node().value;
       const granularity = self.sel('[data-mc-fig3-granularity]').node().value;
 
-      const es = edges.filter((e) => e.source_pub_year != null && e.target_pub_year != null).filter((e) => e.source_pub_year >= e.target_pub_year);
+      const granularityLabel = granularity === 'year' ? '年份' : granularity === 'five' ? '五年' : '十年';
+
+      const es = edges
+        .filter((e) => e.source_pub_year != null && e.target_pub_year != null)
+        .filter((e) => e.source_pub_year >= e.target_pub_year)
+        .filter((e) => {
+          const meta = self.metaByKey.get(normalizeName(e.target));
+          return meta ? meta.category === activeDiscipline : false;
+        });
 
       const bucket = (y) => {
         if (y == null || !isFinite(y)) return null;
@@ -1138,20 +1211,35 @@ export class NetworkChart {
         return stats && stats.count > 0 ? stats.sum / stats.count : null;
       };
       const overallAvg = es.length ? d3.mean(es, (d) => Math.max(0, (d.source_pub_year || 0) - (d.target_pub_year || 0))) : null;
+      const activeAvg = avgByCategory(activeDiscipline);
 
       self.setSummary(
-        '图 3 · 内部引用热力',
+        `图 3 · 内部引用热力 · ${activeLabel}`,
         [
-          { value: avgByCategory('Physics') == null ? '—' : avgByCategory('Physics').toFixed(1), label: '物理平均回溯年数' },
-          { value: avgByCategory('Chemistry') == null ? '—' : avgByCategory('Chemistry').toFixed(1), label: '化学平均回溯年数' },
-          { value: avgByCategory('Medicine') == null ? '—' : avgByCategory('Medicine').toFixed(1), label: '医学/生物平均回溯年数' },
-          { value: overallAvg == null ? '—' : overallAvg.toFixed(1), label: '整体平均回溯年数' }
+          { value: activeLabel, label: '当前学科' },
+          { value: activeAvg == null ? '—' : activeAvg.toFixed(1), label: '平均回溯年数' },
+          { value: cells.length, label: '满足阈值的格子数' },
+          { value: overallAvg == null ? '—' : overallAvg.toFixed(1), label: '当前平均回溯年数' }
         ],
-        '这组卡片直接比较各学科的平均回溯年数，比单纯引用次数更有区分度。'
+        '先点上方学科按钮切换物理、化学、生物，再看色块深浅判断哪些时间段的引用最集中。'
       );
 
-      svg.append('text').attr('x', width / 2).attr('y', 54).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', '#666')
-        .text('每个格子都是一个时间段对；颜色越深，说明这个时间对上的引用越集中。');
+      svg.append('text')
+        .attr('x', svgW / 2)
+        .attr('y', 22)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', 15)
+        .attr('font-weight', 'bold')
+        .attr('fill', '#222')
+        .text(`内部引用热力（${activeLabel}）`);
+
+      svg.append('text')
+        .attr('x', svgW / 2)
+        .attr('y', 42)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', 11)
+        .attr('fill', '#666')
+        .text(`粒度：${granularityLabel} · 最小引用论文数：${minw} · 颜色越深=引用论文数越多`);
 
       if (cells.length === 0) {
         svg.append('text').attr('x', 20).attr('y', 40).text('当前阈值过高，已没有满足条件的格子。请把“最小引用论文数”调低到 1 或 2。').attr('fill', '#900');

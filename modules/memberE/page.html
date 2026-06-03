@@ -1,21 +1,41 @@
-<section id="section-morphing" class="page page-module module-e" data-page="morphing" data-title="余音 · 改变世界的代表作" data-module="morphing" data-data-file="./data/memberE_data.json">
-  <div class="page-grid module-grid">
-    <div class="page-copy">
-      <p class="eyebrow eyebrow--teal">成员 E · 长尾影响力</p>
-      <h2>余音 · 改变世界的代表作</h2>
-      <p class="lede">
-        聚焦学术遗产的长期价值，识别“爆发型”“常青藤型”“睡美人型”代表作，展示顶级成果对后续研究的长尾影响。
-      </p>
-      <div class="story-brief">
-        <span>代表作与长尾产出</span>
-        <span>影响力多维度评估</span>
-        <span>高光成果对比</span>
-        <span>学术价值空间探索</span>
+<section id="section-morphing" class="page page-module module-e" data-page="morphing" data-title="余音 · 改变世界的代表作" data-module="morphing" data-data-file="./data/memberE/memberE_impact.json">
+  <div class="member-a-dashboard">
+    <header class="member-a-hero">
+      <div>
+        <p class="eyebrow eyebrow--teal">成员 E · 长尾影响力</p>
+        <h2>余音 · 改变世界的代表作</h2>
       </div>
+    </header>
+
+    <div class="member-a-tabs" role="tablist" aria-label="成员 E 可视化视图">
+      <button class="member-a-tab" type="button" data-e-discipline="Physics">物理 · 代表作</button>
+      <button class="member-a-tab" type="button" data-e-discipline="Chemistry">化学 · 代表作</button>
+      <button class="member-a-tab is-active" type="button" data-e-discipline="Medicine">医学 · 代表作</button>
     </div>
-    <div class="page-visual chart-visual">
-      <div class="chart-frame">
-        <div class="chart-container" data-chart-target aria-label="Morphing chart container"></div>
+
+    <div class="member-a-content">
+      <aside class="member-a-panel">
+        <div class="member-a-kpis" data-kpis></div>
+        <div class="member-a-notes" data-notes>
+          <div class="member-e-filters" data-e-filters>
+            <h3>筛选阈值</h3>
+            <label>
+              最小 FWCI
+              <input type="range" min="0" max="300" step="0.5" value="100" data-e-min-fwci-range>
+              <input type="number" min="0" step="0.5" value="100" data-e-min-fwci>
+            </label>
+            <label>
+              最小引用数
+              <input type="number" min="0" step="50" value="0" data-e-min-citations>
+            </label>
+          </div>
+          <div data-e-reading></div>
+        </div>
+      </aside>
+      <div class="page-visual chart-visual member-a-visual">
+        <div class="chart-frame">
+          <div class="chart-container member-a-chart" data-chart-target aria-label="成员 E 影响力散点图"></div>
+        </div>
       </div>
     </div>
   </div>

@@ -65,6 +65,14 @@
 
                       <section class="mc-panel" data-mc-panel="2" role="tabpanel">
                         <div class="mc-controls">
+                          <div class="mc-fig3-filter" data-mc-fig3-discipline-panel>
+                            <span>学科分类</span>
+                            <div class="mc-segmented" role="group" aria-label="选择学科分类">
+                              <button type="button" class="is-active" data-mc-fig3-discipline="Physics">物理</button>
+                              <button type="button" data-mc-fig3-discipline="Chemistry">化学</button>
+                              <button type="button" data-mc-fig3-discipline="Medicine">医学/生物</button>
+                            </div>
+                          </div>
                           <label>最小引用论文数：<input data-mc-fig3-minw type="number" value="1" min="1" max="500" step="1" /></label>
                           <label>聚合粒度：
                             <select data-mc-fig3-granularity>
@@ -96,6 +104,8 @@
 
       <aside class="member-a-panel member-c-info">
         <div class="mc-summary" data-mc-summary aria-label="当前图表统计信息"></div>
+
+        <section class="mc-notes" data-mc-notes aria-label="当前图表说明"></section>
 
         <section class="mc-fig2-info" data-mc-fig2-detail>
           <h3>论文详情</h3>

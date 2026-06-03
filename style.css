@@ -255,8 +255,13 @@ body::after {
 .page-copy h2 {
   margin: 0;
   font-size: clamp(2.2rem, 4.2vw, 4.8rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.hero-copy h2 {
+  white-space: nowrap;
+  font-size: clamp(1.6rem, 3vw, 3.2rem);
 }
 
 .lede {
@@ -342,6 +347,10 @@ body::after {
 
 .hero-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
+.overview-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .hero-notes div,
 .overview-cards article,
 .story-brief span,
@@ -365,7 +374,8 @@ body::after {
 .overview-cards span,
 .story-brief span,
 .manifest-steps,
-.closing-card p {
+.closing-card p,
+.closing-points span {
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.65;
@@ -523,7 +533,18 @@ body::after {
   padding: 1.5rem;
 }
 
-.closing-points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.closing-points {
+  grid-template-columns: 1fr;
+}
+
+.closing-points span {
+  letter-spacing: normal;
+  display: block;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(19, 33, 29, 0.06);
+}
 
 .nav-constellation {
   position: fixed;
