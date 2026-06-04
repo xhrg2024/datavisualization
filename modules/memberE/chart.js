@@ -239,9 +239,10 @@ export class MorphingChart {
       ],
       `长尾影响力 · ${meta.label}`,
       [
+        `本学科${meta.label}论文的引用分布极不均衡：少数代表作（如 <em>${escapeHtml(strongest?.title ?? '未标注')}</em>）的 FWCI 和引用数远超普通论文，而绝大多数论文位于长尾之中——Top 10% 论文占据了总引用的大部分份额，反映了诺贝尔奖级别的科研产出中"赢者通吃"的学术影响力格局。`,
         '先看年份轴上气泡的疏密变化，再观察高 FWCI 是否集中在少数年份。',
-        `本学科影响力最高的代表作是 <em>${escapeHtml(strongest?.title ?? '未标注')}</em>。`,
-        '颜色越深表示引用百分位越高，提示其在学科内的相对位置。'
+        '颜色越深表示引用百分位越高，提示其在学科内的相对位置。',
+        '用筛选器收紧 FWCI 和引用数阈值，可以观察长尾区域论文的分布结构变化。'
       ]
     );
   }
@@ -268,9 +269,12 @@ export class MorphingChart {
     }
 
     if (this.reading) {
+      const insight = paragraphs.length > 0 ? paragraphs[0] : '';
+      const notes = paragraphs.length > 1 ? paragraphs.slice(1) : [];
       this.reading.innerHTML = `
         <h3>${escapeHtml(title)}</h3>
-        <ul>${paragraphs.map((paragraph) => `<li>${paragraph}</li>`).join('')}</ul>
+        ${insight ? `<p class="member-a-insight">${insight}</p>` : ''}
+        ${notes.length > 0 ? `<ul>${notes.map((item) => `<li>${item}</li>`).join('')}</ul>` : ''}
       `;
     }
   }

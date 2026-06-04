@@ -101,26 +101,29 @@ const FIG3_DISCIPLINE_LABELS = {
 const VIEW_COPY = {
   overview: {
     title: '团队规模演化与学科差异',
+    insight: '近年来诺贝尔奖得主论文的团队规模整体呈现扩大趋势：20 世纪初多数论文仅有 1–2 位作者，而进入 21 世纪后团队协作日益普遍，尤其在物理学和医学领域，数十人甚至上百人的大型合作项目已不罕见。这意味着个人英雄主义的科研时代正在被大团队协作模式所取代。',
     notes: [
-      '先看小提琴形状与散点密度：密度更厚的位置代表“常见团队规模”，离群点则提示极大团队。',
-      '再对照红色中位线与虚线均值：若均值明显高于中位数，说明少数大团队在“抬高平均”。',
+      '先看小提琴形状与散点密度：密度更厚的位置代表"常见团队规模"，离群点则提示极大团队。',
+      '再对照红色中位线与虚线均值：若均值明显高于中位数，说明少数大团队在"抬高平均"。',
       '最后切换学科筛选，对比三学科的均值/中位数/≥5人占比，判断是哪一类学科更依赖大团队。'
     ]
   },
   migration: {
     title: '得主合作弧线：同行者与合作强度',
+    insight: '诺贝尔奖得主之间存在大量跨代际、跨学科的合作关系。数据显示，得主之间的合作强度与获奖时间接近程度正相关——同年或相邻年份获奖的得主之间更易产生合作，且合作成果的论文评分普遍较高。物理学领域的合作关系最为密集，展现了该学科"大科学"的协作特征。',
     notes: [
-      '先调“合作篇数不少于/最多关系条数”，让画面只保留最有代表性的高强度合作（线越粗合作越频繁）。',
+      '先调"合作篇数不少于/最多关系条数"，让画面只保留最有代表性的高强度合作（线越粗合作越频繁）。',
       '再沿时间轴看弧线的跨期跨度：跨度越大表示合作跨越更长年代，密集区域代表合作高发期。',
-      '最后点击某条弧线/节点，在右侧核对样例论文与作者信息，把“关系强度”落到具体合作证据上。'
+      '最后点击某条弧线/节点，在右侧核对样例论文与作者信息，把"关系强度"落到具体合作证据上。'
     ]
   },
   centers: {
     title: '内部引用热力：学科内知识回溯',
+    insight: '诺贝尔奖得主论文的内部引用表现出明显的"近期偏好"和"学科内聚"特征：大多数引用发生在发表后 10–20 年内，且引用行为高度集中在同一学科内部。其中物理学的回溯周期最长（常引用数十年前的经典工作），而医学/生物学的引用更集中在近 5–10 年，反映出不同学科知识更新速度的差异。',
     notes: [
       '先用上方分段按钮切学科（物理/化学/医学/生物），确认当前只看该学科内部的引用关系。',
-      '再看热力格子的深浅：越深表示“引用论文数”更多；重点观察哪些来源年代更常回溯到哪些被引年代。',
-      '最后调整“聚合粒度/最小引用论文数”，验证结论是否稳健：粒度越粗看长期结构，粒度越细看局部波动。'
+      '再看热力格子的深浅：越深表示"引用论文数"更多；重点观察哪些来源年代更常回溯到哪些被引年代。',
+      '最后调整"聚合粒度/最小引用论文数"，验证结论是否稳健：粒度越粗看长期结构，粒度越细看局部波动。'
     ]
   }
 };
@@ -203,21 +206,24 @@ export class NetworkChart {
   }
 
   setSummary(title, cards, caption) {
-    if (!this.summary) return;
-    const head = title ? `<p class="mc-summary-caption"><strong>${title}</strong>${caption ? ` · ${caption}` : ''}</p>` : '';
-    const body = (cards || []).map((item) => `
-      <article class="mc-summary-card">
-        <strong>${item.value}</strong>
-        <span>${item.label}</span>
-      </article>
-    `).join('');
-    this.summary.innerHTML = `${head}${body}`;
+    if (!this.summary) {
+      this.summary = this.page.querySelector('[data-mc-summary]');
+    }
+    if (this.summary) {
+      this.summary.innerHTML = (cards || []).map((item) => `
+        <div class="member-a-kpi">
+          <strong>${item.value}</strong>
+          <span>${item.label}</span>
+        </div>
+      `).join('');
+    }
 
     if (this.notes) {
       const key = this.activeIndex === 0 ? 'overview' : this.activeIndex === 1 ? 'migration' : 'centers';
       const copy = VIEW_COPY[key];
       this.notes.innerHTML = `
         <h3>${copy.title}</h3>
+        <p class="member-a-insight">${copy.insight}</p>
         <ul>${copy.notes.map((item) => `<li>${item}</li>`).join('')}</ul>
       `;
     }

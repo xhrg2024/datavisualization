@@ -68,15 +68,10 @@
   height: auto;
   max-height: none;
   display: grid;
-  /* 左图右信息，两个独立幕布 */
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(250px, 0.28fr) minmax(640px, 1.12fr);
   gap: clamp(0.6rem, 1.25vw, 0.9rem);
   align-items: start;
   overflow: visible;
-}
-
-.member-c-content {
-  align-items: stretch;
 }
 
 .module-c .member-a-panel {
@@ -404,34 +399,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.6rem;
   grid-auto-rows: minmax(72px, auto);
-}
-
-.mc-summary-card {
-  padding: 0.8rem 0.85rem;
-  border-radius: 14px;
-  border: 1px solid rgba(19, 33, 29, 0.08);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 22px rgba(26, 41, 34, 0.06);
-}
-
-.mc-summary-card strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  font-size: 1.1rem;
-  color: #21352d;
-}
-
-.mc-summary-card span {
-  color: #51605b;
-  font-size: 0.74rem;
-  line-height: 1.45;
-}
-
-.mc-summary-caption {
-  margin: 0;
-  color: #51605b;
-  font-size: 0.76rem;
-  line-height: 1.55;
 }
 
 /* 图 2 信息面板 */
