@@ -108,7 +108,7 @@ export class MorphingChart {
           { value: '—', label: '可视论文' },
           { value: '—', label: '平均 FWCI' },
           { value: '—', label: '平均引用' },
-          { value: '—', label: 'Top 10% 占比' }
+          { value: '—', label: '引用量前10%的论文占比' }
         ],
         '如何阅读',
         [
@@ -134,7 +134,7 @@ export class MorphingChart {
           { value: '0', label: '可视论文' },
           { value: '—', label: '平均 FWCI' },
           { value: '—', label: '平均引用' },
-          { value: '0%', label: 'Top 10% 占比' }
+          { value: '0%', label: '全论文库中引用量TOP10%的论文' }
         ],
         '暂无结果',
         ['当前筛选条件下没有可显示的论文记录。']
@@ -235,11 +235,11 @@ export class MorphingChart {
         { value: NUMBER(filtered.length), label: '可视论文' },
         { value: TWO_DECIMALS(avgFwci), label: '平均 FWCI' },
         { value: NUMBER(Math.round(avgCitations)), label: '平均引用' },
-        { value: PERCENT(top10Share), label: 'Top 10% 占比' }
+        { value: '有 ' + PERCENT(top10Share), label: '全论文库中引用量TOP10%的论文' }
       ],
       `长尾影响力 · ${meta.label}`,
       [
-        `本学科${meta.label}论文的引用分布极不均衡：少数代表作（如 <em>${escapeHtml(strongest?.title ?? '未标注')}</em>）的 FWCI 和引用数远超普通论文，而绝大多数论文位于长尾之中——Top 10% 论文占据了总引用的大部分份额，反映了诺贝尔奖级别的科研产出中"赢者通吃"的学术影响力格局。`,
+        `${meta.label}论文的引用分布极不均衡：少数代表性的获奖作（如 <em>${escapeHtml(strongest?.title ?? '未标注')}</em>）的 FWCI 和引用数远超其他的获奖论文，而绝大多数论文位于长尾之中——Top 10% 论文占据了总引用的大部分份额，反映了诺贝尔奖级别的科研产出中"赢者通吃"的学术影响力格局。`,
         '先看年份轴上气泡的疏密变化，再观察高 FWCI 是否集中在少数年份。',
         '颜色越深表示引用百分位越高，提示其在学科内的相对位置。',
         '用筛选器收紧 FWCI 和引用数阈值，可以观察长尾区域论文的分布结构变化。'
