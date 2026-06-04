@@ -18,16 +18,21 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div class="brand-lockup">
-        <span class="brand-kicker">2026 春 · 数据可视化期末项目</span>
-        <h1>通往斯德哥尔摩之路</h1>
+      <div class="topbar-main">
+        <div class="brand-lockup">
+          <span class="brand-kicker">2026 春 · 数据可视化期末项目</span>
+          <h1>通往斯德哥尔摩之路</h1>
+        </div>
+        <div class="topbar-meta">
+          <span>全屏逐页切换</span>
+          <span>独立模块并行开发</span>
+          <span>GitHub Pages 直接部署</span>
+        </div>
       </div>
-      <div class="topbar-meta">
-        <span>全屏逐页切换</span>
-        <span>独立模块并行开发</span>
-        <span>GitHub Pages 直接部署</span>
-      </div>
+      <div class="topbar-nav" data-top-nav aria-label="章节导航"></div>
     </header>
+
+    <nav class="side-nav" data-side-nav aria-label="页面快速跳转"></nav>
 
     <aside class="nav-constellation" aria-label="翻页控制区" tabindex="0">
       <div class="constellation-track" aria-hidden="true">

@@ -34,6 +34,8 @@ const pageDotsContainer = document.querySelector('[data-page-dots]');
 const moduleSlot = document.querySelector('[data-module-slot]');
 const navShell = document.querySelector('.nav-constellation');
 const navPeek = document.querySelector('[data-nav-peek]');
+const topNav = document.querySelector('[data-top-nav]');
+const sideNav = document.querySelector('[data-side-nav]');
 const carouselCards = Array.from(document.querySelectorAll('[data-carousel] .carousel-card'));
 const carouselPrev = document.querySelector('[data-carousel-prev]');
 const carouselNext = document.querySelector('[data-carousel-next]');
@@ -54,6 +56,25 @@ const state = {
 function collectPages() {
   state.pages = Array.from(document.querySelectorAll('.page'));
   state.modulePages = state.pages.filter((page) => page.dataset.module);
+}
+
+function syncNavs(index) {
+  // topbar 内置导航栏同步
+  if (topNav) {
+    topNav.querySelectorAll('.topbar-nav-item').forEach((item, i) => {
+      item.classList.toggle('is-active', i === index);
+    });
+  }
+  // 左侧导航同步
+  if (sideNav) {
+    const items = sideNav.querySelectorAll('.side-nav-item');
+    const total = items.length;
+    items.forEach((item, i) => {
+      const isActive = i === index;
+      item.classList.toggle('is-active', isActive);
+      item.classList.toggle('is-inactive', !isActive && total > 3);
+    });
+  }
 }
 
 function updatePageMeta(index) {
@@ -111,7 +132,60 @@ function syncPageClasses(index) {
     }
   }
 
+  syncNavs(index);
   updatePageMeta(index);
+}
+
+function buildTopNav() {
+  if (!topNav) return;
+  const pageNavLabels = [
+    { label: '首页', short: '首页' },
+    { label: '总览', short: '总览' },
+    { label: '地缘政治与空间轨迹', short: '四海经纬' },
+    { label: '学术生命周期与产出节奏', short: '蓄力一生' },
+    { label: '合作网络与内部引用', short: '群星同辉' },
+    { label: '研究主题的迁移与跨界', short: '跨界破壁' },
+    { label: '代表作的长尾影响力', short: '余音绕梁' },
+    { label: '收束', short: '大道至简' }
+  ];
+  topNav.innerHTML = state.pages.map((page, i) => {
+    const info = pageNavLabels[i] || { label: page.dataset.title || `第 ${i + 1} 页`, short: `第 ${i + 1} 页` };
+    const indexStr = String(i + 1).padStart(2, '0');
+    return `<button type="button" class="topbar-nav-item" data-page-index="${i}">
+      <span class="nav-index">${indexStr}</span>
+      <span>${info.short}</span>
+    </button>`;
+  }).join('');
+  topNav.querySelectorAll('.topbar-nav-item').forEach((btn) => {
+    btn.addEventListener('click', () => goToPage(Number(btn.dataset.pageIndex)));
+  });
+}
+
+function buildSideNav() {
+  if (!sideNav) return;
+  const sidebarItems = [
+    { line1: '首页', line2: '开篇' },
+    { line1: '项目', line2: '总览' },
+    { line1: '四海', line2: '经纬' },
+    { line1: '蓄力', line2: '一生' },
+    { line1: '群星', line2: '同辉' },
+    { line1: '跨界', line2: '破壁' },
+    { line1: '余音', line2: '绕梁' },
+    { line1: '大道', line2: '至简' }
+  ];
+  sideNav.innerHTML = state.pages.map((page, i) => {
+    const info = sidebarItems[i] || { line1: `第${i + 1}`, line2: '页面' };
+    return `<button type="button" class="side-nav-item" data-page-index="${i}" aria-label="${page.dataset.title || `第 ${i + 1} 页`}">
+      <span class="side-nav-index">${i + 1}</span>
+      <span class="side-nav-text">
+        <span class="side-nav-line1">${info.line1}</span>
+        <span class="side-nav-line2">${info.line2}</span>
+      </span>
+    </button>`;
+  }).join('');
+  sideNav.querySelectorAll('.side-nav-item').forEach((btn) => {
+    btn.addEventListener('click', () => goToPage(Number(btn.dataset.pageIndex)));
+  });
 }
 
 function goToPage(index) {
@@ -443,6 +517,8 @@ function installNavIdle() {
 async function bootstrap() {
   await loadModulePages();
   collectPages();
+  buildTopNav();
+  buildSideNav();
   buildPageDots();
   buildCarousel();
   installWheelZone();
