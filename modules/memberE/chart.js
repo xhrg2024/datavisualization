@@ -235,7 +235,7 @@ export class MorphingChart {
         { value: NUMBER(filtered.length), label: '可视论文' },
         { value: TWO_DECIMALS(avgFwci), label: '平均 FWCI' },
         { value: NUMBER(Math.round(avgCitations)), label: '平均引用' },
-        { value: '有 ' + PERCENT(top10Share), label: '全论文库中引用量TOP10%的论文' }
+        { value: '有 ' + PERCENT(top10Share), label: '的论文是全论文库中引用量TOP10%的论文' }
       ],
       `长尾影响力 · ${meta.label}`,
       [
