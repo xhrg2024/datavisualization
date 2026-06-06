@@ -372,7 +372,22 @@ function warmUpCharts() {
   idle(step);
 }
 
-function handleWheelDelta(deltaY) {
+function handleWheelDelta(deltaY, targetElement) {
+  // 如果在可滚动区域内滚动，先检查是否已到底/顶，再决定是否翻页
+  if (targetElement) {
+    const scrollable = targetElement.closest('.page.is-active, .mc-panel, .member-a-dashboard, .member-b-dashboard, .member-c-content, .member-d-dashboard');
+    if (scrollable) {
+      const { scrollTop, scrollHeight, clientHeight } = scrollable;
+      const atTop = scrollTop <= 0;
+      const atBottom = Math.abs(scrollTop + clientHeight - scrollHeight) <= 2;
+      
+      // 如果滚动方向与可滚动状态匹配，让内容滚动而非翻页
+      if ((deltaY > 0 && !atBottom) || (deltaY < 0 && !atTop)) {
+        return; // 不翻页，让原生滚动继续
+      }
+    }
+  }
+
   if (state.wheelLock || state.transitionLock) {
     return;
   }
@@ -396,7 +411,7 @@ function installWheelZone() {
 
   navShell.addEventListener('wheel', (event) => {
     event.preventDefault();
-    handleWheelDelta(event.deltaY);
+    handleWheelDelta(event.deltaY, event.target);
   }, { passive: false });
 
   let touchStartY = 0;
@@ -409,7 +424,7 @@ function installWheelZone() {
     const touchEndY = event.changedTouches[0]?.clientY ?? 0;
     const delta = touchStartY - touchEndY;
     if (Math.abs(delta) > 40) {
-      handleWheelDelta(delta);
+      handleWheelDelta(delta, event.target);
     }
   }, { passive: true });
 }
@@ -434,9 +449,39 @@ function installButtons() {
 }
 
 function installResizeHandling() {
+  let resizeTimer = null;
   window.addEventListener('resize', () => {
-    state.charts.forEach((chart) => chart.resize?.());
+    // 防抖：避免频繁触发 resize
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      state.charts.forEach((chart) => chart.resize?.());
+      // 重新调整 orb 位置
+      const orb = document.querySelector('.constellation-orb');
+      const dots = document.querySelectorAll('.page-dot');
+      const track = document.querySelector('.constellation-track');
+      if (orb && dots[state.currentPage] && track) {
+        const trackRect = track.getBoundingClientRect();
+        const dotRect = dots[state.currentPage].getBoundingClientRect();
+        orb.style.top = `${dotRect.top - trackRect.top + dotRect.height / 2 - 8}px`;
+      }
+    }, 150);
   });
+
+  // 观察图表容器尺寸变化（ResizeObserver 比 window resize 更精确）
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => {
+      if (state.transitionLock) return;
+      state.charts.forEach((chart) => chart.resize?.());
+    });
+    // 延迟观察，确保容器已挂载
+    setTimeout(() => {
+      state.charts.forEach((chart) => {
+        if (chart.container && chart.container.parentElement) {
+          ro.observe(chart.container.parentElement);
+        }
+      });
+    }, 1000);
+  }
 }
 
 function installNavIdle() {
