@@ -76,21 +76,28 @@
 
 .module-c .member-a-panel {
   min-height: 0;
-  height: fit-content;
-  max-height: 100%;
+  height: auto;
+  max-height: none;
   padding: clamp(0.75rem, 1.25vw, 1rem);
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 0.85rem;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: visible;
+  scrollbar-width: thin;
 }
 
 .module-c .member-c-info {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  overflow: auto;
   min-width: 0;
+  align-self: start;
+}
+
+.module-c .member-c-info > * {
+  position: relative;
+  flex: 0 0 auto;
+  z-index: 0;
 }
 
 .module-c .mc-notes {
@@ -101,6 +108,7 @@
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(19, 33, 29, 0.08);
   box-shadow: 0 10px 24px rgba(18, 24, 33, 0.06);
+  overflow: visible;
 }
 
 .module-c .mc-notes h3 {
@@ -408,9 +416,16 @@
   border: 1px solid rgba(19, 33, 29, 0.1);
   background: rgba(252, 252, 253, 0.9);
   border-radius: 14px;
-  max-height: none;
+  max-height: 220px;
   overflow: auto;
   scrollbar-gutter: stable;
+  margin: 0;
+  clear: both;
+}
+
+.mc-fig2-info[style*="display: none"],
+.mc-fig2-info[hidden] {
+  display: none !important;
 }
 
 .mc-fig2-info h3 {

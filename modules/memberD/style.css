@@ -8,7 +8,7 @@
   --member-d-physics: #4f7890;
   --member-d-chemistry: #b56c43;
   --member-d-medicine: #66875e;
-  --member-d-font-serif: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", Georgia, serif;
+  --member-d-font-serif: "Aptos", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 .module-d [hidden] {
@@ -24,9 +24,9 @@
   font-family: var(--member-d-font-serif);
   font-weight: 500;
   border: 1px solid var(--member-d-rule);
-  border-radius: 26px;
-  background: linear-gradient(145deg, rgba(251, 250, 246, 0.97), rgba(241, 246, 240, 0.7));
-  box-shadow: 0 14px 36px rgba(42, 51, 47, 0.075);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 250, 240, 0.82);
+  box-shadow: var(--shadow-soft);
 }
 
 .module-d .member-d-hero,
@@ -41,32 +41,40 @@
 .module-d .member-d-hero {
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 1.1rem 1.35rem 1.15rem;
+  padding: clamp(0.82rem, 1.45vw, 1.15rem);
   border-bottom: 1px solid var(--member-d-rule);
 }
 
 .module-d .member-d-hero h2 {
   margin: 0.46rem 0 0;
   font-family: var(--member-d-font-serif);
-  font-size: clamp(1.9rem, 3.2vw, 3.5rem);
-  font-weight: 700;
-  letter-spacing: -0.055em;
-  line-height: 0.98;
+  font-size: clamp(1.5rem, 2.25vw, 2.42rem);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
 }
 
-.module-d .member-d-hero p:not(.eyebrow) {
-  max-width: 64ch;
-  margin: 0.58rem 0 0;
-  color: var(--member-d-muted);
-  font-size: 0.93rem;
-  line-height: 1.65;
+.module-d .member-a-part {
+  margin-bottom: 0.2rem;
+  font-size: 0.72rem;
+  line-height: 1.1;
+}
+
+.module-d .member-d-hero p:not(.eyebrow):not(.member-a-part) {
+  max-width: min(96rem, 100%);
+  margin: 0.46rem 0 0;
+  color: rgba(20, 37, 31, 0.62);
+  font-size: clamp(0.88rem, 0.96vw, 1rem);
+  font-weight: 720;
+  line-height: 1.5;
 }
 
 .module-d .member-d-source-note {
   width: min(30%, 280px);
   padding: 0.85rem 0.95rem;
   border-left: 3px solid var(--member-d-medicine);
-  background: rgba(102, 135, 94, 0.07);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .module-d .member-d-source-note span,
@@ -105,7 +113,7 @@
   justify-content: space-between;
   padding: 0.82rem 1.35rem;
   border-bottom: 1px solid var(--member-d-rule);
-  background: rgba(243, 240, 232, 0.42);
+  background: rgba(255, 255, 255, 0.36);
 }
 
 .module-d .member-d-tabs,
@@ -140,7 +148,7 @@
 .module-d .member-d-tab.is-active {
   color: var(--member-d-ink);
   border-color: var(--member-d-rule);
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 250, 240, 0.86);
 }
 
 .module-d .member-d-tab.is-active {
@@ -260,6 +268,7 @@
 .module-d .member-d-reading {
   flex: 1;
   padding: 0.92rem;
+  border-radius: 14px;
 }
 
 .module-d .member-d-reading h4 {
@@ -290,7 +299,8 @@
   flex: 1 1 auto;
   padding: 0.96rem 1rem 0.72rem;
   border: 1px solid var(--member-d-rule-soft);
-  background: rgba(255, 255, 255, 0.56);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .module-d .member-d-figure-head {
@@ -352,6 +362,7 @@
   border-top: 1px solid var(--member-d-rule-soft);
   border-bottom: 1px solid var(--member-d-rule-soft);
   background: var(--member-d-paper);
+  border-radius: 14px;
 }
 
 .module-d .member-d-svg {
@@ -393,29 +404,28 @@
 }
 
 .module-d .member-d-takeaway {
-  margin: 0;
-  padding: 0.62rem 0.2rem 0.14rem;
-  color: #40534f;
-  font-size: 0.77rem;
-  font-weight: 600;
-  line-height: 1.55;
+  margin: 0.72rem 0 0;
+  padding: 0.78rem 0.86rem;
+  border: 1px solid var(--member-d-rule-soft);
+  border-left: 4px solid #d8a83e;
+  border-radius: 14px;
+  color: rgba(20, 37, 31, 0.84);
+  background: rgba(255, 255, 255, 0.62);
+  font-size: 0.84rem;
+  font-weight: 760;
+  line-height: 1.65;
 }
 
-.module-d .member-d-takeaway::before {
-  content: "图表小结";
-  margin-right: 0.48rem;
-  color: #315750;
-  font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+.module-d .member-d-takeaway p {
+  margin: 0;
 }
 
 .module-d .member-d-summary {
   margin: 0 1.35rem 1.1rem;
   padding: 0.92rem 1rem;
-  border-top: 1px solid var(--member-d-rule);
-  border-bottom: 1px solid var(--member-d-rule-soft);
-  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid var(--member-d-rule-soft);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .module-d .member-d-summary strong {

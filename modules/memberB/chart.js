@@ -27,6 +27,16 @@ const PALETTE = {
   paper: 'rgba(255, 250, 240, 0.9)'
 };
 
+const VIEW_INSIGHTS = {
+  trajectory: '诺奖得主的学术产出通常不是一条匀速直线，而是在较长积累后出现高峰。获奖平均发生在学术生涯后段，说明奖项更多是在确认已经形成的影响力。',
+  comparison: '多数得主的主要论文积累发生在获奖之前，获奖后产出往往下降。对“如何拿诺奖”来说，关键不是领奖后继续证明自己，而是在领奖前已经做出足够扎实的代表性成果。',
+  heatmap: '高峰创作期在不同年代呈现集聚，说明科研突破与时代条件有关。某些时期会集中出现更多处于高产阶段的得主，背后往往对应学科扩张、机构资源和研究范式变化。',
+  evolution: '得主画像随年代明显变化：获奖年龄推迟、论文产出增加，现代诺奖越来越依赖长期积累和复杂科研体系，个人天才叙事正在被团队化、制度化科研改写。',
+  rhythm: '得主并不存在唯一的产出节奏。有的人靠少数年份集中爆发，有的人靠持续稳定积累；不同学科对“突破型”和“积累型”路径的偏好也并不相同。',
+  cohort: '不同出生世代的获奖节奏并不一致，现代世代通常需要更长时间走到获奖节点。这说明诺奖不仅奖励个人能力，也反映科研训练周期和学科成熟度的变化。',
+  radar: '高产与低产得主各有路径：高产者在多维指标上更稳定，低产者也可能凭少数高影响成果进入诺奖视野。通往诺奖没有单一路线，但影响力必须足够突出。'
+};
+
 // 文字解说已移到 data/memberB/memberB_data.json 的 view_copy 字段中
 
 export class TrajectoryChart {
@@ -126,9 +136,16 @@ export class TrajectoryChart {
       `).join('');
     }
     if (this.panel) {
+      const details = copy.notes || [];
+      const insight = VIEW_INSIGHTS[this.view] || '这一页从生命周期视角观察诺奖得主的共同路径：成果、时间和影响力往往不是同步到达，而是在长期积累中逐步显影。';
       this.panel.innerHTML = `
-        <h3>${copy.title}</h3>
-        <ul>${copy.notes.map((item) => `<li>${item}</li>`).join('')}</ul>
+        <div class="member-b-reading">
+          <h3>${copy.title}</h3>
+          <article class="member-b-insight">
+            <p>${insight}</p>
+          </article>
+          <ul>${details.slice(0, 4).map((item) => `<li>${item}</li>`).join('')}</ul>
+        </div>
       `;
     }
   }

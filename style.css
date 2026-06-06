@@ -12,7 +12,7 @@
   --shadow-soft: 0 12px 30px rgba(26, 41, 34, 0.08);
   --radius-xl: 32px;
   --radius-lg: 24px;
-  --radius-md: 18p
+  --radius-md: 18px;
   --radius-sm: 14px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --page-gap: clamp(1rem, 2vw, 1.5rem);
@@ -365,6 +365,38 @@ body::after {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.overview-flow {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.2rem;
+}
+
+.overview-flow span {
+  position: relative;
+  display: block;
+  padding: 0.78rem 1rem 0.78rem 2.4rem;
+  border-radius: var(--radius-md);
+  color: #274238;
+  font-size: 0.94rem;
+  font-weight: 800;
+  line-height: 1.45;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(19, 33, 29, 0.07);
+}
+
+.overview-flow span::before {
+  content: "";
+  position: absolute;
+  left: 0.95rem;
+  top: 50%;
+  width: 0.58rem;
+  height: 0.58rem;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: #d8a83e;
+  box-shadow: 0 0 0 5px rgba(216, 168, 62, 0.16);
+}
+
 .hero-notes div,
 .overview-cards article,
 .story-brief span,
@@ -497,6 +529,129 @@ body::after {
   background: linear-gradient(140deg, rgba(255, 255, 255, 0.58), rgba(255, 250, 240, 0.84));
 }
 
+.overview-visual {
+  place-items: stretch;
+  gap: 0.65rem;
+}
+
+.overview-table-card,
+.overview-data-card,
+.closing-answer-card,
+.closing-credit {
+  border: 1px solid rgba(19, 33, 29, 0.08);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: var(--shadow-soft);
+}
+
+.overview-table-card {
+  padding: clamp(0.78rem, 1.3vw, 1.05rem);
+}
+
+.overview-table-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.62rem;
+}
+
+.overview-table-head span,
+.closing-answer-card span {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.36rem 0.62rem;
+  border-radius: 999px;
+  color: #1d3f36;
+  background: rgba(216, 168, 62, 0.18);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.overview-table-head strong {
+  max-width: 34ch;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.division-table {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.division-row {
+  display: grid;
+  grid-template-columns: 0.55fr 0.75fr 1.55fr 2.25fr;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.5rem 0.65rem;
+  border-radius: 14px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  background: rgba(255, 250, 240, 0.68);
+  border: 1px solid rgba(19, 33, 29, 0.055);
+}
+
+.division-row--head {
+  color: #1d3f36;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(216, 168, 62, 0.16);
+}
+
+.division-row span:nth-child(1),
+.division-row span:nth-child(2),
+.division-row span:nth-child(3) {
+  color: #203a31;
+  font-weight: 800;
+}
+
+.overview-data-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.62rem;
+  padding: 0.72rem;
+  align-items: stretch;
+}
+
+.overview-data-card div {
+  padding: 0.72rem 0.82rem;
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 250, 240, 0.76));
+  border-left: 4px solid #d8a83e;
+}
+
+.overview-data-card strong {
+  display: block;
+  margin-bottom: 0.38rem;
+  color: #1d3f36;
+  font-size: 0.92rem;
+}
+
+.overview-data-card p,
+.overview-data-card li {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.overview-data-card ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.overview-data-card li + li {
+  margin-top: 0.26rem;
+}
+
 .manifest-card {
   width: min(100%, 460px);
 }
@@ -558,6 +713,60 @@ body::after {
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(19, 33, 29, 0.06);
+}
+
+.closing-points b {
+  display: inline-flex;
+  margin-right: 0.55rem;
+  color: #1d3f36;
+  font-weight: 900;
+}
+
+.closing-visual {
+  place-items: stretch;
+  grid-template-rows: 1fr auto;
+  gap: 0.9rem;
+}
+
+.closing-answer-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.2rem, 2vw, 1.65rem);
+}
+
+.closing-answer-card h3 {
+  margin: 0.9rem 0 0.75rem;
+  color: var(--ink);
+  font-size: clamp(1.3rem, 2.1vw, 2rem);
+  line-height: 1.22;
+}
+
+.closing-answer-card p {
+  margin: 0.32rem 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.closing-answer-card strong {
+  display: block;
+  margin-top: 0.9rem;
+  color: #355e4b;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.closing-credit {
+  padding: 0.82rem 1rem;
+  text-align: center;
+}
+
+.closing-credit p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
 }
 
 /* 右侧翻页导航 */
@@ -1498,4 +1707,60 @@ body::after {
     max-width: 70ch;
     font-size: clamp(1.05rem, 1.1vw, 1.2rem);
   }
+}
+
+/* Unified module title scale: keep Part 1-5 visually consistent. */
+.module-a .member-a-hero,
+.module-b .member-b-hero,
+.module-c .member-a-hero,
+.module-d .member-d-hero,
+.module-e .member-a-hero {
+  padding: clamp(0.72rem, 1.2vw, 0.96rem);
+}
+
+.module-a .member-a-hero h2,
+.module-b .member-b-hero h2,
+.module-c .member-a-hero h2,
+.module-d .member-d-hero h2,
+.module-e .member-a-hero h2 {
+  margin-top: 0.38rem;
+  font-family: "Aptos", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(1.55rem, 2.35vw, 2.55rem);
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.module-a .member-a-summary,
+.module-b .member-b-hero .lede,
+.module-c .member-a-summary,
+.module-d .member-d-hero p:not(.eyebrow),
+.module-e .member-a-summary {
+  max-width: min(94rem, 100%);
+  color: rgba(20, 37, 31, 0.62);
+  font-size: clamp(0.88rem, 0.96vw, 1rem);
+  font-weight: 720;
+  line-height: 1.5;
+}
+
+@media (min-width: 1180px) {
+  .module-a .member-a-summary,
+  .module-b .member-b-hero .lede,
+  .module-c .member-a-summary,
+  .module-d .member-d-hero p:not(.eyebrow),
+  .module-e .member-a-summary {
+    white-space: nowrap;
+  }
+}
+
+/* Keep overview, Part 4 and closing titles from reading larger than the rest. */
+.page-overview .page-copy h2,
+.page-closing .page-copy h2 {
+  font-size: clamp(1.55rem, 2.35vw, 2.55rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.module-d .member-d-hero h2 {
+  font-size: clamp(1.5rem, 2.25vw, 2.42rem);
 }

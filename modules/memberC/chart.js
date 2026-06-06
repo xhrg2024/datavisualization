@@ -223,10 +223,21 @@ export class NetworkChart {
       const copy = VIEW_COPY[key];
       this.notes.innerHTML = `
         <h3>${copy.title}</h3>
+        <section class="mc-fig2-info" data-mc-fig2-detail>
+          <h3>论文详情</h3>
+          <p>点击上方任意关系路径，查看样例论文信息。</p>
+        </section>
+        <section class="mc-fig2-info mc-fig2-author" data-mc-fig2-author>
+          <h3>作者信息</h3>
+          <p>点击上方任意圆点，查看作者详细信息。</p>
+        </section>
         <p class="member-a-insight">${copy.insight}</p>
         <ul>${copy.notes.map((item) => `<li>${item}</li>`).join('')}</ul>
       `;
+      this.detailPanel = d3.select(this.notes.querySelector('[data-mc-fig2-detail]'));
+      this.authorPanel = d3.select(this.notes.querySelector('[data-mc-fig2-author]'));
     }
+    this.updateRightRail(this.activeIndex);
   }
 
   updateRightRail(index) {

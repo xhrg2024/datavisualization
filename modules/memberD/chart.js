@@ -226,7 +226,9 @@ export class AlluvialChart {
   }
 
   setTakeaway(text) {
-    if (this.takeaway) this.takeaway.textContent = text;
+    if (this.takeaway) {
+      this.takeaway.innerHTML = `<p>${escapeHtml(text)}</p>`;
+    }
   }
 
   setPanel(kpis, title, paragraphs) {

@@ -25,13 +25,14 @@
   display: block;
   gap: 0.75rem;
   align-items: center;
-  padding: clamp(0.62rem, 1.2vw, 0.9rem);
+  padding: clamp(0.82rem, 1.45vw, 1.15rem);
 }
 
 .member-a-hero h2 {
   margin: 0.42rem 0 0;
-  font-size: clamp(1.45rem, 2.25vw, 2.35rem);
+  font-size: clamp(2.1rem, 4vw, 4.25rem);
   line-height: 1.08;
+  letter-spacing: -0.045em;
 }
 
 .member-a-part {
@@ -44,17 +45,28 @@
 }
 
 .member-a-hero .lede {
-  font-size: clamp(0.88rem, 1vw, 1rem);
-  line-height: 1.62;
+  max-width: none;
+  font-size: clamp(1rem, 1.15vw, 1.22rem);
+  line-height: 1.45;
+  white-space: normal;
 }
 
 .member-a-summary {
-  max-width: 58rem;
+  max-width: min(96rem, 100%);
   margin: 0.5rem 0 0;
   color: rgba(20, 37, 31, 0.62);
-  font-size: clamp(0.78rem, 0.9vw, 0.92rem);
-  line-height: 1.58;
-  font-weight: 650;
+  font-size: clamp(1rem, 1.15vw, 1.22rem);
+  line-height: 1.45;
+  font-weight: 720;
+}
+
+@media (min-width: 1180px) {
+  .member-a-summary,
+  .member-a-hero .lede,
+  .member-b-hero .lede,
+  .module-d .member-d-hero p:not(.eyebrow) {
+    white-space: nowrap;
+  }
 }
 
 .member-a-tabs {
