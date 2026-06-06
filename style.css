@@ -1709,20 +1709,18 @@ body::after {
   }
 }
 
-/* Unified module title scale: keep Part 1-5 visually consistent. */
+/* Unified module title scale: keep Part 1-4 visually consistent. */
 .module-a .member-a-hero,
 .module-b .member-b-hero,
 .module-c .member-a-hero,
-.module-d .member-d-hero,
-.module-e .member-a-hero {
+.module-d .member-d-hero {
   padding: clamp(0.72rem, 1.2vw, 0.96rem);
 }
 
 .module-a .member-a-hero h2,
 .module-b .member-b-hero h2,
 .module-c .member-a-hero h2,
-.module-d .member-d-hero h2,
-.module-e .member-a-hero h2 {
+.module-d .member-d-hero h2 {
   margin-top: 0.38rem;
   font-family: "Aptos", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: clamp(1.55rem, 2.35vw, 2.55rem);
@@ -1734,8 +1732,7 @@ body::after {
 .module-a .member-a-summary,
 .module-b .member-b-hero .lede,
 .module-c .member-a-summary,
-.module-d .member-d-hero p:not(.eyebrow),
-.module-e .member-a-summary {
+.module-d .member-d-hero p:not(.eyebrow) {
   max-width: min(94rem, 100%);
   color: rgba(20, 37, 31, 0.62);
   font-size: clamp(0.88rem, 0.96vw, 1rem);
@@ -1747,8 +1744,7 @@ body::after {
   .module-a .member-a-summary,
   .module-b .member-b-hero .lede,
   .module-c .member-a-summary,
-  .module-d .member-d-hero p:not(.eyebrow),
-  .module-e .member-a-summary {
+  .module-d .member-d-hero p:not(.eyebrow) {
     white-space: nowrap;
   }
 }

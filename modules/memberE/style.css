@@ -40,6 +40,13 @@
 	line-height: 1.62;
 }
 
+.module-e .member-a-summary {
+	max-width: 58rem;
+	font-size: clamp(0.78rem, 0.9vw, 0.92rem);
+	line-height: 1.58;
+	font-weight: 650;
+}
+
 .module-e .member-a-tabs {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
