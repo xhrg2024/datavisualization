@@ -141,6 +141,7 @@ export class TrajectoryChart {
       this.panel.innerHTML = `
         <div class="member-b-reading">
           <h3>${copy.title}</h3>
+          <h4 class="member-a-insight-title">读图结论</h4>
           <article class="member-b-insight">
             <p>${insight}</p>
           </article>

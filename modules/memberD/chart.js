@@ -95,6 +95,7 @@ export class AlluvialChart {
     this.aggregates = new Map();
 
     this.kpis = this.page?.querySelector('[data-d-kpis]');
+    this.insight = this.page?.querySelector('[data-d-insight]');
     this.reading = this.page?.querySelector('[data-d-reading]');
     this.status = this.page?.querySelector('[data-d-status]');
     this.statusText = this.page?.querySelector('[data-d-status-text]');
@@ -228,6 +229,15 @@ export class AlluvialChart {
   setTakeaway(text) {
     if (this.takeaway) {
       this.takeaway.innerHTML = `<p>${escapeHtml(text)}</p>`;
+    }
+  }
+
+  setInsight(title, paragraphs) {
+    if (this.insight) {
+      this.insight.innerHTML = `
+        <h4>${escapeHtml(title)}</h4>
+        ${paragraphs.map((p) => `<p>${p}</p>`).join('')}
+      `;
     }
   }
 
@@ -475,6 +485,18 @@ export class AlluvialChart {
     this.setTakeaway(
       `${period.label}，${meta.label}奖相关论文中，${fitLabel(topTopic, 48)}${secondTopic ? `、${fitLabel(secondTopic, 48)}` : ''} 等主题占比较高。`
     );
+    const topicShare = (() => {
+      const totalLast = decades.reduce((sum, decade) => {
+        const counts = aggregate.primaryByDecade.get(decade) ?? new Map();
+        return sum + (counts.get(topTopic) ?? 0);
+      }, 0);
+      const grandTotal = Array.from(topicTotals.values()).reduce((a, b) => a + b, 0);
+      return grandTotal > 0 ? PERCENT(totalLast / grandTotal) : '—';
+    })();
+    this.setInsight('读图结论', [
+      `${meta.label}奖得主论文中，<em>${escapeHtml(topTopic)}</em> 在 ${period.label} 持续占据最高份额（累计占比约 ${topicShare}），表明该方向是该学科长期关注的核心议题。`,
+      `${secondTopic ? `排名第二的 ${escapeHtml(secondTopic)} 与之构成双核心格局，` : ''}多数 Top 主题在不同年代间比例此消彼长，反映研究前沿随技术与认知进步在逐步迁移。`
+    ]);
     this.setPanel(
       [
         { value: NUMBER(aggregate.topicRows), label: '带主题论文' },
@@ -724,6 +746,13 @@ export class AlluvialChart {
 
     const strongest = topics[0];
     this.setTakeaway('同一个微观主题如果同时接收多个传统学科的流入，就说明它具有跨学科属性。');
+    const threeWayTopics = topics.filter((t) => t.counts.size === 3);
+    this.setInsight('读图结论', [
+      `在 ${crossTopics.length} 个跨学科主题中，<em>${escapeHtml(strongest?.topic ?? '未标注')}</em> 的综合权重最高，说明它在物理、化学与医学之间的交叉最为显著。`,
+      threeWayTopics.length > 0
+        ? `共有 ${threeWayTopics.length} 个主题同时被三个传统学科共享，表明诺奖研究的学科边界在微观层面已相当模糊。`
+        : `尽管多数跨界主题仅跨越两个学科，但线宽分布表明学科间的知识渗透已是普遍现象。`
+    ]);
     this.setPanel(
       [
         { value: NUMBER(crossTopics.length), label: '跨学科 OpenAlex 主题' },
@@ -987,6 +1016,12 @@ export class AlluvialChart {
     const broadest = d3.greatest(laureates, (item) => item.diversity);
     const mostTopics = d3.greatest(laureates, (item) => item.topicCount);
     this.setTakeaway(`散点图描述研究主题的集中或扩散程度：靠右上方的${meta.label}奖得主拥有较多论文，也跨越较广的主题边界。`);
+    const highOutput = laureates.filter((l) => l.diversity < average);
+    const broadOutput = laureates.filter((l) => l.diversity >= average);
+    this.setInsight('读图结论', [
+      `在可比较的 ${laureates.length} 位得主中，扩散指数最高的是 <em>${escapeHtml(broadest?.name ?? '未标注')}</em>（${ONE_DECIMAL(broadest?.diversity ?? 0)}），说明其研究主题覆盖范围最广。`,
+      `约 ${PERCENT(broadOutput.length / laureates.length)} 的得主（${broadOutput.length} 位）扩散指数高于平均值（${FOUR_DECIMALS(average)}），表明多数诺奖得主倾向于在相对多元的主题方向上深耕，而非单一跨域。`
+    ]);
     this.setPanel(
       [
         { value: NUMBER(laureates.length), label: '可比较得主' },

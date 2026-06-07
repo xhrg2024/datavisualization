@@ -231,6 +231,7 @@ export class NetworkChart {
           <h3>作者信息</h3>
           <p>点击上方任意圆点，查看作者详细信息。</p>
         </section>
+        <h4 class="member-a-insight-title">读图结论</h4>
         <p class="member-a-insight">${copy.insight}</p>
         <ul>${copy.notes.map((item) => `<li>${item}</li>`).join('')}</ul>
       `;

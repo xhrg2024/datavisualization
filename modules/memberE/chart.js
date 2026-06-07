@@ -273,6 +273,7 @@ export class MorphingChart {
       const notes = paragraphs.length > 1 ? paragraphs.slice(1) : [];
       this.reading.innerHTML = `
         <h3>${escapeHtml(title)}</h3>
+        <h4 class="member-a-insight-title">读图结论</h4>
         ${insight ? `<p class="member-a-insight">${insight}</p>` : ''}
         ${notes.length > 0 ? `<ul>${notes.map((item) => `<li>${item}</li>`).join('')}</ul>` : ''}
       `;

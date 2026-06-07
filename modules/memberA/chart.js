@@ -315,6 +315,7 @@ export class MacroChart {
     if (this.panel) {
       this.panel.innerHTML = `
         <h3>${copy.title}</h3>
+        <h4 class="member-a-insight-title">读图结论</h4>
         <p class="member-a-insight">${copy.insight}</p>
         <ul>${copy.notes.map((item) => `<li>${item}</li>`).join('')}</ul>
       `;
