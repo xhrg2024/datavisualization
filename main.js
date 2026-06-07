@@ -448,6 +448,63 @@ function installButtons() {
   goOverviewButton?.addEventListener('click', () => goToPage(1));
 }
 
+/* ── 移动端触摸滑动翻页 ── */
+function installTouchSwipe() {
+  const stage = document.getElementById('page-stage');
+  if (!stage) return;
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  let swiping = false;
+
+  stage.addEventListener('touchstart', (event) => {
+    // 忽略在表单控件上的触摸
+    if (event.target.closest('input, select, textarea, button, .mc-panel, .member-a-dashboard, .member-b-dashboard, .member-d-dashboard')) return;
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+    touchStartTime = Date.now();
+    swiping = false;
+  }, { passive: true });
+
+  stage.addEventListener('touchmove', (event) => {
+    if (event.target.closest('input, select, textarea, button, .mc-panel, .member-a-dashboard, .member-b-dashboard, .member-d-dashboard')) return;
+    const dx = event.touches[0].clientX - touchStartX;
+    const dy = event.touches[0].clientY - touchStartY;
+    // 如果水平滑动距离大于垂直，不处理（可能是横向滚动）
+    if (Math.abs(dx) > Math.abs(dy) * 1.2) return;
+    swiping = true;
+  }, { passive: true });
+
+  stage.addEventListener('touchend', (event) => {
+    if (!swiping) return;
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
+    const dy = touchStartY - touchEndY;
+    const elapsed = Date.now() - touchStartTime;
+
+    // 快速轻扫（<300ms，>30px）或慢速滑动（>60px）
+    const isQuickSwipe = elapsed < 300 && Math.abs(dy) > 30;
+    const isSlowSwipe = Math.abs(dy) > 60;
+
+    if (isQuickSwipe || isSlowSwipe) {
+      // 检查当前页面是否可滚动且未到底/顶
+      const activePage = document.querySelector('.page.is-active');
+      if (activePage) {
+        const { scrollTop, scrollHeight, clientHeight } = activePage;
+        const atTop = scrollTop <= 0;
+        const atBottom = Math.abs(scrollTop + clientHeight - scrollHeight) <= 2;
+
+        if (dy > 0 && !atBottom) return; // 向上滑但内容未到底，让内容滚动
+        if (dy < 0 && !atTop) return;    // 向下滑但内容未到顶，让内容滚动
+      }
+
+      movePage(dy > 0 ? 1 : -1);
+    }
+    swiping = false;
+  }, { passive: true });
+}
+
 function installResizeHandling() {
   let resizeTimer = null;
   window.addEventListener('resize', () => {
@@ -569,6 +626,7 @@ async function bootstrap() {
   installWheelZone();
   installKeyboard();
   installButtons();
+  installTouchSwipe();
   installResizeHandling();
   installNavIdle();
   createCharts();

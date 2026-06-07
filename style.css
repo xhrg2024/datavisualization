@@ -1641,6 +1641,124 @@ body::after {
     width: 0.24rem;
     height: 0.24rem;
   }
+
+  /* 分工表移动端适配：改为卡片式布局 */
+  .division-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding: 0.5rem 0.65rem;
+  }
+
+  .division-row span:not(:first-child):not(:nth-child(2)) {
+    font-size: 0.72rem;
+  }
+
+  .division-row span:nth-child(1)::after { content: " · "; }
+  .division-row span:nth-child(2)::after { content: " · "; }
+  .division-row span:nth-child(3)::after { content: "\A"; white-space: pre; }
+
+  .overview-table-card {
+    overflow: hidden;
+  }
+
+  .overview-data-card {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-table-head {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .overview-table-head strong {
+    text-align: left;
+    max-width: none;
+  }
+
+  /* 首页 hero 轮播在小屏下高度限制 */
+  .hero-carousel {
+    min-height: 200px;
+  }
+
+  /* 模块仪表盘内容区适配 */
+  .member-a-content,
+  .member-b-content,
+  .module-c .member-a-content,
+  .module-e .member-a-content {
+    grid-template-columns: 1fr !important;
+  }
+
+  .member-a-tabs,
+  .module-c .member-a-tabs,
+  .module-e .member-a-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .member-b-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .member-a-panel,
+  .member-a-visual,
+  .member-b-panel,
+  .member-b-visual,
+  .module-c .member-a-panel,
+  .module-c .member-a-visual,
+  .module-e .member-a-panel,
+  .module-e .member-a-visual {
+    min-height: 0 !important;
+  }
+
+  .member-a-svg {
+    min-height: 280px;
+  }
+
+  .member-e .member-a-svg {
+    min-height: 280px;
+  }
+
+  /* 模块D移动端适配 */
+  .module-d .member-d-content {
+    flex-direction: column;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .module-d .member-d-panel {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .module-d .member-d-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .module-d .member-d-chart {
+    min-height: 320px;
+  }
+
+  .module-d .member-d-svg {
+    min-height: 320px;
+  }
+
+  /* 模块C移动端适配 */
+  .mc-root {
+    min-height: 0;
+  }
+
+  .mc-stage {
+    min-height: 200px;
+    height: clamp(200px, 40vh, 360px);
+  }
+
+  .mc-stage svg {
+    min-height: 200px;
+  }
+
+  .module-c .page-grid {
+    height: auto;
+    min-height: 0;
+  }
 }
 
 /* --- 极小屏（420px 以下） --- */
@@ -1656,32 +1774,119 @@ body::after {
   }
 
   .page-copy {
-    padding: 0.8rem;
-    border-radius: var(--radius-lg);
+    padding: 0.3rem;
+    border-radius: var(--radius-md);
   }
 
   .page-visual {
-    border-radius: var(--radius-lg);
-    padding: 0.4rem;
+    border-radius: var(--radius-md);
+    padding: 0.15rem;
   }
 
   .chart-frame {
-    border-radius: calc(var(--radius-lg) - 4px);
-    padding: 0.3rem;
+    border-radius: calc(var(--radius-md) - 2px);
+    padding: 0.2rem;
   }
 
   .chart-container {
-    min-height: 300px;
+    min-height: 200px;
   }
 
   .eyebrow {
-    font-size: 0.65rem;
-    padding: 0.35rem 0.6rem;
+    font-size: 0.6rem;
+    padding: 0.25rem 0.5rem;
   }
 
   .action-button {
-    padding: 0.7rem 0.9rem;
-    font-size: 0.82rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.72rem;
+  }
+
+  .hero-actions .action-button {
+    padding: 0.2rem 0.35rem;
+    font-size: 0.6rem;
+  }
+
+  .hero-carousel {
+    min-height: 160px;
+  }
+
+  .carousel-card__content {
+    padding: 0.2rem;
+  }
+
+  .carousel-card__content h3 {
+    font-size: clamp(0.65rem, 3vw, 0.85rem);
+  }
+
+  .carousel-card__content p {
+    display: none;
+  }
+
+  .member-a-tabs,
+  .module-c .member-a-tabs,
+  .module-e .member-a-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.2rem;
+  }
+
+  .member-b-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.2rem;
+  }
+
+  .member-a-tab,
+  .module-c .member-a-tab,
+  .module-e .member-a-tab,
+  .member-b-tab {
+    min-height: 1.8rem;
+    font-size: 0.72rem;
+    padding: 0.2rem 0.3rem;
+  }
+
+  .member-a-kpi,
+  .member-b-kpi,
+  .module-e .member-a-kpi {
+    min-height: 2.8rem;
+    padding: 0.4rem;
+  }
+
+  .member-a-kpi strong,
+  .member-b-kpi strong,
+  .module-e .member-a-kpi strong {
+    font-size: 0.88rem;
+  }
+
+  .member-a-kpi span,
+  .member-b-kpi span,
+  .module-e .member-a-kpi span {
+    font-size: 0.65rem;
+  }
+
+  .module-d .member-d-chart {
+    min-height: 240px;
+  }
+
+  .module-d .member-d-svg {
+    min-height: 240px;
+  }
+
+  .module-d .member-d-toolbar {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .module-d .member-d-tab {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .mc-stage {
+    min-height: 160px;
+    height: clamp(160px, 35vh, 280px);
+  }
+
+  .mc-panel {
+    padding: 0.4rem;
   }
 }
 

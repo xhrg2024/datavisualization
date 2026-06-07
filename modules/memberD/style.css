@@ -544,20 +544,33 @@
   .module-d .member-d-hero {
     align-items: flex-start;
     flex-direction: column;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .module-d .member-d-hero h2 {
+    font-size: clamp(1.1rem, 4.5vw, 1.6rem);
   }
 
   .module-d .member-d-source-note {
     width: 100%;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .module-d .member-d-source-note strong {
+    font-size: 0.78rem;
   }
 
   .module-d .member-d-toolbar {
     align-items: flex-start;
     flex-direction: column;
+    padding: 0.5rem 0.7rem;
+    gap: 0.5rem;
   }
 
   .module-d .member-d-narrative {
     align-items: flex-start;
     flex-direction: column;
+    padding: 0.5rem 0.7rem 0;
   }
 
   .module-d .member-d-narrative i {
@@ -566,18 +579,79 @@
 
   .module-d .member-d-panel {
     display: flex;
+    flex-direction: column;
   }
 
   .module-d .member-d-kpis {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .module-d .member-d-kpi {
-    min-height: 62px;
-    padding: 0.42rem;
+    min-height: 52px;
+    padding: 0.35rem;
   }
 
   .module-d .member-d-kpi strong {
-    font-size: 1rem;
+    font-size: 0.88rem;
+  }
+
+  .module-d .member-d-kpi span {
+    font-size: 0.62rem;
+  }
+
+  .module-d .member-d-content {
+    padding: 0.5rem 0.7rem;
+    gap: 0.5rem;
+  }
+
+  .module-d .member-d-visual {
+    padding: 0.5rem;
+  }
+
+  .module-d .member-d-chart {
+    min-height: 320px;
+  }
+
+  .module-d .member-d-svg {
+    min-height: 320px;
+  }
+
+  .module-d .member-d-tab {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .module-d .member-d-segmented button {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.45rem;
+  }
+
+  .module-d .member-d-figure-head {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.1rem 0.1rem 0.5rem;
+  }
+
+  .module-d .member-d-figure-head h3 {
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  }
+
+  .module-d .member-d-figure-head p {
+    text-align: left;
+    max-width: none;
+  }
+
+  .module-d .member-d-takeaway {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.78rem;
+  }
+
+  .module-d .member-d-summary {
+    margin: 0 0.7rem 0.7rem;
+    padding: 0.6rem 0.7rem;
+  }
+
+  .module-d .member-d-summary p {
+    font-size: 0.72rem;
   }
 }
