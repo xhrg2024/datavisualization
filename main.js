@@ -40,7 +40,7 @@ const carouselCards = Array.from(document.querySelectorAll('[data-carousel] .car
 const carouselPrev = document.querySelector('[data-carousel-prev]');
 const carouselNext = document.querySelector('[data-carousel-next]');
 const goNextButton = document.querySelector('[data-go-next]');
-const goOverviewButton = document.querySelector('[data-go-page]');
+const toggleNotesButton = document.querySelector('[data-toggle-notes]');
 
 const state = {
   currentPage: 0,
@@ -445,7 +445,21 @@ function installKeyboard() {
 
 function installButtons() {
   goNextButton?.addEventListener('click', () => movePage(1));
-  goOverviewButton?.addEventListener('click', () => goToPage(1));
+  
+  // 切换 hero-notes 两组内容
+  let notesViewIndex = 0;
+  toggleNotesButton?.addEventListener('click', () => {
+    const heroNotes = document.querySelector('[data-hero-notes]');
+    if (!heroNotes) return;
+    const views = heroNotes.querySelectorAll('[data-notes-view]');
+    if (views.length < 2) return;
+    
+    notesViewIndex = notesViewIndex === 0 ? 1 : 0;
+    views.forEach((view) => {
+      view.classList.toggle('is-active', view.dataset.notesView === String(notesViewIndex));
+    });
+    toggleNotesButton.textContent = notesViewIndex === 0 ? '查看项目数据' : '查看项目介绍';
+  });
 }
 
 /* ── 移动端触摸滑动翻页 ── */

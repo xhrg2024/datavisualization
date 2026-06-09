@@ -326,6 +326,9 @@
 .member-a-interaction-layer {
   fill: transparent;
   pointer-events: all;
+}
+
+.page.is-active .member-a-interaction-layer {
   cursor: crosshair;
 }
 

@@ -57,20 +57,36 @@
               本项目把诺贝尔奖得主的获奖记录、生平轨迹、机构流动、合作网络、研究主题与论文影响力放在同一条叙事线上，观察荣誉背后的空间、时间、关系与知识结构。
             </p>
             <p class="lede">
-              我们的切入点是“如何拿诺奖”：不是预测谁会中奖，而是用数据看看什么样的学术环境、人生节奏、合作关系和研究影响力，更容易把一个人推向斯德哥尔摩。
+              我们的切入点是"如何拿诺奖"：不是预测谁会中奖，而是用数据看看什么样的学术环境、人生节奏、合作关系和研究影响力，更容易把一个人推向斯德哥尔摩。
             </p>
             <div class="hero-actions">
               <button class="action-button action-button--primary" data-go-next>开始浏览</button>
-              <button class="action-button action-button--ghost" data-go-page="1">查看项目总览</button>
+              <button class="action-button action-button--ghost" data-toggle-notes>查看项目数据</button>
             </div>
-            <div class="hero-notes">
-              <div>
-                <strong>项目看什么</strong>
-                <span>诺奖得主如何在国家、机构、学科与论文影响力之间留下轨迹</span>
+            <div class="hero-notes" data-hero-notes>
+              <div data-notes-view="0" class="notes-view is-active">
+                <div>
+                  <strong>项目看什么</strong>
+                  <span>诺奖得主如何在国家、机构、学科与论文影响力之间留下轨迹</span>
+                </div>
+                <div>
+                  <strong>问题怎么问</strong>
+                  <span>把"如何拿诺奖"拆成空间、时间、合作、主题与影响力五个线索</span>
+                </div>
               </div>
-              <div>
-                <strong>问题怎么问</strong>
-                <span>把“如何拿诺奖”拆成空间、时间、合作、主题与影响力五个线索</span>
+              <div data-notes-view="1" class="notes-view">
+                <div>
+                  <strong>时间跨度</strong>
+                  <span><b class="stat-number">1901 —<br>— 2026</b></span>
+                </div>
+                <div>
+                  <strong>获奖者总数</strong>
+                  <span><b class="stat-number">990</b> 位</span>
+                </div>
+                <div>
+                  <strong>论文总数</strong>
+                  <span><b class="stat-number">9,153</b> 篇</span>
+                </div>
               </div>
             </div>
           </div>
@@ -119,7 +135,7 @@
             <p class="eyebrow eyebrow--mint">项目总览</p>
             <h2>五个视角，回答同一个问题</h2>
             <p class="lede">
-              五个模块共用诺奖获奖记录、得主生平、论文元数据、OpenAlex 指标与地缘政治流动数据。页面按“宏观背景—人生节奏—合作网络—知识跨界—影响回声”的顺序展开，逐步拆解“如何拿诺奖”。
+              五个模块共用诺奖获奖记录、得主生平、论文元数据、OpenAlex 指标与地缘政治流动数据。页面按"时空背景—人生主线—合作网络—研究主题—影响回声"的顺序展开，逐步拆解"如何拿诺奖"。
             </p>
             <div class="overview-flow">
               <span>先定位时代与空间</span>
@@ -132,7 +148,7 @@
             <div class="overview-table-card">
               <div class="overview-table-head">
                 <span>分工表</span>
-                <strong>五个模块各司其职，共同回答“如何拿诺奖”</strong>
+                <strong>五个模块各司其职，共同回答"如何拿诺奖"</strong>
               </div>
               <div class="division-table" role="table" aria-label="项目分工表">
                 <div class="division-row division-row--head" role="row">
@@ -203,7 +219,7 @@
             <p class="eyebrow eyebrow--sun">项目收束</p>
             <h2>诺奖攻略读到最后，答案并不玄学</h2>
             <p class="lede">
-              五个模块从空间、时间、关系、主题和影响力出发，给“如何拿诺奖”一个数据层面的收尾：奖项不是凭空出现，而是长期累积在合适环境中被看见。
+              五个模块从空间、时间、关系、主题和影响力出发，给"如何拿诺奖"一个数据层面的收尾：奖项不是凭空出现，而是长期累积在合适环境中被看见。
             </p>
             <div class="closing-points">
               <span><b>空间</b> 诺奖资源高度集中，少数国家和顶尖机构构成重要入口。</span>
